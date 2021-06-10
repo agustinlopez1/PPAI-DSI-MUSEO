@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PPAI_DSI_MUSEO.EntidadesMuseo
 {
-    class Sede
+    public class Sede
     {
         private string nombre;
         private float tarifa;

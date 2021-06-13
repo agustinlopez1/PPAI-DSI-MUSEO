@@ -65,9 +65,18 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GestorVentaEntrada\GestorVentaEntrada.cs" />
+    <Compile Include="PantallaVentaEntrada\RegistrarVentaDeEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallaVentaEntrada\RegistrarVentaDeEntrada.Designer.cs">
+      <DependentUpon>RegistrarVentaDeEntrada.cs</DependentUpon>
+    </Compile>
     <Compile Include="PantallaVentaEntrada\PantallaVentaEntrada.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PantallaVentaEntrada\RegistrarVentaDeEntrada.resx">
+      <DependentUpon>RegistrarVentaDeEntrada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

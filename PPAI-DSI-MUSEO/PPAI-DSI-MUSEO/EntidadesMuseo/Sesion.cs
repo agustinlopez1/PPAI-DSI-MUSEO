@@ -14,10 +14,16 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         public Sesion()
         {
+            
         }
 
         public DateTime FechaHoraInicio { get => fechaHoraInicio; set => fechaHoraInicio = value; }
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+
+        public static Empleado getEmpleadoEnSesion() {
+
+            /*getEmpleado*/        
+        }
     }
 }

@@ -9,13 +9,22 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
     public class Empleado
     {
         private string nombre;
-        private int idEmpleado;
+        private Sede sede;
+
 
         public Empleado()
         {
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
-        public int IdEmpleado { get => idEmpleado; set => idEmpleado = value; }
+        /*public int IdEmpleado { get => idEmpleado; set => idEmpleado = value; }*/
+
+        public Sede getSede() { 
+        
+        
+        }
+        
+        
+
     }
 }

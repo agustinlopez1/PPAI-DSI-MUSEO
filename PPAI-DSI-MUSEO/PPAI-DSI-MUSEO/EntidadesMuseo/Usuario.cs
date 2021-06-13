@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace PPAI_DSI_MUSEO.EntidadesMuseo
 {
-    class Usuario
+    public class Usuario
     {
         private string nombre;
+        private  Empleado empleado;
         private int idEmpleado;
 
         public Usuario()
@@ -17,5 +18,9 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         public string Nombre { get => nombre; set => nombre = value; }
         public int IdEmpleado { get => idEmpleado; set => idEmpleado = value; }
+
+        public static Empleado getEmpleado() {
+            empleado = new Empleado();
+        }
     }
 }

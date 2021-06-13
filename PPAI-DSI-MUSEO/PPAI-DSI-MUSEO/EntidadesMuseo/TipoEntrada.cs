@@ -14,8 +14,10 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public TipoEntrada()
         {
         }
-
+        
         public string Nombre { get => nombre; set => nombre = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
+
+
     }
 }

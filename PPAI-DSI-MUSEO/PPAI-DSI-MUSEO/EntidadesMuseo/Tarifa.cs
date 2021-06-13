@@ -21,5 +21,15 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public float MontoAdicional { get => montoAdicional; set => montoAdicional = value; }
         public int TipoEntrada { get => idTipoEntrada; set => idTipoEntrada = value; }
         public int TipoVisita { get => idTipoVisita; set => idTipoVisita = value; }
+
+        public conocerTipoEntrada() { 
+            
+        }
+        public conocerTipoVisita()
+        {
+
+        }
+
+
     }
 }

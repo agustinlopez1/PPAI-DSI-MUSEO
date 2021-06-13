@@ -20,6 +20,13 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public float Tarifa { get => tarifa; set => tarifa = value; }
         public int IdExposicion { get => idExposicion; set => idExposicion = value; }
 
+        public List<Tarifa> buscarTarifasExistentes() {
+
+            
+        }
+
+        public void conocer();
+
 
     }
 }

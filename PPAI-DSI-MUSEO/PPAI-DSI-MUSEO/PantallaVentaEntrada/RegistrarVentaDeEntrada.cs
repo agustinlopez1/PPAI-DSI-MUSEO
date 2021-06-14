@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_DSI_MUSEO.EntidadesMuseo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,9 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 
         private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)
         {
+            Sesion sesionActual = new Sesion();
+            sesionActual.FechaHoraInicio = DateTime.Now;
+            sesionActual.IdUsuario = 0;
 
         }
     }

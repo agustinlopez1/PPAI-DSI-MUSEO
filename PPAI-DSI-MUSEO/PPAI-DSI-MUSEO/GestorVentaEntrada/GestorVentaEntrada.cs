@@ -29,9 +29,9 @@ namespace PPAI_DSI_MUSEO.GestorVentaEntrada
 
 
 
-        public void obtenerSedeActual() {
-
-            sedeActual()
+        public void obtenerSedeActual() 
+        {
+            sedeActual();
         }
 
         public static List<Tarifa> buscarTarifasExistentes(Sede sedeActual) {

@@ -19,9 +19,11 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public string Nombre { get => nombre; set => nombre = value; }
         /*public int IdEmpleado { get => idEmpleado; set => idEmpleado = value; }*/
 
-        public Sede getSede() { 
-        
-        
+        public Sede getSede() 
+        {
+            Sede sedeActual = new Sede();
+            sedeActual = this.sede;
+            return sedeActual;
         }
         
         

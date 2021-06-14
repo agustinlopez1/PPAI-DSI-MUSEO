@@ -10,7 +10,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
     {
         private DateTime fechaHoraInicio;
         private DateTime fechaHoraFin;
-        private int idUsuario;
+        private Usuario usuario;
 
         public Sesion()
         {
@@ -19,11 +19,13 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         public DateTime FechaHoraInicio { get => fechaHoraInicio; set => fechaHoraInicio = value; }
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
-        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+        public Usuario Usuario { get => usuario; set => usuario = value; }
 
-        public static Empleado getEmpleadoEnSesion() {
-
-            /*getEmpleado*/        
+        public Usuario getEmpleadoEnSesion() 
+        {
+            Usuario usu = new Usuario();
+            usu = this.usuario;
+            return usuario;
         }
     }
 }

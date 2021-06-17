@@ -7,3 +7,14 @@ C:\Users\agusl\OneDrive\Escritorio\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\
 C:\Users\agusl\OneDrive\Escritorio\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.CoreCompileInputs.cache
 C:\Users\agusl\OneDrive\Escritorio\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.exe
 C:\Users\agusl\OneDrive\Escritorio\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.pdb
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csprojAssemblyReference.cache
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.Properties.Resources.resources
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.GenerateResource.cache
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.CoreCompileInputs.cache
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.exe
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.pdb
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.exe.config
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.exe
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.pdb
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.MenuPrincipal.resources
+C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.PantallaVentaEntrada.FormRegistrarVenta.resources

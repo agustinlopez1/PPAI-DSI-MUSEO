@@ -10,15 +10,16 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
     {
         private int idUsuario;
         private string nombre;
-        private int legEmpleado;
+        private Empleado empleado;
 
         public Usuario()
         {
         }
 
-        public string UsuarioNombre { get => nombre; set => nombre = value; }
-        public int LegEmpleado { get => legEmpleado; set => legEmpleado = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+        public string UsuarioNombre { get => nombre; set => nombre = value; }
+        public Empleado Empleado { get => empleado; set => empleado = value; }
+        
 
 
 

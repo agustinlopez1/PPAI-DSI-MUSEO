@@ -9,20 +9,17 @@ using System.Threading.Tasks;
 
 namespace PPAI_DSI_MUSEO.AccesoADatos
 {
-    public class AD_Sesion
+    public class Varios_DAO
     {
-        //public static List<Sesion> obtenerSesiones()
-        public static DataTable ObtenerSesiones()
+        public static DataTable ObtenerTabla(string nombreTabla)
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["MuseoBD"];
             SqlConnection cn = new SqlConnection(cadenaConexion);
             try
             {
-                // List<Sesion> listaSesiones = new List<Sesion>();
-                
                 SqlCommand cmd = new SqlCommand();
 
-                string consulta = "SELECT * FROM Sesion";
+                string consulta = "SELECT * FROM " + nombreTabla;
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
@@ -37,9 +34,8 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                 da.Fill(tabla);
 
                 return tabla;
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -49,22 +45,7 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             }
         }
 
-        public static List<Sesion> ObtenerListaDeDataTable(DataTable tabla)
-        {
-            List<Sesion> listaSesiones = new List<Sesion>();
-            for (int i = 0; i < tabla.Rows.Count; i++)
-            {
-                Sesion sesion = new Sesion();
-                sesion.FechaHoraInicio = Convert.ToDateTime(tabla.Rows[i]["fechaHoraInicio"]);
-                sesion.FechaHoraFin = Convert.ToDateTime(tabla.Rows[i]["fechaHoraFin"]);
-                sesion.IdUsuario = Convert.ToInt32(tabla.Rows[i]["idUsuario"]);
-                listaSesiones.Add(sesion);
-            }
 
-            return listaSesiones;
-        }
-
-        
 
 
 

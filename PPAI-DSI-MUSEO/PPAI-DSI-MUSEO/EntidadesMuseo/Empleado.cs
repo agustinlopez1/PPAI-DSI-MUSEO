@@ -12,7 +12,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private string apellido;
         private DateTime fechaNacimiento;
         private int legajo;
-        private int idSede;
+        private Sede sede;
 
 
         public Empleado()
@@ -27,14 +27,9 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         public int Legajo { get => legajo; set => legajo = value; }
 
-        public int IdSede { get => idSede; set => idSede = value; }
+        public Sede Sede { get => sede; set => sede = value; }
 
-        public Sede getSede() 
-        {
-            Sede sedeActual = new Sede();
-            sedeActual = this.Sede;
-            return sedeActual;
-        }
+        
 
          
         

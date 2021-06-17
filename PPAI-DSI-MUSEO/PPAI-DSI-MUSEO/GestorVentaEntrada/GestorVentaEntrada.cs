@@ -29,20 +29,7 @@ namespace PPAI_DSI_MUSEO.GestorVentaEntrada
         private Sesion sesionActual;
 
 
-        public void obtenerSedeActual()
-        {
-            DataTable tablaSesiones = new DataTable();
-            List<Sesion> listaSesiones = new List<Sesion>();
-
-            tablaSesiones = AccesoADatos.AD_Sesion.ObtenerSesiones();
-            listaSesiones = AccesoADatos.AD_Sesion.ObtenerListaDeDataTable(tablaSesiones);
-            sesionActual = ObtenerSesionActual(listaSesiones);
-
-            int idUsuario = sesionActual.IdUsuario;
-
-            this.sedeActual = SeseiónObtenerSedeActual();
-
-        }
+        
 
         public Sesion ObtenerSesionActual(List<Sesion> listaSesiones)
         {

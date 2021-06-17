@@ -8,21 +8,16 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 {
     public class Usuario
     {
+        private int idUsuario;
         private string nombre;
-        private Empleado empleado;
+        private int legEmpleado;
 
         public Usuario()
         {
         }
 
         public string UsuarioNombre { get => nombre; set => nombre = value; }
-        public Empleado UsuarioEmpleado { get => empleado; set => empleado = value; }
-
-        public Empleado getEmpleado() 
-        {
-            Empleado emp = new Empleado();
-            emp = this.empleado;
-            return emp;
-        }
+        public int LegEmpleado { get => legEmpleado; set => legEmpleado = value; }
+        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
     }
 }

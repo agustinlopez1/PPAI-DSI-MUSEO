@@ -8,25 +8,18 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 {
     public class Sede
     {
+        private int idSede;
         private string nombre;
-        private float tarifa;
-        private int idExposicion;
+        private List<Tarifa> tarifas;
+        private int cantMaximaVisitantes;
 
         public Sede()
         {
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
-        public float Tarifa { get => tarifa; set => tarifa = value; }
-        public int IdExposicion { get => idExposicion; set => idExposicion = value; }
-
-        public List<Tarifa> buscarTarifasExistentes() {
-
-            
-        }
-
-        public void conocer();
-
-
+        public int IdSede { get => idSede; set => idSede = value; }
+        public List<Tarifa> Tarifas { get => tarifas; set => tarifas = value; }
+        public int CantMaximaVisitantes { get => cantMaximaVisitantes; set => cantMaximaVisitantes = value; }
     }
 }

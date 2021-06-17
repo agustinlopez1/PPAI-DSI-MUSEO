@@ -13,7 +13,7 @@ namespace PPAI_DSI_MUSEO.GestorVentaEntrada
 
         private List<Entrada> entradasSeleccionadas;
 
-        private List<Reserva> reservasActuales;
+        private List<ReservaVisita> reservasActuales;
 
         private List<Entrada> entradasVendidas;
 
@@ -32,22 +32,10 @@ namespace PPAI_DSI_MUSEO.GestorVentaEntrada
 
         public void obtenerSedeActual()
         {
-            Sesion ses = new Sesion();
-            ses = sesionActual;
-            Usuario usu = new Usuario();
-            usu = ses.getEmpleadoEnSesion();
-            Empleado emp = new Empleado();
-            emp = usu.getEmpleado();
-            Sede sed = new Sede();
-            sed = emp.getSede();
-            this.sedeActual = sed;
+            this.sesionActual = 
         }
 
-        public static List<Tarifa> buscarTarifasExistentes(Sede sedeActual) {
-
-            sedeActual.buscarTarifasExistentes();
-        }
-
+     
         public void calcularDuracionEstimada() { }
         {
 

@@ -11,6 +11,8 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private DateTime fechaInicio;
         private DateTime fechaFin;
         private string nombre;
+        private int idExpo;
+        private int idSede;
 
         public Exposicion()
         {
@@ -19,6 +21,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
         public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
         public string Nombre { get => nombre; set => nombre = value; }
-
+        public int IdExpo { get => idExpo; set => idExpo = value; }
+        public int IdSede { get => idSede; set => idSede = value; }
     }
 }

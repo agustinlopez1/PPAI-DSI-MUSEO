@@ -9,16 +9,17 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
     public class Entrada
     {
         private int numero;
-        private DateTime fechaVenta;
+        private DateTime fechaHoraVenta;
         private int idTarifa;
+        private float monto;
 
         public Entrada()
         {
         }
 
         public int Numero { get => numero; set => numero = value; }
-        public DateTime FechaVenta { get => fechaVenta; set => fechaVenta = value; }
+        public DateTime FechaVenta { get => fechaHoraVenta; set => fechaHoraVenta = value; }
         public int IdTarifa { get => idTarifa; set => idTarifa = value; }
-
+        public float Monto { get => monto; set => monto = value; }
     }
 }

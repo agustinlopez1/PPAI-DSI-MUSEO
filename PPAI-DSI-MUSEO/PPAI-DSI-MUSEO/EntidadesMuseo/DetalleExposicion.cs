@@ -8,14 +8,16 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 {
     public class DetalleExposicion
     {
-        private int idObra;
+        private Obra obra;
+        private Exposicion exposicion;
 
         public DetalleExposicion()
         {
         }
 
-        public int IdObra { get => idObra; set => idObra = value; }
+        public Obra Obra { get => obra; set => obra = value; }
 
+        public Exposicion Exposicion { get => exposicion; set => exposicion = value; }
 
     }
 }

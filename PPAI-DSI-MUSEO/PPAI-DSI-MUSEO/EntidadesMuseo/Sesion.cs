@@ -21,6 +21,20 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
 
-       
+        public Empleado GetEmpleadoLogueado()
+        {
+            Empleado empleado = new Empleado();
+
+            
+
+            return empleado;
+        }
+
+
+
+
+
+
+
     }
 }

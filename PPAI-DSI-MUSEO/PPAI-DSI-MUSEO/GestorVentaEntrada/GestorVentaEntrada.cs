@@ -1,6 +1,7 @@
 ﻿using PPAI_DSI_MUSEO.EntidadesMuseo;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,11 +33,35 @@ namespace PPAI_DSI_MUSEO.GestorVentaEntrada
 
         public void obtenerSedeActual()
         {
-            this.sesionActual = 
+            DataTable tablaSesiones = new DataTable();
+            List<Sesion> listaSesiones = new List<Sesion>();
+
+            tablaSesiones = AccesoADatos.AD_Sesion.ObtenerSesiones();
+            listaSesiones = AccesoADatos.AD_Sesion.ObtenerListaDeDataTable(tablaSesiones);
+            sesionActual = ObtenerSesionActual(listaSesiones);
+
+            sesionActual.GetEmpleadoEnSesion();
+
         }
 
+        public Sesion ObtenerSesionActual(List<Sesion> listaSesiones)
+        {
+            Sesion sesionActual = new Sesion();
+            foreach (Sesion sesion in listaSesiones)
+            {
+                if (sesion.FechaHoraFin != null)
+                {
+                    continue;
+                }
+                else
+                {
+                    sesionActual = sesion;
+                }
+            }
+            return sesionActual;
+        }
      
-        public void calcularDuracionEstimada() { }
+        public void calcularDuracionEstimada() 
         {
 
         }

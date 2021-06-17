@@ -26,8 +26,6 @@ namespace PPAI_DSI_MUSEO.GestorVentaEntrada
 
         private Sede sedeActual;
 
-        private int id_sede;
-
         private Sesion sesionActual;
 
 
@@ -40,7 +38,9 @@ namespace PPAI_DSI_MUSEO.GestorVentaEntrada
             listaSesiones = AccesoADatos.AD_Sesion.ObtenerListaDeDataTable(tablaSesiones);
             sesionActual = ObtenerSesionActual(listaSesiones);
 
-            sesionActual.GetEmpleadoEnSesion();
+            int idUsuario = sesionActual.IdUsuario;
+
+            this.sedeActual = SeseiónObtenerSedeActual();
 
         }
 

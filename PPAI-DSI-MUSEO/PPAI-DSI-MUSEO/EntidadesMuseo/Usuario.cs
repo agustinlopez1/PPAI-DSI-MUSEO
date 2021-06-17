@@ -19,5 +19,8 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public string UsuarioNombre { get => nombre; set => nombre = value; }
         public int LegEmpleado { get => legEmpleado; set => legEmpleado = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+
+
+
     }
 }

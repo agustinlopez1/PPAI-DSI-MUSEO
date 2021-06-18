@@ -54,7 +54,18 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                 Sesion ses = new Sesion();
 
                 ses.FechaHoraInicio = Convert.ToDateTime(sesion["fechaHoraInicio"]);
-                ses.FechaHoraFin = Convert.ToDateTime(sesion["fechaHoraFin"]);
+                if (sesion["fechaHoraFin"] == DBNull.Value)
+                {
+                    // ses.FechaHoraFin = DateTime.MinValue;
+                    ses.FechaHoraFin = DateTime.MinValue;
+                    // DateTime date1 = new DateTime(2008, 8, 29, 19, 27, 15)
+                }
+                else
+                {
+                    
+                    ses.FechaHoraFin = Convert.ToDateTime(sesion["fechaHoraFin"]);
+                }
+                
                 ses.Usuario = Sesion.ObtenerUsuario(Convert.ToInt32(sesion["idUsuario"]));
 
                 listaSesiones.Add(ses);
@@ -63,6 +74,44 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return listaSesiones;
         } // checkeado
 
+        public static List<Usuario> ObtenerListaUsuarios(DataTable tabla)
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            foreach (DataRow usuario in tabla.Rows)
+            {
+                Usuario usu = new Usuario();
+
+                usu.IdUsuario = Convert.ToInt32(usuario["idUsuario"]);
+                usu.Nombre = usuario["nombre"].ToString();
+                usu.Empleado = Usuario.ObtenerEmpleado(Convert.ToInt32(usuario["legajoEmpleado"]));
+
+                listaUsuarios.Add(usu);
+
+            }
+
+            return listaUsuarios;
+        } // checkeado
+
+
+        public static Sede ObtenerSede(int idSede)
+        {
+            Sede sede = new Sede();
+            DataTable tabla = new DataTable();
+            tabla = ObtenerTabla("Sede");
+            for (int i = 0; i < tabla.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(tabla.Rows[i][0]) == idSede)
+                {
+                    sede.IdSede = Convert.ToInt32(tabla.Rows[i][0]);
+                    sede.CantMaximaVisitantes = Convert.ToInt32(tabla.Rows[i][1]);
+                    sede.CantMaximaPorGuia = Convert.ToInt32(tabla.Rows[i][2]);
+                    sede.Nombre = tabla.Rows[i][3].ToString();
+                    return sede;
+                }
+            }
+            return null;
+        }
 
 
         //public static Usuario ObtenerUsuarioDeSesion(Sesion sesionActual)

@@ -17,5 +17,4 @@ C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\D
 C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.exe
 C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.pdb
 C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.MenuPrincipal.resources
-C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.PantallaVentaEntrada.FormRegistrarVenta.resources
 C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.PantallaVentaEntrada.PantallaVentaEntrada.resources

@@ -49,9 +49,7 @@ namespace PPAI_DSI_MUSEO.Gestor
             this.sesionActual = ObtenerSesionActual(listaSesiones);
             // acá ya tenemos la sesion actual seteada en el gestor
 
-            
 
-            
         }
 
         // Empiezan nuestros métodos "secundarios"
@@ -60,7 +58,7 @@ namespace PPAI_DSI_MUSEO.Gestor
             Sesion ses = new Sesion();
             foreach (Sesion sesion in listaSesiones)
             {
-                if (sesion.FechaHoraFin == null)
+                if (sesion.FechaHoraFin == DateTime.MinValue)
                 {
                     ses = sesion;
 

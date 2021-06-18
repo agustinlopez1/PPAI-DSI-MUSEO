@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_DSI_MUSEO.AccesoADatos;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
         public Usuario Usuario { get => usuario; set => usuario = value; }
 
-        public static Usuario ObtenerUsuario(int idUsuario) // checkeado
+        public static Usuario ObtenerUsuario(int idUsuario) // checkeado x2
         {
             Usuario usu = new Usuario();
             DataTable tabla = new DataTable();
@@ -33,19 +34,14 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
                 {
                     usu.IdUsuario = Convert.ToInt32(tabla.Rows[i][0]);
                     usu.Nombre = tabla.Rows[i][1].ToString();
-                    usu.Empleado = Usuario.ObtenerEmpleado((Convert.ToInt32(tabla.Rows[i][0])));
+                    usu.Empleado = Usuario.ObtenerEmpleado((Convert.ToInt32(tabla.Rows[i][2])));
                     return usu;
                 }
             }
             return null;
         }
 
-        public Empleado getEmpleadoEnSesion()
-        {
-            List<Usuario> listaUsuarios = new List<Usuario>();
-            listaUsuarios = Varios_DAO.ObtenerListaSesiones(Varios_DAO.ObtenerTabla("Sesion"));
-            this.sesionActual = ObtenerSesionActual(listaSesiones);
-        }
+      
 
         
 

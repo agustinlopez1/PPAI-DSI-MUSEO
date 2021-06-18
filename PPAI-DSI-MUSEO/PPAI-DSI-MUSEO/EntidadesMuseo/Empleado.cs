@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PPAI_DSI_MUSEO.EntidadesMuseo
 {
@@ -29,11 +31,38 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         public Sede Sede { get => sede; set => sede = value; }
 
-        
 
-         
-        
-        
+        public static Sede ObtenerSede(int idSede) // checkeado
+        {
+            Sede sede = new Sede();
+            DataTable tabla = new DataTable();
+            tabla = AccesoADatos.Varios_DAO.ObtenerTabla("Sede");
+            for (int i = 0; i < tabla.Rows.Count; i++)
+            {
+
+                if (Convert.ToInt32(tabla.Rows[i][0]) == idSede)
+                {
+                    sede.IdSede = Convert.ToInt32(tabla.Rows[i][0]);
+                    sede.CantMaximaVisitantes = Convert.ToInt32(tabla.Rows[i][1]);
+                    sede.CantMaximaPorGuia = Convert.ToInt32(tabla.Rows[i][2]);
+                    sede.Nombre = tabla.Rows[i][3].ToString();
+
+                    MessageBox.Show("se encontro la sede = " + sede.Nombre);
+
+                    return sede;
+                }
+                else
+                {
+                    MessageBox.Show("no se encontro sede");
+                }
+            }
+
+            return null;
+
+        }
+
+
+
 
     }
 }

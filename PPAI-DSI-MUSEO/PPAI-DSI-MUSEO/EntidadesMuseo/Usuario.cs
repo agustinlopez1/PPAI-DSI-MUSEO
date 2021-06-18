@@ -21,20 +21,21 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public string Nombre { get => nombre; set => nombre = value; }
         public Empleado Empleado { get => empleado; set => empleado = value; }
 
-        public static Empleado ObtenerEmpleado(int legEmpleado)
+        public static Empleado ObtenerEmpleado(int legEmpleado) // checkeado
         {
             Empleado emp = new Empleado();
             DataTable tabla = new DataTable();
             tabla = AccesoADatos.Varios_DAO.ObtenerTabla("Empleado");
             for (int i = 0; i < tabla.Rows.Count; i++)
             {
-                if (Convert.ToInt32(tabla.Rows[i][0]) == legEmpleado)
+                if (Convert.ToInt32(tabla.Rows[i][3]) == legEmpleado)
                 {
                     emp.Nombre = tabla.Rows[i][0].ToString();
                     emp.Apellido = tabla.Rows[i][1].ToString();
                     emp.FechaNacimeinto = Convert.ToDateTime(tabla.Rows[i][2]);
                     emp.Legajo = Convert.ToInt32(tabla.Rows[i][3]);
-                    emp.Sede = Sede.ObtenerSede(Convert.ToInt32(tabla.Rows[i][4]));
+                    emp.Sede = Empleado.ObtenerSede(Convert.ToInt32(tabla.Rows[i][4]));
+                    
                     return emp;
                 }
             }

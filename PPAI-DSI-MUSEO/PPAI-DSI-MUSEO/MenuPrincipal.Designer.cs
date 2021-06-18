@@ -44,10 +44,10 @@ namespace PPAI_DSI_MUSEO
             this.botonRegistrarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.botonRegistrarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonRegistrarVenta.ForeColor = System.Drawing.Color.Black;
-            this.botonRegistrarVenta.Location = new System.Drawing.Point(373, 194);
+            this.botonRegistrarVenta.Location = new System.Drawing.Point(372, 181);
             this.botonRegistrarVenta.Name = "botonRegistrarVenta";
             this.botonRegistrarVenta.Size = new System.Drawing.Size(181, 80);
-            this.botonRegistrarVenta.TabIndex = 11;
+            this.botonRegistrarVenta.TabIndex = 1;
             this.botonRegistrarVenta.Text = "Registrar venta";
             this.botonRegistrarVenta.UseVisualStyleBackColor = false;
             this.botonRegistrarVenta.Click += new System.EventHandler(this.botonRegistrarVenta_Click);
@@ -75,7 +75,7 @@ namespace PPAI_DSI_MUSEO
             this.botonSalir.Location = new System.Drawing.Point(100, 352);
             this.botonSalir.Name = "botonSalir";
             this.botonSalir.Size = new System.Drawing.Size(181, 80);
-            this.botonSalir.TabIndex = 89;
+            this.botonSalir.TabIndex = 2;
             this.botonSalir.Text = "Salir";
             this.botonSalir.UseVisualStyleBackColor = false;
             this.botonSalir.Click += new System.EventHandler(this.botonSalir_Click);

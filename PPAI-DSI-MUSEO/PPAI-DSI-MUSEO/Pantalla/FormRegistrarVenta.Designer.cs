@@ -1,7 +1,7 @@
 ﻿
 namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 {
-    partial class FormRegistrarVenta
+    partial class PantallaVentaEntrada
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistrarVenta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaVentaEntrada));
             this.label1 = new System.Windows.Forms.Label();
             this.grillaTarifasExistentes = new System.Windows.Forms.DataGridView();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -511,8 +511,9 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.botonCalcularTotal.TabIndex = 91;
             this.botonCalcularTotal.Text = "Calcular Total";
             this.botonCalcularTotal.UseVisualStyleBackColor = false;
+            this.botonCalcularTotal.Click += new System.EventHandler(this.botonCalcularTotal_Click);
             // 
-            // FormRegistrarVenta
+            // PantallaVentaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -528,7 +529,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(770, 560);
             this.MinimumSize = new System.Drawing.Size(770, 560);
-            this.Name = "FormRegistrarVenta";
+            this.Name = "PantallaVentaEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar nueva venta";
             this.Load += new System.EventHandler(this.RegistrarVentaDeEntrada_Load);

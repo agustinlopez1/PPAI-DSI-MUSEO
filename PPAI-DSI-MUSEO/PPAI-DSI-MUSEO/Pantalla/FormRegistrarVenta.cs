@@ -11,30 +11,30 @@ using System.Windows.Forms;
 
 namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 {
-    public partial class FormRegistrarVenta : Form
+    public partial class PantallaVentaEntrada : Form
     {
-        public FormRegistrarVenta()
+        public PantallaVentaEntrada()
         {
             InitializeComponent();
+            Gestor.GestorVentaEntrada gestor = new Gestor.GestorVentaEntrada();
         }
 
         private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)
         {
             labelFechaActual.Text = DateTime.Now.ToShortDateString();
 
-
+            Gestor.GestorVentaEntrada gestor = new Gestor.GestorVentaEntrada();
+            gestor.OpcionRegistrarVenta();
         }
 
         private void ObtenerMaximoEntradas() // llena el txtMaximoEntradas segun la capacidad
         {
 
         }
-
         private void botonCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
-
         private void LimpiarCampos()
         {
             // reestablezco todos los campos
@@ -51,7 +51,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             txtMontoAdicional.Text = "";
             txtTotal.Text = "";
         }
-
         private void botonConfirmarVenta_Click(object sender, EventArgs e)
         {
             // insertar codigo para registrar venta
@@ -64,6 +63,11 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             MenuPrincipal ventana = new MenuPrincipal();
             ventana.Show();
             this.Close();
+        }
+
+        private void botonCalcularTotal_Click(object sender, EventArgs e)
+        {
+            //aca va calcular detalle
         }
     }
 }

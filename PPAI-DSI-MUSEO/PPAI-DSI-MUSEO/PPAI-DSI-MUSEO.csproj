@@ -66,20 +66,19 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestorVentaEntrada\GestorVentaEntrada.cs" />
-    <Compile Include="PantallaVentaEntrada\FormRegistrarVenta.cs">
+    <Compile Include="Gestor\GestorVentaEntrada.cs" />
+    <Compile Include="Pantalla\FormRegistrarVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PantallaVentaEntrada\FormRegistrarVenta.Designer.cs">
+    <Compile Include="Pantalla\FormRegistrarVenta.Designer.cs">
       <DependentUpon>FormRegistrarVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="PantallaVentaEntrada\PantallaVentaEntrada.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PantallaVentaEntrada\FormRegistrarVenta.resx">
+    <EmbeddedResource Include="Pantalla\FormRegistrarVenta.resx">
       <DependentUpon>FormRegistrarVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

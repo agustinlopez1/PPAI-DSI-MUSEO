@@ -20,7 +20,7 @@ namespace PPAI_DSI_MUSEO
 
         private void botonRegistrarVenta_Click(object sender, EventArgs e)
         {
-            FormRegistrarVenta ventana = new FormRegistrarVenta();
+            PantallaVentaEntrada ventana = new PantallaVentaEntrada();
             ventana.Show();
             this.Hide();
         }

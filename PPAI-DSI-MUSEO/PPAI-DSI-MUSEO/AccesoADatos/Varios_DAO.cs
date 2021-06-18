@@ -43,11 +43,36 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             {
                 cn.Close();
             }
-        }
+        } // checkeado
+
+        public static List<Sesion> ObtenerListaSesiones(DataTable tabla)
+        {
+            List<Sesion> listaSesiones = new List<Sesion>();
+
+            foreach (DataRow sesion in tabla.Rows)
+            {
+                Sesion ses = new Sesion();
+
+                ses.FechaHoraInicio = Convert.ToDateTime(sesion["fechaHoraInicio"]);
+                ses.FechaHoraFin = Convert.ToDateTime(sesion["fechaHoraFin"]);
+                ses.Usuario = Sesion.ObtenerUsuario(Convert.ToInt32(sesion["idUsuario"]));
+
+                listaSesiones.Add(ses);
+            }
+
+            return listaSesiones;
+        } // checkeado
 
 
 
+        //public static Usuario ObtenerUsuarioDeSesion(Sesion sesionActual)
+        //{
+        //    Usuario usuarioDeSesion = new Usuario();
 
+        //    usuarioDeSesion = sesionActual.Usuario;
+
+        //    return usuarioDeSesion;
+        //}
 
 
     }

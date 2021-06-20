@@ -25,7 +25,15 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public int CantMaximaPorGuia { get => cantMaximaPorGuia; set => cantMaximaPorGuia = value; }
 
 
-        
+        public List<Tarifa> BuscarTarifaExistentes(int idsede)  //veer
+        {
+
+            this.tarifas = ObtenerListaTarifas(idSede);
+            nombreTipoEntrada = ConocerTipoEntrada;
+            nombreTipoVisita = ConocerTipoVisita;
+
+            return this.tarifas;
+        }
 
 
 

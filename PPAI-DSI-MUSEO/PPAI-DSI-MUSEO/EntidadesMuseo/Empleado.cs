@@ -37,6 +37,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             Sede sede = new Sede();
             DataTable tabla = new DataTable();
             tabla = AccesoADatos.Varios_DAO.ObtenerTabla("Sede");
+            bool bandera = false;
             for (int i = 0; i < tabla.Rows.Count; i++)
             {
 
@@ -46,16 +47,17 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
                     sede.CantMaximaVisitantes = Convert.ToInt32(tabla.Rows[i][1]);
                     sede.CantMaximaPorGuia = Convert.ToInt32(tabla.Rows[i][2]);
                     sede.Nombre = tabla.Rows[i][3].ToString();
+                    
 
-                    MessageBox.Show("se encontro la sede = " + sede.Nombre);
-
+                    bandera = true;
                     return sede;
                 }
-                else
-                {
-                    MessageBox.Show("no se encontro sede");
-                }
+
             }
+            if (bandera) {
+                MessageBox.Show("se encontro la sede" + sede.Nombre);
+            }
+            
 
             return null;
 

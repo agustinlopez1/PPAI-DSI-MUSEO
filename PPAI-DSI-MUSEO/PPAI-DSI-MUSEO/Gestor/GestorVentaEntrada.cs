@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PPAI_DSI_MUSEO.Gestor
 {
@@ -39,16 +40,19 @@ namespace PPAI_DSI_MUSEO.Gestor
         // Empiezan nuestros métodos "principales"
         public void OpcionRegistrarVenta()
         {
-            ObtenerSedeActual(); 
+            ObtenerSedeActual();
+            MessageBox.Show("la sede es " + sesionActual.Usuario.Empleado.Sede.Nombre);
+
+
         }
 
         public void ObtenerSedeActual() // obj: setear el parametro sedeActual del gestor
         {
             List<Sesion> listaSesiones = new List<Sesion>();
             listaSesiones = Varios_DAO.ObtenerListaSesiones(Varios_DAO.ObtenerTabla("Sesion"));
-            this.sesionActual = ObtenerSesionActual(listaSesiones);
-            // acá ya tenemos la sesion actual seteada en el gestor
-
+            this.sesionActual = ObtenerSesionActual(listaSesiones);  // acá ya tenemos la sesion actual seteada en el gestor
+            this.sedeActual = sesionActual.Usuario.Empleado.Sede;
+           
 
         }
 
@@ -56,16 +60,31 @@ namespace PPAI_DSI_MUSEO.Gestor
         public static Sesion ObtenerSesionActual(List<Sesion> listaSesiones)
         {
             Sesion ses = new Sesion();
+            
+
             foreach (Sesion sesion in listaSesiones)
             {
-                if (sesion.FechaHoraFin == DateTime.MinValue)
+                var fechaHFin = sesion.FechaHoraFin.ToString();
+
+                if (fechaHFin.Equals("1/1/0001 00:00:00"))
                 {
                     ses = sesion;
 
-                    return ses;
+                    return ses;   
                 }
             }
             return null;
+        }
+
+        public void BuscarTarifasExistentes() 
+        {
+            List<Tarifa> listaTarifas = new List<Tarifa>();
+            listaTarifas = this.sedeActual.Tarifas;
+            this.tarifasExistentes = this.sedeActual.Tarifas;
+            //queonda this.SedeActual.BuscarTarifaExistentes(sedeActual.IdSede);
+
+
+            
         }
 
     }

@@ -18,3 +18,14 @@ C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\D
 C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.pdb
 C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.MenuPrincipal.resources
 C:\Users\Nahuel Ebner\Desktop\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.PantallaVentaEntrada.PantallaVentaEntrada.resources
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.exe.config
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.exe
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.pdb
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csprojAssemblyReference.cache
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.MenuPrincipal.resources
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.PantallaVentaEntrada.PantallaVentaEntrada.resources
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.Properties.Resources.resources
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.GenerateResource.cache
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.CoreCompileInputs.cache
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.exe
+E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.pdb

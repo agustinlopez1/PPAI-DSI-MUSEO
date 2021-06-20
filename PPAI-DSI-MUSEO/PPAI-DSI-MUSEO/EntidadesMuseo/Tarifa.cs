@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI_DSI_MUSEO.AccesoADatos;
 
 namespace PPAI_DSI_MUSEO.EntidadesMuseo
 {
@@ -16,32 +17,32 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private int idTipoVisita;
         private int idSede;
 
+        private TipoEntrada tipoEntrada;
+        private TipoVisita tipoVisita;
         public Tarifa()
         {
         }
 
         public float Monto { get => monto; set => monto = value; }
         public float MontoAdicional { get => montoAdicional; set => montoAdicional = value; }
-        public int TipoEntrada { get => idTipoEntrada; set => idTipoEntrada = value; }
-        public int TipoVisita { get => idTipoVisita; set => idTipoVisita = value; }
+        public int IdTipoEntrada { get => idTipoEntrada; set => idTipoEntrada = value; }
+        public int IdTipoVisita { get => idTipoVisita; set => idTipoVisita = value; }
         public int IdTarifa { get => idTarifa; set => idTarifa = value; }
         public int IdSede { get => idSede; set => idSede = value; }
+        public TipoEntrada TipoEntrada { get => tipoEntrada; set => tipoEntrada = value; }
+        public TipoVisita TipoVisita { get => tipoVisita; set => tipoVisita = value; }
 
-        public void ConocerTipoEntrada(int idSede)
+        public void ConocerTipoEntrada()
         {
-            DataTable tablaTipoEntrada = AccesoADatos.Varios_DAO.ObtenerTabla("TipoEntrada");
-            List<TipoEntrada> listaTipoEntrada = new List<TipoEntrada>();
-            listaTipoEntrada = AccesoADatos.Varios_DAO.ObtenerListasTiposEntrada(tablaTipoEntrada);
-            
+                //vemos que onda porque es un get 
         }
 
         public void ConocerTipoVisita()
         {
-            DataTable tablaTipoVisita = AccesoADatos.Varios_DAO.ObtenerTabla("TipoVisita"); //crear
-            List<TipoVisita> listaTipoVisita = new List<TipoVisita>();
-            listaTipoVisita = AccesoADatos.Varios_DAO.ObtenerListasTiposVisita(tablaTipoVisita);
-
+            //idem arriba
         }
+
+
 
     }
 }

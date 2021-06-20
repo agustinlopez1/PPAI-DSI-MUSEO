@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PPAI_DSI_MUSEO.Gestor;
 
 namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 {
@@ -16,7 +17,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         public PantallaVentaEntrada()
         {
             InitializeComponent();
-            Gestor.GestorVentaEntrada gestor = new Gestor.GestorVentaEntrada();
+           GestorVentaEntrada gestor = new GestorVentaEntrada();
         }
 
         private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)
@@ -25,12 +26,39 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 
             Gestor.GestorVentaEntrada gestor = new Gestor.GestorVentaEntrada();
             gestor.OpcionRegistrarVenta();
+            MostrarTarifasExistentes(gestor.TarifasExistentes);
         }
 
         private void ObtenerMaximoEntradas() // llena el txtMaximoEntradas segun la capacidad
         {
 
         }
+
+        private void MostrarTarifasExistentes(List<Tarifa> tarifas)
+        {
+            foreach (Tarifa tarifa in tarifas)
+            {
+                grillaTarifasExistentes.Rows.Add(tarifa.Monto, tarifa.TipoEntrada.Nombre, tarifa.TipoVisita.Nombre, tarifa.MontoAdicional);
+            }
+
+        }
+        private void TarifasExistentes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            int indice = e.RowIndex;
+            DataGridViewRow filaseleccionada = grillaTarifasExistentes.Rows[indice];
+            //string id = filaseleccionada.Cells["id_tarifa"].Value.ToString();
+            
+
+        }
+        private void TomarSeleccionTarifa(Tarifa tarifa)
+        {
+            txtIDTarifa.Text = tarifa.IdTarifa.ToString();
+;           txtTipoEntrada.Text = tarifa.TipoEntrada.Nombre.ToString();
+            txtTipoVisita.Text = tarifa.TipoVisita.Nombre.ToString();
+
+        }
+
         private void botonCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();

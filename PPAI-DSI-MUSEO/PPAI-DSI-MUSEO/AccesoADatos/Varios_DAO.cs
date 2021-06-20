@@ -91,8 +91,7 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             }
 
             return listaUsuarios;
-        } // checkeado
-
+        } // vemo Ni se usa
 
         public static Sede ObtenerSede(int idSede)
         {
@@ -111,64 +110,73 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                 }
             }
             return null;
-        }
+        } //vemo tmb
 
-        public static List<TipoEntrada> ObtenerListasTiposEntrada(DataTable tabla)
+        public static TipoEntrada ObtenerTipoEntrada(DataTable tabla,int idTipoEntrada)
         {
-            List<TipoEntrada> listaTipoEntrada = new List<TipoEntrada>();
-
+           
             foreach (DataRow tipoentrada in tabla.Rows)
             {
                 TipoEntrada tipoEntrada = new TipoEntrada();
+                if (idTipoEntrada == Convert.ToInt32(tipoentrada["idTipoEntrada"]))
+                { 
+                    tipoEntrada.IdTipoEntrada = Convert.ToInt32(tipoentrada["idTipoEntrada"]);
+                    tipoEntrada.Nombre = tipoentrada["nombre"].ToString();
+                    tipoEntrada.Descripcion = tipoentrada["descripcion"].ToString();
+                    
+                    return tipoEntrada;
+                }
 
-                tipoEntrada.IdTipoEntrada = Convert.ToInt32(tipoentrada["idTipoEntrada"]);
-                tipoEntrada.Nombre = tipoentrada["nombre"].ToString();
-                tipoEntrada.Descripcion = tipoentrada["descripcion"].ToString();
-
-                listaTipoEntrada.Add(tipoEntrada);
-
+                
             }
 
-            return listaTipoEntrada;
+            return null;
 
         }
 
-        public static List<TipoVisita> ObtenerListasTiposVisita(DataTable tabla)
+        public static TipoVisita ObtenerTipoVisita(DataTable tabla, int idTipoVisita)
         {
-            List<TipoVisita> listaTipoVisita = new List<TipoVisita>();
-
+            
             foreach (DataRow tipovisita in tabla.Rows)
             {
                 TipoVisita tipoVisita = new TipoVisita();
+                if(idTipoVisita == Convert.ToInt32(tipovisita["idTipoVisita"]))
+                {
+                    tipoVisita.IdTipoVisita = Convert.ToInt32(tipovisita["idTipoVisita"]);
+                    tipoVisita.Nombre = tipovisita["nombre"].ToString();
+                    tipoVisita.Descripcion = tipovisita["descripcion"].ToString();
 
-                tipoVisita.IdTipoVisita = Convert.ToInt32(tipovisita["idTipoEntrada"]);
-                tipoVisita.Nombre = tipovisita["nombre"].ToString();
-                tipoVisita.Descripcion = tipovisita["descripcion"].ToString();
+                    return tipoVisita;
+                }
 
-                listaTipoVisita.Add(tipoVisita);
+                
 
             }
 
-            return listaTipoVisita;
+            return null;
 
         }
 
-        public static List<Tarifa> ObtenerListaTarifa(DataTable tabla)
+        public static List<Tarifa> ObtenerListaTarifasSedeActual(DataTable tabla, int idsede)
         {
             List<Tarifa> listaTarifa = new List<Tarifa>();
 
             foreach (DataRow tarifa in tabla.Rows)
             {
                 Tarifa tarifaF = new Tarifa();
+                if (idsede == Convert.ToInt32(tarifa["idSede"]))
+                {
+                    tarifaF.IdTarifa = Convert.ToInt32(tarifa["idTarifa"]);
+                    tarifaF.Monto = Convert.ToInt32(tarifa["monto"]);
+                    tarifaF.MontoAdicional = Convert.ToInt32(tarifa["montoAdicional"]);
+                    tarifaF.TipoEntrada = ObtenerTipoEntrada(ObtenerTabla("TipoEntrada"), Convert.ToInt32(tarifa["idTipoEn"]));
+                    tarifaF.TipoVisita = ObtenerTipoVisita(ObtenerTabla("TipoVisita"), Convert.ToInt32(tarifa["idTipoVi"]));
+                    tarifaF.IdSede = Convert.ToInt32(tarifa["idSede"]);
 
-                tarifaF.IdTarifa = Convert.ToInt32(tarifa["idTarifa"]);
-                tarifaF.Monto = Convert.ToInt32(tarifa["monto"]);
-                tarifaF.MontoAdicional = Convert.ToInt32(tarifa["montoAdicional"]);
-                tarifaF.TipoEntrada = Convert.ToInt32(tarifa["idTipoEn"]);
-                tarifaF.TipoVisita = Convert.ToInt32(tarifa["idTipoVi"]);
-                tarifaF.IdSede = Convert.ToInt32(tarifa["idSede"];
+                    listaTarifa.Add(tarifaF);
+                }
 
-                listaTarifa.Add(tarifaF);
+               
 
             }
 

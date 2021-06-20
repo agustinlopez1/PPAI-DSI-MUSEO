@@ -29,3 +29,14 @@ E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO
 E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.CoreCompileInputs.cache
 E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.exe
 E:\Facu\3.DSI\Practico\0.PPAI-Museo\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.pdb
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csprojAssemblyReference.cache
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.MenuPrincipal.resources
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.PantallaVentaEntrada.PantallaVentaEntrada.resources
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI_DSI_MUSEO.Properties.Resources.resources
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.GenerateResource.cache
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.csproj.CoreCompileInputs.cache
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.exe
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\obj\Debug\PPAI-DSI-MUSEO.pdb
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.exe.config
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.exe
+C:\Users\andy_\Downloads\PPAI-DSI-MUSEO-Pele2\PPAI-DSI-MUSEO\PPAI-DSI-MUSEO\bin\Debug\PPAI-DSI-MUSEO.pdb

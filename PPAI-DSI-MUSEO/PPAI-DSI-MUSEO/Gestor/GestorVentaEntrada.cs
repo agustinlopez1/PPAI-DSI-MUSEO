@@ -42,7 +42,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         {
             ObtenerSedeActual();
             MessageBox.Show("la sede es " + sesionActual.Usuario.Empleado.Sede.Nombre);
-
+            BuscarTarifasExistentes();
 
         }
 
@@ -52,8 +52,6 @@ namespace PPAI_DSI_MUSEO.Gestor
             listaSesiones = Varios_DAO.ObtenerListaSesiones(Varios_DAO.ObtenerTabla("Sesion"));
             this.sesionActual = ObtenerSesionActual(listaSesiones);  // acá ya tenemos la sesion actual seteada en el gestor
             this.sedeActual = sesionActual.Usuario.Empleado.Sede;
-           
-
         }
 
         // Empiezan nuestros métodos "secundarios"
@@ -61,11 +59,9 @@ namespace PPAI_DSI_MUSEO.Gestor
         {
             Sesion ses = new Sesion();
             
-
             foreach (Sesion sesion in listaSesiones)
             {
                 var fechaHFin = sesion.FechaHoraFin.ToString();
-
                 if (fechaHFin.Equals("1/1/0001 00:00:00"))
                 {
                     ses = sesion;
@@ -78,13 +74,8 @@ namespace PPAI_DSI_MUSEO.Gestor
 
         public void BuscarTarifasExistentes() 
         {
-            List<Tarifa> listaTarifas = new List<Tarifa>();
-            listaTarifas = this.sedeActual.Tarifas;
-            this.tarifasExistentes = this.sedeActual.Tarifas;
-            //queonda this.SedeActual.BuscarTarifaExistentes(sedeActual.IdSede);
-
-
-            
+            this.tarifasExistentes = this.SedeActual.BuscarTarifaExistentes(sedeActual.IdSede);
+         
         }
 
     }

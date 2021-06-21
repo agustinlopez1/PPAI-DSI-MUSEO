@@ -17,14 +17,14 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         public PantallaVentaEntrada()
         {
             InitializeComponent();
-           GestorVentaEntrada gestor = new GestorVentaEntrada();
+            GestorVentaEntrada gestor;
         }
 
         private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)
         {
             labelFechaActual.Text = DateTime.Now.ToShortDateString();
 
-            Gestor.GestorVentaEntrada gestor = new Gestor.GestorVentaEntrada();
+            GestorVentaEntrada gestor = new GestorVentaEntrada();
             gestor.OpcionRegistrarVenta();
             MostrarTarifasExistentes(gestor.TarifasExistentes);
         }
@@ -51,11 +51,15 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             
 
         }
-        private void TomarSeleccionTarifa(Tarifa tarifa)
+        private void TomarSeleccionDeTarifa(Tarifa tarifa) 
         {
             txtIDTarifa.Text = tarifa.IdTarifa.ToString();
 ;           txtTipoEntrada.Text = tarifa.TipoEntrada.Nombre.ToString();
             txtTipoVisita.Text = tarifa.TipoVisita.Nombre.ToString();
+            // tarifasSele = agregar a la lista que va obtener el gestor 
+            // GetorVentaEntrada gestor = new GestorVentaEntrada(); //el gestor como mierda era 
+            // gestor.tomarSeleccionDeTarifa(tarifas)
+            
 
         }
 

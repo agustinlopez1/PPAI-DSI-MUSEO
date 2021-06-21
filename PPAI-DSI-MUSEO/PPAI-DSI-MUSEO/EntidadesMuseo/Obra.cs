@@ -11,6 +11,8 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private string nombre;
         private string descripcion;
         private int idObra;
+        //agregar duraciones
+       
 
         public Obra()
         {
@@ -19,5 +21,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public string Nombre { get => nombre; set => nombre = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public int IdObra { get => idObra; set => idObra = value; }
+
+        
     }
 }

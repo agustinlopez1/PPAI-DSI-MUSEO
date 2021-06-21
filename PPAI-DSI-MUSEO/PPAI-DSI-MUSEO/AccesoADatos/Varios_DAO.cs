@@ -185,6 +185,33 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
         }
 
 
+        public static List<Exposicion> ObtenerExposicionesXSede(DataTable tabla, int idsede) 
+        {
+
+            List<Exposicion> listaExposiciones = new List<Exposicion>();
+
+            foreach (DataRow exposiciontabla in tabla.Rows)
+            {
+                Exposicion exposicionE = new Exposicion();
+                if (idsede == Convert.ToInt32(exposiciontabla["idSede"]))
+                {
+                    exposicionE.FechaInicio = Convert.ToDateTime(exposiciontabla["fechaInicio"]);
+                    exposicionE.FechaFin = Convert.ToDateTime(exposiciontabla["fechaFin"]);
+                    exposicionE.Nombre = (exposiciontabla["nombre"]).ToString();
+                    exposicionE.IdExpo = Convert.ToInt32(exposiciontabla["idExpo"]);
+                    exposicionE.IdSede = Convert.ToInt32(exposiciontabla["idSede"]);
+
+
+                    listaExposiciones.Add(exposicionE);
+                }
+
+            }  
+            return listaExposiciones;
+
+        }
+
+
+
 
     }
 }

@@ -15,6 +15,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private List<Tarifa> tarifas;
         private int cantMaximaVisitantes;
         private int cantMaximaPorGuia;
+        private List<Exposicion> exposiciones;
 
         public Sede()
         {
@@ -25,7 +26,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public List<Tarifa> Tarifas { get => tarifas; set => tarifas = value; }
         public int CantMaximaVisitantes { get => cantMaximaVisitantes; set => cantMaximaVisitantes = value; }
         public int CantMaximaPorGuia { get => cantMaximaPorGuia; set => cantMaximaPorGuia = value; }
-
+        public List<Exposicion> Exposiciones { get => exposiciones; set => exposiciones = value; }
 
         public List<Tarifa> BuscarTarifaExistentes(int idsede)  //veer
         {
@@ -44,6 +45,15 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             return this.tarifas;
         }
 
+
+
+        public void ConocerExposicionesVigentes() 
+        {
+            this.exposiciones = Varios_DAO.ObtenerExposicionesXSede(Varios_DAO.ObtenerTabla("Exposicion"),this.idSede
+                );
+            
+            
+        }
 
 
 

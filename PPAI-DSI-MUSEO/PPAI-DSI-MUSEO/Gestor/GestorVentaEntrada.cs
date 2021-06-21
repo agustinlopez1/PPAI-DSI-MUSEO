@@ -36,7 +36,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         public Sede SedeActual { get => sedeActual; set => sedeActual = value; }
         public Sesion SesionActual { get => sesionActual; set => sesionActual = value; }
 
-        
+
         // Empiezan nuestros métodos "principales"
         public void OpcionRegistrarVenta()
         {
@@ -58,7 +58,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         public static Sesion ObtenerSesionActual(List<Sesion> listaSesiones)
         {
             Sesion ses = new Sesion();
-            
+
             foreach (Sesion sesion in listaSesiones)
             {
                 var fechaHFin = sesion.FechaHoraFin.ToString();
@@ -66,16 +66,29 @@ namespace PPAI_DSI_MUSEO.Gestor
                 {
                     ses = sesion;
 
-                    return ses;   
+                    return ses;
                 }
             }
             return null;
-        }
+        } //obtiene la sesion actual para encontrar la sede 
 
-        public void BuscarTarifasExistentes() 
+        public void BuscarTarifasExistentes()  //busca las tarifas que tenga la sede actual 
         {
             this.tarifasExistentes = this.SedeActual.BuscarTarifaExistentes(sedeActual.IdSede);
-         
+
+        }
+
+        public void tomarSeleccionDeTarifa(List<Tarifa> tarifasSele)
+        {
+            this.tarifasSeleccionadas = tarifasSele;
+
+
+        } //setea atributo de tarifasSelecioandas 
+
+        public void CalcularDuracionEstimada()
+        {
+            this.sedeActual.ConocerExposicionesVigentes();
+    
         }
 
     }

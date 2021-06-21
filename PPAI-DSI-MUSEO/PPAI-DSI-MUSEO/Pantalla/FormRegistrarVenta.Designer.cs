@@ -37,11 +37,13 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.tipoVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNuevaEntrada = new System.Windows.Forms.GroupBox();
+            this.botonCalcularTotal = new System.Windows.Forms.Button();
+            this.txtTipoVisita = new System.Windows.Forms.TextBox();
+            this.txtTipoEntrada = new System.Windows.Forms.TextBox();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.txtMaximoEntradas = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboExposiciones = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtIDTarifa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBoxDetalle = new System.Windows.Forms.GroupBox();
@@ -65,10 +67,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxTarifasExistentes = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.labelFechaActual = new System.Windows.Forms.Label();
-            this.botonVolver = new System.Windows.Forms.Button();
-            this.txtTipoEntrada = new System.Windows.Forms.TextBox();
-            this.txtTipoVisita = new System.Windows.Forms.TextBox();
-            this.botonCalcularTotal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).BeginInit();
             this.groupBoxNuevaEntrada.SuspendLayout();
             this.groupBoxDetalle.SuspendLayout();
@@ -102,8 +100,10 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.grillaTarifasExistentes.Name = "grillaTarifasExistentes";
             this.grillaTarifasExistentes.ReadOnly = true;
             this.grillaTarifasExistentes.RowHeadersVisible = false;
-            this.grillaTarifasExistentes.Size = new System.Drawing.Size(362, 421);
+            this.grillaTarifasExistentes.Size = new System.Drawing.Size(362, 427);
             this.grillaTarifasExistentes.TabIndex = 1;
+            this.grillaTarifasExistentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaTarifasExistentes_CellClick);
+            this.grillaTarifasExistentes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaTarifasExistentes_CellContentClick);
             // 
             // monto
             // 
@@ -143,8 +143,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxNuevaEntrada.Controls.Add(this.txtMaximoEntradas);
             this.groupBoxNuevaEntrada.Controls.Add(this.label14);
             this.groupBoxNuevaEntrada.Controls.Add(this.label2);
-            this.groupBoxNuevaEntrada.Controls.Add(this.comboExposiciones);
-            this.groupBoxNuevaEntrada.Controls.Add(this.label10);
             this.groupBoxNuevaEntrada.Controls.Add(this.txtIDTarifa);
             this.groupBoxNuevaEntrada.Controls.Add(this.label9);
             this.groupBoxNuevaEntrada.Controls.Add(this.groupBoxDetalle);
@@ -164,6 +162,54 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxNuevaEntrada.TabIndex = 1;
             this.groupBoxNuevaEntrada.TabStop = false;
             this.groupBoxNuevaEntrada.Text = "Nueva entrada";
+            // 
+            // botonCalcularTotal
+            // 
+            this.botonCalcularTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.botonCalcularTotal.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonCalcularTotal.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.botonCalcularTotal.FlatAppearance.BorderSize = 0;
+            this.botonCalcularTotal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.botonCalcularTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCalcularTotal.ForeColor = System.Drawing.Color.Black;
+            this.botonCalcularTotal.Location = new System.Drawing.Point(246, 205);
+            this.botonCalcularTotal.Name = "botonCalcularTotal";
+            this.botonCalcularTotal.Size = new System.Drawing.Size(110, 34);
+            this.botonCalcularTotal.TabIndex = 91;
+            this.botonCalcularTotal.Text = "Calcular Total";
+            this.botonCalcularTotal.UseVisualStyleBackColor = false;
+            this.botonCalcularTotal.Click += new System.EventHandler(this.botonCalcularTotal_Click);
+            // 
+            // txtTipoVisita
+            // 
+            this.txtTipoVisita.Location = new System.Drawing.Point(156, 91);
+            this.txtTipoVisita.Name = "txtTipoVisita";
+            this.txtTipoVisita.Size = new System.Drawing.Size(200, 20);
+            this.txtTipoVisita.TabIndex = 90;
+            // 
+            // txtTipoEntrada
+            // 
+            this.txtTipoEntrada.Location = new System.Drawing.Point(156, 65);
+            this.txtTipoEntrada.Name = "txtTipoEntrada";
+            this.txtTipoEntrada.Size = new System.Drawing.Size(200, 20);
+            this.txtTipoEntrada.TabIndex = 89;
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.Color.Black;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.botonVolver.Location = new System.Drawing.Point(8, 398);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(82, 34);
+            this.botonVolver.TabIndex = 88;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // txtMaximoEntradas
             // 
@@ -194,26 +240,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label2.Size = new System.Drawing.Size(138, 15);
             this.label2.TabIndex = 16;
             this.label2.Text = "(seleccionar en la grilla)";
-            // 
-            // comboExposiciones
-            // 
-            this.comboExposiciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboExposiciones.FormattingEnabled = true;
-            this.comboExposiciones.Location = new System.Drawing.Point(156, 117);
-            this.comboExposiciones.Name = "comboExposiciones";
-            this.comboExposiciones.Size = new System.Drawing.Size(200, 21);
-            this.comboExposiciones.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label10.Location = new System.Drawing.Point(61, 118);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 20);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Exposición:";
             // 
             // txtIDTarifa
             // 
@@ -364,15 +390,16 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtNroEntradas
             // 
-            this.txtNroEntradas.Location = new System.Drawing.Point(156, 170);
+            this.txtNroEntradas.Location = new System.Drawing.Point(149, 172);
             this.txtNroEntradas.Name = "txtNroEntradas";
             this.txtNroEntradas.Size = new System.Drawing.Size(60, 20);
             this.txtNroEntradas.TabIndex = 5;
+            this.txtNroEntradas.TextChanged += new System.EventHandler(this.txtNroEntradas_TextChanged);
             // 
             // txtDuracionEstimada
             // 
             this.txtDuracionEstimada.Enabled = false;
-            this.txtDuracionEstimada.Location = new System.Drawing.Point(156, 144);
+            this.txtDuracionEstimada.Location = new System.Drawing.Point(158, 130);
             this.txtDuracionEstimada.Name = "txtDuracionEstimada";
             this.txtDuracionEstimada.Size = new System.Drawing.Size(60, 20);
             this.txtDuracionEstimada.TabIndex = 85;
@@ -393,7 +420,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label4.Location = new System.Drawing.Point(32, 170);
+            this.label4.Location = new System.Drawing.Point(25, 172);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 20);
             this.label4.TabIndex = 5;
@@ -415,7 +442,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label6.Location = new System.Drawing.Point(4, 144);
+            this.label6.Location = new System.Drawing.Point(4, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(146, 20);
             this.label6.TabIndex = 7;
@@ -426,7 +453,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label7.Location = new System.Drawing.Point(222, 144);
+            this.label7.Location = new System.Drawing.Point(228, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 20);
             this.label7.TabIndex = 8;
@@ -464,54 +491,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelFechaActual.Size = new System.Drawing.Size(14, 20);
             this.labelFechaActual.TabIndex = 89;
             this.labelFechaActual.Text = "-";
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.BackColor = System.Drawing.Color.Black;
-            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.botonVolver.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.botonVolver.FlatAppearance.BorderSize = 0;
-            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.botonVolver.Location = new System.Drawing.Point(8, 398);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(82, 34);
-            this.botonVolver.TabIndex = 88;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
-            // 
-            // txtTipoEntrada
-            // 
-            this.txtTipoEntrada.Location = new System.Drawing.Point(156, 65);
-            this.txtTipoEntrada.Name = "txtTipoEntrada";
-            this.txtTipoEntrada.Size = new System.Drawing.Size(200, 20);
-            this.txtTipoEntrada.TabIndex = 89;
-            // 
-            // txtTipoVisita
-            // 
-            this.txtTipoVisita.Location = new System.Drawing.Point(156, 91);
-            this.txtTipoVisita.Name = "txtTipoVisita";
-            this.txtTipoVisita.Size = new System.Drawing.Size(200, 20);
-            this.txtTipoVisita.TabIndex = 90;
-            // 
-            // botonCalcularTotal
-            // 
-            this.botonCalcularTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.botonCalcularTotal.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.botonCalcularTotal.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.botonCalcularTotal.FlatAppearance.BorderSize = 0;
-            this.botonCalcularTotal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.botonCalcularTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonCalcularTotal.ForeColor = System.Drawing.Color.Black;
-            this.botonCalcularTotal.Location = new System.Drawing.Point(246, 205);
-            this.botonCalcularTotal.Name = "botonCalcularTotal";
-            this.botonCalcularTotal.Size = new System.Drawing.Size(110, 34);
-            this.botonCalcularTotal.TabIndex = 91;
-            this.botonCalcularTotal.Text = "Calcular Total";
-            this.botonCalcularTotal.UseVisualStyleBackColor = false;
-            this.botonCalcularTotal.Click += new System.EventHandler(this.botonCalcularTotal_Click);
             // 
             // PantallaVentaEntrada
             // 
@@ -562,8 +541,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoEntrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoVisita;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoAdicional;
-        private System.Windows.Forms.ComboBox comboExposiciones;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtIDTarifa;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBoxDetalle;

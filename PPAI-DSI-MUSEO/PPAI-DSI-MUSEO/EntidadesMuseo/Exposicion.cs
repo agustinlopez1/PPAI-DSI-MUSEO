@@ -13,8 +13,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private string nombre;
         private int idExpo;
         private int idSede;
-
-        private DetalleExposicion detalleExposicion; //averiguar changos
+        private List<DetalleExposicion> detalles; //nueva agregacion
 
         public Exposicion()
         {
@@ -25,22 +24,32 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public string Nombre { get => nombre; set => nombre = value; }
         public int IdExpo { get => idExpo; set => idExpo = value; }
         public int IdSede { get => idSede; set => idSede = value; }
-        public DetalleExposicion DetalleExposicion { get => detalleExposicion; set => detalleExposicion = value; }
+        public List<DetalleExposicion> Detalles { get => detalles; set => detalles = value; }
 
-        public void EsVigente(List<Exposicion> listaExpo) 
+        public List<Exposicion> EsVigente(List<Exposicion> exposicionesSede) 
         {
-            foreach (Exposicion expo in listaExpo)
+
+            List<Exposicion> listaVigentes = new List<Exposicion>();
+
+
+            foreach (Exposicion expo in exposicionesSede)
             {
-                //if (expo.fechaFin == || expo.fechaInicio == ) //validar fecha cada objeto expo
-                //{
-                //    expo.DetalleExposicion;
-                //}
+
+                if (expo.fechaFin > DateTime.Today) 
+                {
+
+                    listaVigentes.Add(expo);
+
+                }
+                
+
 
             }
-            
 
-        
-        
+            return listaVigentes;
+
+
+           
         }
     }
 }

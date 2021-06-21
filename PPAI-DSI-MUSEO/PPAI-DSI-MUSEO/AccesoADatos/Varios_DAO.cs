@@ -211,6 +211,73 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
         }
 
 
+        public static List<DetalleExposicion> ObtenerDetallesXExposiciones(DataTable tabla, int idExposicion)
+        {
+
+            List<DetalleExposicion> listaDetallesExposiciones = new List<DetalleExposicion>();
+
+            foreach (DataRow detalletabla in tabla.Rows)
+            {
+                DetalleExposicion detalleExpo = new DetalleExposicion();
+                if (idExposicion == Convert.ToInt32(detalletabla["idExposicion"]))
+                {
+                    detalleExpo.IdDetalleExposicion = Convert.ToInt32(detalletabla["idDetalle"]);
+                    detalleExpo.Obra = ObtenerObra(ObtenerTabla("Obra"), Convert.ToInt32(detalletabla["idObra"]));
+                    detalleExpo.IdExposicion = Convert.ToInt32(detalletabla["idExposicion"]);
+
+
+                    listaDetallesExposiciones.Add(detalleExpo);
+                }
+
+            }
+            return listaDetallesExposiciones;
+
+        }
+
+        public static Obra ObtenerObra(DataTable tabla, int idObra) 
+        {
+            foreach (DataRow obra in tabla.Rows)
+            {
+                Obra obra1 = new Obra();
+                if (idObra == Convert.ToInt32(obra["idObra"]))
+                {
+                    obra1.IdObra = Convert.ToInt32(obra["idObra"]);
+                    obra1.Nombre = obra["nombre"].ToString();
+                    obra1.Descripcion = obra["descripcion"].ToString();
+                    obra1.DuracionResumida = Convert.ToInt32(obra["duracionResumida"]);
+
+                    return obra1;
+                }
+
+
+            }
+
+            return null;
+        }
+
+
+        public static List<ReservaVisita> ObtenerReservas(DataTable tabla, int idSede) 
+        {
+            List<ReservaVisita> listaReserva = new List<ReservaVisita>();
+
+            foreach (DataRow reservatabla in tabla.Rows)
+            {
+                ReservaVisita reserva = new ReservaVisita();
+                if (idSede == Convert.ToInt32(reservatabla["idSede"]))
+                {
+                    reserva.IdSede = Convert.ToInt32(reservatabla["idSede"]);
+                    reserva.FechaCreada = Convert.ToDateTime(reservatabla["fechaHoraCreada"]);
+                    reserva.FechaReserva = Convert.ToDateTime(reservatabla["fechaHoraReserva"]);
+                    reserva.NroReserva = Convert.ToInt32(reservatabla["nroReserva"]);
+                    reserva.CantAlumnos = Convert.ToInt32(reservatabla["canAlumnos"]);
+                    reserva.CantAlumnosConfirmada = Convert.ToInt32(reservatabla["canAlumnosConfirmada"]);
+
+                    listaReserva.Add(reserva);
+                }
+
+            }
+            return listaReserva;
+        }
 
 
     }

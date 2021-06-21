@@ -16,11 +16,13 @@ namespace PPAI_DSI_MUSEO.Gestor
         private List<Entrada> entradasSeleccionadas;
         private List<ReservaVisita> reservasActuales;
         private List<Entrada> entradasVendidas;
-        private List<Tarifa> tarifasSeleccionadas;
+        private Tarifa tarifasSeleccionada;
         private DateTime fechaHoraEntradaAGenerar;
         private int numeroEntrada;
         private Sede sedeActual;
         private Sesion sesionActual;
+        private int duracionEstimada;
+
         public GestorVentaEntrada()
         {
 
@@ -30,11 +32,13 @@ namespace PPAI_DSI_MUSEO.Gestor
         public List<Entrada> EntradasSeleccionadas { get => entradasSeleccionadas; set => entradasSeleccionadas = value; }
         public List<ReservaVisita> ReservasActuales { get => reservasActuales; set => reservasActuales = value; }
         public List<Entrada> EntradasVendidas { get => entradasVendidas; set => entradasVendidas = value; }
-        public List<Tarifa> TarifasSeleccionadas { get => tarifasSeleccionadas; set => tarifasSeleccionadas = value; }
+        
         public DateTime FechaHoraEntradaAGenerar { get => fechaHoraEntradaAGenerar; set => fechaHoraEntradaAGenerar = value; }
         public int NumeroEntrada { get => numeroEntrada; set => numeroEntrada = value; }
         public Sede SedeActual { get => sedeActual; set => sedeActual = value; }
         public Sesion SesionActual { get => sesionActual; set => sesionActual = value; }
+        public int DuracionEstimada { get => duracionEstimada; set => duracionEstimada = value; }
+        public Tarifa TarifasSeleccionada { get => tarifasSeleccionada; set => tarifasSeleccionada = value; }
 
 
         // Empiezan nuestros métodos "principales"
@@ -78,18 +82,26 @@ namespace PPAI_DSI_MUSEO.Gestor
 
         }
 
-        public void tomarSeleccionDeTarifa(List<Tarifa> tarifasSele)
+        public void tomarSeleccionDeTarifa(Tarifa tarifasSele)
         {
-            this.tarifasSeleccionadas = tarifasSele;
+            this.tarifasSeleccionada = tarifasSele;
 
 
         } //setea atributo de tarifasSelecioandas 
 
         public void CalcularDuracionEstimada()
         {
-            this.sedeActual.ConocerExposicionesVigentes();
+            this.duracionEstimada = this.sedeActual.ConocerExposicionesVigentes();
     
         }
+
+        public void BuscarReservas() 
+        {
+            ReservaVisita reserva = new ReservaVisita();
+            this.reservasActuales = reserva.EsFechaHoraHoy(reserva.EsSedeActual(this.sedeActual.IdSede));
+        
+        }
+
 
     }
 }

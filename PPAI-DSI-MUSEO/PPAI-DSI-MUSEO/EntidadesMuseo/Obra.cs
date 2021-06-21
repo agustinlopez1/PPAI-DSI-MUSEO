@@ -12,7 +12,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private string descripcion;
         private int idObra;
         private int duracionResumida; 
-        //agregar duraciones
+        
        
 
         public Obra()

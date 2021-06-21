@@ -10,7 +10,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
     {
         private int idDetalleExposicion;
         private Obra obra;
-        private Exposicion exposicion; //taa bien? 
+        private int idExposicion; //taa bien? 
 
         public DetalleExposicion()
         {
@@ -18,7 +18,9 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         public Obra Obra { get => obra; set => obra = value; }
 
-        public Exposicion Exposicion { get => exposicion; set => exposicion = value; }
+        public int IdDetalleExposicion { get => idDetalleExposicion; set => idDetalleExposicion = value; }
+        public int IdExposicion { get => idExposicion; set => idExposicion = value; }
+
 
     }
 }

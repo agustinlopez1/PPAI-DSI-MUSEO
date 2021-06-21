@@ -34,23 +34,47 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             this.tarifas = Varios_DAO.ObtenerListaTarifasSedeActual //lista de tarifas de la sede actual
                 (Varios_DAO.ObtenerTabla("Tarifa"), idsede);
 
-            foreach (Tarifa tarifa in this.tarifas) // de onda para mostrar que tipoentrada y visita tiene las tarifas de la sede actual.
-            {
-
-                MessageBox.Show("el tipoEntrada es " + tarifa.TipoEntrada.Nombre
-                    + " y tipo visita es " + tarifa.TipoVisita.Nombre);
-            }
-  
             
             return this.tarifas;
         }
 
 
 
-        public void ConocerExposicionesVigentes() 
+        public int ConocerExposicionesVigentes() //despues venir
         {
-            this.exposiciones = Varios_DAO.ObtenerExposicionesXSede(Varios_DAO.ObtenerTabla("Exposicion"),this.idSede
-                );
+            
+            this.exposiciones = Varios_DAO.ObtenerExposicionesXSede(Varios_DAO.ObtenerTabla("Exposicion"), this.idSede);
+
+            List<Exposicion> exposicionesVigentes = new List<Exposicion>();
+            Exposicion expo = new Exposicion();
+
+            exposicionesVigentes = expo.EsVigente(this.exposiciones);
+
+            int acumulador = 0;
+
+            foreach (Exposicion expo1 in exposicionesVigentes)
+            {
+                List<DetalleExposicion> listadetalles = new List<DetalleExposicion>();
+               listadetalles = Varios_DAO.ObtenerDetallesXExposiciones(Varios_DAO.ObtenerTabla("DetalleExposicion"), Convert.ToInt32(expo1.IdExpo));
+
+
+                foreach (DetalleExposicion detall in listadetalles)
+                {
+
+                    int duracionResumida = detall.Obra.DuracionResumida;
+                    acumulador += duracionResumida;
+
+                }
+
+            }
+
+            return acumulador;
+
+
+
+
+
+
             
             
         }

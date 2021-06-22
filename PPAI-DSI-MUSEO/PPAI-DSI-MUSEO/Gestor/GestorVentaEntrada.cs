@@ -22,6 +22,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         private Sede sedeActual;
         private Sesion sesionActual;
         private int duracionEstimada;
+        private int cantidadVisitantesTotal;
 
         public GestorVentaEntrada()
         {
@@ -39,6 +40,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         public Sesion SesionActual { get => sesionActual; set => sesionActual = value; }
         public int DuracionEstimada { get => duracionEstimada; set => duracionEstimada = value; }
         public Tarifa TarifasSeleccionada { get => tarifasSeleccionada; set => tarifasSeleccionada = value; }
+        public int CantidadVisitantesTotal { get => cantidadVisitantesTotal; set => cantidadVisitantesTotal = value; }
 
 
         // Empiezan nuestros métodos "principales"
@@ -95,13 +97,56 @@ namespace PPAI_DSI_MUSEO.Gestor
     
         }
 
-        public void BuscarReservas() 
+
+        public void BuscarReservas()           //FALTA TESTEAR  
         {
             ReservaVisita reserva = new ReservaVisita();
             this.reservasActuales = reserva.EsFechaHoraHoy(reserva.EsSedeActual(this.sedeActual.IdSede));
-        
         }
 
+
+        public void BuscarEntradasVendidas()    //FALTA TESTEAR
+        {
+            Entrada entrada = new Entrada();
+            this.entradasVendidas = entrada.EsFechaHoraHoy(entrada.EsSedeActual(this.SedeActual.IdSede));
+        }
+
+
+        public int BuscarCapacidadMaxima()
+        {
+            int capacidadMax = 0;
+            capacidadMax = this.SedeActual.CantMaximaVisitantes;
+            return capacidadMax;
+        }
+
+        public void CalcularVisitantesTotal()  // FALTA CHEKEAR
+        {
+            int capacidadSede = BuscarCapacidadMaxima();
+            BuscarEntradasVendidas();
+            int cantEntradasVendidas = this.EntradasVendidas.Count();
+            int cantVisitantes = 0;
+            foreach (ReservaVisita reserva in this.ReservasActuales)
+            {
+                cantVisitantes += reserva.CantAlumnosConfirmada;
+            }
+            int res = cantEntradasVendidas + cantVisitantes;
+            this.CantidadVisitantesTotal = res;
+        }
+
+
+        private bool verificarLimiteVisitantes(int cantidadEntradas)  //CHEKEAR
+        {
+            int capacidadSede = BuscarCapacidadMaxima();
+            int limite = capacidadSede - this.CantidadVisitantesTotal;
+            if (cantidadEntradas <= limite)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

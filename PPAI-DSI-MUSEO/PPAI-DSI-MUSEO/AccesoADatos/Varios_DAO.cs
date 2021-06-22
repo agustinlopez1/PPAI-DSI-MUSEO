@@ -280,5 +280,27 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
         }
 
 
+        public static List<Entrada> ObtenerEntradasXSede(DataTable tabla, int idsede)
+        {
+
+            List<Entrada> listaEntradas = new List<Entrada>();
+
+            foreach (DataRow entrada in tabla.Rows)
+            {
+                Entrada entrada2 = new Entrada();
+                if (idsede == Convert.ToInt32(entrada["idSede"]))
+                {
+                    entrada2.Numero = Convert.ToInt32(entrada["nroEntrada"]);
+                    entrada2.FechaVenta = Convert.ToDateTime(entrada["fechaHoraVenta"]);
+                    entrada2.Monto = Convert.ToInt32(entrada["monto"]);
+                    entrada2.Sede = ObtenerSede(idsede);
+                    listaEntradas.Add(entrada2);
+                }
+
+            }
+            return listaEntradas;
+
+        }
+
     }
 }

@@ -88,7 +88,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             this.grillaTarifasExistentes.AllowUserToAddRows = false;
             this.grillaTarifasExistentes.AllowUserToDeleteRows = false;
-            this.grillaTarifasExistentes.BackgroundColor = System.Drawing.Color.Black;
+            this.grillaTarifasExistentes.BackgroundColor = System.Drawing.Color.Silver;
             this.grillaTarifasExistentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaTarifasExistentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.monto,
@@ -390,7 +390,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtNroEntradas
             // 
-            this.txtNroEntradas.Location = new System.Drawing.Point(149, 172);
+            this.txtNroEntradas.Location = new System.Drawing.Point(156, 170);
             this.txtNroEntradas.Name = "txtNroEntradas";
             this.txtNroEntradas.Size = new System.Drawing.Size(60, 20);
             this.txtNroEntradas.TabIndex = 5;
@@ -420,7 +420,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label4.Location = new System.Drawing.Point(25, 172);
+            this.label4.Location = new System.Drawing.Point(26, 168);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 20);
             this.label4.TabIndex = 5;

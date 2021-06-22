@@ -69,17 +69,8 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             }
 
             return acumulador;
-
-
-
-
-
-
-            
-            
         }
-
-
+   
 
     }
 }

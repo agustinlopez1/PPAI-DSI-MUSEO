@@ -146,12 +146,13 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             
 
         }
+        
         private void TomarCantidasEntradas() 
         {
                
             this.cantidadEntrada = Convert.ToInt32(txtNroEntradas.Text);
             if this.cantidadEntrada
-        
+            
         }
 
         private void txtNroEntradas_TextChanged(object sender, EventArgs e)

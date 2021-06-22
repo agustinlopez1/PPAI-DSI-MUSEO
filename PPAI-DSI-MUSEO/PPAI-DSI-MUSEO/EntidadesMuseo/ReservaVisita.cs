@@ -30,7 +30,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public List<ReservaVisita> EsSedeActual(int idsede) 
         {
             List<ReservaVisita> listaReservaSede = new List<ReservaVisita>();
-            listaReservaSede = Varios_DAO.ObtenerReservas(Varios_DAO.ObtenerTabla("ReservaVisita"), idsede);
+            listaReservaSede = Varios_DAO.ObtenerReservas(Varios_DAO.ObtenerTabla("ReserveVisita"), idsede);
 
             return listaReservaSede;
         

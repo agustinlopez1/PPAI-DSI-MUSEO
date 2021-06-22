@@ -13,16 +13,17 @@ namespace PPAI_DSI_MUSEO.Gestor
     public class GestorVentaEntrada
     {
         private List<Tarifa> tarifasExistentes;
-        private List<Entrada> entradasSeleccionadas;
+        private int cantEntradasGenerar; //agregar a la vista
         private List<ReservaVisita> reservasActuales;
         private List<Entrada> entradasVendidas;
-        private Tarifa tarifasSeleccionada;
+        private Tarifa tarifaSeleccionada;
         private DateTime fechaHoraEntradaAGenerar;
         private int numeroEntrada;
         private Sede sedeActual;
         private Sesion sesionActual;
         private int duracionEstimada;
         private int cantidadVisitantesTotal;
+        private int montoTotal;  // ?????
 
         public GestorVentaEntrada()
         {
@@ -30,7 +31,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         }
 
         public List<Tarifa> TarifasExistentes { get => tarifasExistentes; set => tarifasExistentes = value; }
-        public List<Entrada> EntradasSeleccionadas { get => entradasSeleccionadas; set => entradasSeleccionadas = value; }
+
         public List<ReservaVisita> ReservasActuales { get => reservasActuales; set => reservasActuales = value; }
         public List<Entrada> EntradasVendidas { get => entradasVendidas; set => entradasVendidas = value; }
         
@@ -39,8 +40,10 @@ namespace PPAI_DSI_MUSEO.Gestor
         public Sede SedeActual { get => sedeActual; set => sedeActual = value; }
         public Sesion SesionActual { get => sesionActual; set => sesionActual = value; }
         public int DuracionEstimada { get => duracionEstimada; set => duracionEstimada = value; }
-        public Tarifa TarifasSeleccionada { get => tarifasSeleccionada; set => tarifasSeleccionada = value; }
+        public Tarifa TarifaSeleccionada { get => tarifaSeleccionada; set => tarifaSeleccionada = value; }
         public int CantidadVisitantesTotal { get => cantidadVisitantesTotal; set => cantidadVisitantesTotal = value; }
+        public int MontoTotal { get => montoTotal; set => montoTotal = value; }
+        public int CantEntradasGenerar { get => cantEntradasGenerar; set => cantEntradasGenerar = value; }
 
 
         // Empiezan nuestros métodos "principales"
@@ -84,12 +87,13 @@ namespace PPAI_DSI_MUSEO.Gestor
 
         }
 
-        public void tomarSeleccionDeTarifa(Tarifa tarifasSele)
-        {
-            this.tarifasSeleccionada = tarifasSele;
+        public void tomarSeleccionDeTarifa(int idtarifa)
+        { 
+
+            this.tarifaSeleccionada = Varios_DAO.ObtenerTarifaID(Varios_DAO.ObtenerTabla("Tarifa"), idtarifa);
 
 
-        } //setea atributo de tarifasSelecioandas 
+        } //setea atributo de tarifasSelecioanda
 
         public void CalcularDuracionEstimada()
         {
@@ -98,14 +102,14 @@ namespace PPAI_DSI_MUSEO.Gestor
         }
 
 
-        public void BuscarReservas()           //FALTA TESTEAR  
+        public void BuscarReservas()           //FALTA TESTEAR   // setea la lista de reservas del dia de hoya
         {
             ReservaVisita reserva = new ReservaVisita();
             this.reservasActuales = reserva.EsFechaHoraHoy(reserva.EsSedeActual(this.sedeActual.IdSede));
         }
 
 
-        public void BuscarEntradasVendidas()    //FALTA TESTEAR
+        public void BuscarEntradasVendidas()    //FALTA TESTEAR // setea el atributo entrada vendidas por la cantiada de entradas de ese dia
         {
             Entrada entrada = new Entrada();
             this.entradasVendidas = entrada.EsFechaHoraHoy(entrada.EsSedeActual(this.SedeActual.IdSede));
@@ -119,9 +123,9 @@ namespace PPAI_DSI_MUSEO.Gestor
             return capacidadMax;
         }
 
-        public void CalcularVisitantesTotal()  // FALTA CHEKEAR
+        public  void CalcularVisitantesTotal()  // FALTA CHEKEAR- devuelve cuanta gente hay/va haber en la sede en ese momento.
         {
-            int capacidadSede = BuscarCapacidadMaxima();
+            
             BuscarEntradasVendidas();
             int cantEntradasVendidas = this.EntradasVendidas.Count();
             int cantVisitantes = 0;
@@ -134,7 +138,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         }
 
 
-        private bool verificarLimiteVisitantes(int cantidadEntradas)  //CHEKEAR
+        public  bool verificarLimiteVisitantes(int cantidadEntradas)  // verifica si la cantidad de entradas a comprar se puede
         {
             int capacidadSede = BuscarCapacidadMaxima();
             int limite = capacidadSede - this.CantidadVisitantesTotal;
@@ -148,5 +152,62 @@ namespace PPAI_DSI_MUSEO.Gestor
             }
         }
 
+        public int CalcularMontoTotal() 
+        {
+            int monto = Convert.ToInt32(this.tarifaSeleccionada.Monto);
+            int montoAdicional = Convert.ToInt32(this.tarifaSeleccionada.MontoAdicional);
+
+            this.montoTotal = (monto + montoAdicional) * this.cantEntradasGenerar;
+
+            return this.montoTotal;
+        
+        }
+
+
+        public void RegistrarNuevaEntrada() 
+        {
+            getFechaHoraActual();
+            buscarUltimoNumeroEntrada();
+
+
+           
+        
+        
+        }
+
+        public void getFechaHoraActual() 
+        {
+            
+            this.fechaHoraEntradaAGenerar = DateTime.Now; //chequear?
+            MessageBox.Show(this.fechaHoraEntradaAGenerar.ToString());
+
+
+        }
+
+        public int  buscarUltimoNumeroEntrada() 
+        {
+
+            int ultimoNro = Varios_DAO.ObtenerUltimoNroEntrada(); //=  despues lo vemo
+        
+            return ultimoNro;
+        }
+
+        public void generarNumeroEntrada() 
+        {
+            this.numeroEntrada = buscarUltimoNumeroEntrada() + 1;
+            Varios_DAO.AltaEntradaNueva(this.numeroEntrada,this.sedeActual.IdSede, this.tarifaSeleccionada.IdTarifa,
+                this.tarifaSeleccionada.Monto,
+                this.fechaHoraEntradaAGenerar);
+
+        
+        }
+        public void actualizarCantidadVisitantes() //mensaje de actualizado las pantallas
+        {
+
+            MessageBox.Show("Pantalla Principal con visitantes actualizados");
+            MessageBox.Show("Pantalla Sala con visitantes actualizados ");
+        }
+
+        
     }
 }

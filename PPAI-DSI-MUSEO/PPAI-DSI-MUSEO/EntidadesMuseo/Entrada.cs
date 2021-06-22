@@ -31,7 +31,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             List<Entrada> listaEntradasActuales = new List<Entrada>();
             foreach (Entrada entrada in entradas)
             {
-                if (entrada.FechaVenta == DateTime.Today)
+                if (entrada.FechaVenta.Date == DateTime.Today.Date) // 
                 {
                     listaEntradasActuales.Add(entrada);
 

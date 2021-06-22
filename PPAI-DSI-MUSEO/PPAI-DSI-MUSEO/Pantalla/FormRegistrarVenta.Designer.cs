@@ -29,13 +29,10 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaVentaEntrada));
             this.label1 = new System.Windows.Forms.Label();
             this.grillaTarifasExistentes = new System.Windows.Forms.DataGridView();
-            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNuevaEntrada = new System.Windows.Forms.GroupBox();
             this.botonCalcularTotal = new System.Windows.Forms.Button();
             this.txtTipoVisita = new System.Windows.Forms.TextBox();
@@ -67,6 +64,11 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxTarifasExistentes = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.labelFechaActual = new System.Windows.Forms.Label();
+            this.idTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).BeginInit();
             this.groupBoxNuevaEntrada.SuspendLayout();
             this.groupBoxDetalle.SuspendLayout();
@@ -88,14 +90,23 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             this.grillaTarifasExistentes.AllowUserToAddRows = false;
             this.grillaTarifasExistentes.AllowUserToDeleteRows = false;
-            this.grillaTarifasExistentes.BackgroundColor = System.Drawing.Color.Silver;
+            this.grillaTarifasExistentes.BackgroundColor = System.Drawing.Color.Black;
             this.grillaTarifasExistentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaTarifasExistentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idTarifa,
             this.monto,
             this.tipoEntrada,
             this.tipoVisita,
             this.montoAdicional});
-            this.grillaTarifasExistentes.GridColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaTarifasExistentes.DefaultCellStyle = dataGridViewCellStyle1;
+            this.grillaTarifasExistentes.GridColor = System.Drawing.Color.Turquoise;
             this.grillaTarifasExistentes.Location = new System.Drawing.Point(1, 29);
             this.grillaTarifasExistentes.Name = "grillaTarifasExistentes";
             this.grillaTarifasExistentes.ReadOnly = true;
@@ -104,34 +115,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.grillaTarifasExistentes.TabIndex = 1;
             this.grillaTarifasExistentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaTarifasExistentes_CellClick);
             this.grillaTarifasExistentes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaTarifasExistentes_CellContentClick);
-            // 
-            // monto
-            // 
-            this.monto.HeaderText = "Monto";
-            this.monto.Name = "monto";
-            this.monto.ReadOnly = true;
-            this.monto.Width = 55;
-            // 
-            // tipoEntrada
-            // 
-            this.tipoEntrada.HeaderText = "Tipo de entrada";
-            this.tipoEntrada.Name = "tipoEntrada";
-            this.tipoEntrada.ReadOnly = true;
-            this.tipoEntrada.Width = 124;
-            // 
-            // tipoVisita
-            // 
-            this.tipoVisita.HeaderText = "Tipo de visita";
-            this.tipoVisita.Name = "tipoVisita";
-            this.tipoVisita.ReadOnly = true;
-            this.tipoVisita.Width = 124;
-            // 
-            // montoAdicional
-            // 
-            this.montoAdicional.HeaderText = "Monto adicional";
-            this.montoAdicional.Name = "montoAdicional";
-            this.montoAdicional.ReadOnly = true;
-            this.montoAdicional.Width = 55;
             // 
             // groupBoxNuevaEntrada
             // 
@@ -302,11 +285,11 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label12.Location = new System.Drawing.Point(32, 84);
+            this.label12.Location = new System.Drawing.Point(10, 82);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(141, 20);
+            this.label12.Size = new System.Drawing.Size(161, 20);
             this.label12.TabIndex = 16;
-            this.label12.Text = "Monto adicional:  $";
+            this.label12.Text = "Monto adicional:       $";
             // 
             // txtMontoAdicional
             // 
@@ -321,11 +304,11 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label11.Location = new System.Drawing.Point(39, 58);
+            this.label11.Location = new System.Drawing.Point(10, 58);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(134, 20);
+            this.label11.Size = new System.Drawing.Size(161, 20);
             this.label11.TabIndex = 14;
-            this.label11.Text = "Monto entrada:  $";
+            this.label11.Text = "Monto por entrada:  $";
             // 
             // txtMontoEntrada
             // 
@@ -340,11 +323,11 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label8.Location = new System.Drawing.Point(38, 32);
+            this.label8.Location = new System.Drawing.Point(10, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 20);
+            this.label8.Size = new System.Drawing.Size(130, 20);
             this.label8.TabIndex = 12;
-            this.label8.Text = "N° de entradas:  $";
+            this.label8.Text = "N° de entradas:   ";
             // 
             // txtNroEntradasDetalle
             // 
@@ -394,7 +377,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.txtNroEntradas.Name = "txtNroEntradas";
             this.txtNroEntradas.Size = new System.Drawing.Size(60, 20);
             this.txtNroEntradas.TabIndex = 5;
-            this.txtNroEntradas.TextChanged += new System.EventHandler(this.txtNroEntradas_TextChanged);
             // 
             // txtDuracionEstimada
             // 
@@ -492,6 +474,46 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelFechaActual.TabIndex = 89;
             this.labelFechaActual.Text = "-";
             // 
+            // idTarifa
+            // 
+            this.idTarifa.DataPropertyName = "idTarifa";
+            this.idTarifa.HeaderText = "ID";
+            this.idTarifa.Name = "idTarifa";
+            this.idTarifa.ReadOnly = true;
+            this.idTarifa.Width = 25;
+            // 
+            // monto
+            // 
+            this.monto.DataPropertyName = "monto";
+            this.monto.HeaderText = "Monto";
+            this.monto.Name = "monto";
+            this.monto.ReadOnly = true;
+            this.monto.Width = 55;
+            // 
+            // tipoEntrada
+            // 
+            this.tipoEntrada.DataPropertyName = "idTipoEn";
+            this.tipoEntrada.HeaderText = "Tipo de entrada";
+            this.tipoEntrada.Name = "tipoEntrada";
+            this.tipoEntrada.ReadOnly = true;
+            this.tipoEntrada.Width = 124;
+            // 
+            // tipoVisita
+            // 
+            this.tipoVisita.DataPropertyName = "tipoVisita";
+            this.tipoVisita.HeaderText = "Tipo de visita";
+            this.tipoVisita.Name = "tipoVisita";
+            this.tipoVisita.ReadOnly = true;
+            this.tipoVisita.Width = 124;
+            // 
+            // montoAdicional
+            // 
+            this.montoAdicional.DataPropertyName = "montoAdicional";
+            this.montoAdicional.HeaderText = "Monto adicional";
+            this.montoAdicional.Name = "montoAdicional";
+            this.montoAdicional.ReadOnly = true;
+            this.montoAdicional.Width = 55;
+            // 
             // PantallaVentaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,10 +559,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private System.Windows.Forms.Button botonConfirmarVenta;
         private System.Windows.Forms.TextBox txtNroEntradas;
         private System.Windows.Forms.TextBox txtDuracionEstimada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoEntrada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoVisita;
-        private System.Windows.Forms.DataGridViewTextBoxColumn montoAdicional;
         private System.Windows.Forms.TextBox txtIDTarifa;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBoxDetalle;
@@ -562,5 +580,10 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private System.Windows.Forms.TextBox txtTipoVisita;
         private System.Windows.Forms.TextBox txtTipoEntrada;
         private System.Windows.Forms.Button botonCalcularTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idTarifa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoEntrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoVisita;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montoAdicional;
     }
 }

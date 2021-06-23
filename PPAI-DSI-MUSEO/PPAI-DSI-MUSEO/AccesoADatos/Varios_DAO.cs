@@ -12,7 +12,8 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 {
     public class Varios_DAO
     {
-        public static DataTable ObtenerTabla(string nombreTabla)
+        public static DataTable ObtenerTabla(string nombreTabla) 
+            // devuelve una tabla resultado de la consulta a la BD segun nombreTabla 
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["MuseoBD"];
             SqlConnection cn = new SqlConnection(cadenaConexion);
@@ -44,7 +45,7 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             {
                 cn.Close();
             }
-        } // checkeado
+        } 
 
         public static List<Sesion> ObtenerListaSesiones(DataTable tabla)
         {
@@ -73,26 +74,7 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             }
 
             return listaSesiones;
-        } // checkeado
-
-        public static List<Usuario> ObtenerListaUsuarios(DataTable tabla)
-        {
-            List<Usuario> listaUsuarios = new List<Usuario>();
-
-            foreach (DataRow usuario in tabla.Rows)
-            {
-                Usuario usu = new Usuario();
-
-                usu.IdUsuario = Convert.ToInt32(usuario["idUsuario"]);
-                usu.Nombre = usuario["nombre"].ToString();
-                usu.Empleado = Usuario.ObtenerEmpleado(Convert.ToInt32(usuario["legajoEmpleado"]));
-
-                listaUsuarios.Add(usu);
-
-            }
-
-            return listaUsuarios;
-        } // vemo Ni se usa
+        }
 
         public static Sede ObtenerSede(int idSede)
         {
@@ -111,7 +93,7 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                 }
             }
             return null;
-        } //vemo tmb
+        }
 
         public static TipoEntrada ObtenerTipoEntrada(DataTable tabla, int idTipoEntrada)
         {
@@ -176,15 +158,9 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
                     listaTarifa.Add(tarifaF);
                 }
-
-
-
             }
-
             return listaTarifa;
-
         }
-
 
         public static List<Exposicion> ObtenerExposicionesXSede(DataTable tabla, int idsede)
         {
@@ -211,7 +187,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
         }
 
-
         public static List<DetalleExposicion> ObtenerDetallesXExposiciones(DataTable tabla, int idExposicion)
         {
 
@@ -229,7 +204,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
                     listaDetallesExposiciones.Add(detalleExpo);
                 }
-
             }
             return listaDetallesExposiciones;
 
@@ -249,13 +223,10 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
                     return obra1;
                 }
-
-
             }
 
             return null;
         }
-
 
         public static List<ReservaVisita> ObtenerReservas(DataTable tabla, int idSede)
         {
@@ -280,7 +251,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return listaReserva;
         }
 
-
         public static List<Entrada> ObtenerEntradasXSede(DataTable tabla, int idsede)
         {
 
@@ -302,7 +272,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return listaEntradas;
 
         }
-
 
         public static Tarifa ObtenerTarifaID(DataTable tabla, int idTarifa)
         {
@@ -353,7 +322,9 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
                 int ultimoNum = Convert.ToInt32(tabla.Rows[0]["NroEntrada"]);
 
-                MessageBox.Show("ultimo numero es " + ultimoNum);
+                // MessageBox.Show("ultimo numero es " + ultimoNum);
+                // se repetia una vez de onda + una vez por cada entrada
+
                 return ultimoNum;
             }
             catch (Exception ex)
@@ -364,16 +335,11 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             {
                 cn.Close();
             }
-
-
         }
 
-        public static bool AltaEntradaNueva(int nroEntrada, int idSede, int idTarifa,
-                float monto,
-                DateTime fechaVenta) 
-
-         
-         {
+        public static bool AltaEntradaNueva(int nroEntrada, int idSede, 
+            int idTarifa, float monto, DateTime fechaVenta)
+        {
                 string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["MuseoBD"];
                 SqlTransaction objetoTransaccion = null;
                 SqlConnection cn = new SqlConnection(cadenaConexion);
@@ -411,13 +377,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                 {
                     cn.Close();
                 }
-            }
-
-
-
-        
-
-
-
+        }
     }
 }

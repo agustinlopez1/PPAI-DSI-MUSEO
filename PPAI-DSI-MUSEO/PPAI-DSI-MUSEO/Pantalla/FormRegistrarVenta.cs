@@ -9,53 +9,43 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAI_DSI_MUSEO.Gestor;
+using System.Text.RegularExpressions;
 
 namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 {
     public partial class PantallaVentaEntrada : Form
     {
         GestorVentaEntrada gestor = new GestorVentaEntrada();
-        private int cantidadEntrada { get;  set; }
-
-
-
-
-
+        
         public PantallaVentaEntrada()
         {
             InitializeComponent();
-            
-
         }
 
         private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)
         {
-            
-            labelFechaActual.Text = DateTime.Now.ToShortDateString();
-
-            //GestorVentaEntrada gestor = new GestorVentaEntrada();
-
             gestor.OpcionRegistrarVenta();
+            labelFechaActual.Text = DateTime.Now.ToShortDateString();
+            lblSedeActual.Text = gestor.SesionActual.Usuario.Empleado.Sede.Nombre;
             MostrarTarifasExistentes(gestor.TarifasExistentes);
 
             gestor.CalcularDuracionEstimada();
+            
             txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
 
             gestor.BuscarReservas();
             gestor.BuscarEntradasVendidas();
             gestor.CalcularVisitantesTotal();
+            ActualizarDisponibilidad(); 
+        }
+
+        private void ActualizarDisponibilidad()
+        {
             int capMaximaSede = gestor.BuscarCapacidadMaxima();
             int maxEntradasDisponibles = (capMaximaSede - gestor.CantidadVisitantesTotal);
-
             txtMaximoEntradas.Text = maxEntradasDisponibles.ToString();
-            
         }
-
-        private void ObtenerMaximoEntradas() // llena el txtMaximoEntradas segun la capacidad
-        {
-
-        }
-
+        
         private void MostrarTarifasExistentes(List<Tarifa> tarifas)
         {
             foreach (Tarifa tarifa in tarifas)
@@ -75,10 +65,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 
         }
 
-        private void botonCancelar_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-        }
         private void LimpiarCampos()
         {
             // reestablezco todos los campos
@@ -87,95 +73,32 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             txtTipoVisita.Text = "";
             txtDuracionEstimada.Text = "";
             txtNroEntradas.Text = "";
-            // el siguiente metodo llena el txtMaximoEntradas segun la capacidad:
-            ObtenerMaximoEntradas();
+            LimpiarCamposDetalle();
+        }
+
+        private void LimpiarCamposDetalle()
+        {
             txtNroEntradasDetalle.Text = "";
             txtMontoEntrada.Text = "";
             txtMontoAdicional.Text = "";
             txtTotal.Text = "";
-        }
-        private void botonConfirmarVenta_Click(object sender, EventArgs e)
-        {
-            // insertar codigo para registrar venta
-            tomarConfirmacionVenta();
-            
-        }
-
-        private void botonVolver_Click(object sender, EventArgs e)
-        {
-            MenuPrincipal ventana = new MenuPrincipal();
-            ventana.Show();
-            this.Close();
-        }
-
-        private void botonCalcularTotal_Click(object sender, EventArgs e)
-        {
-            TomarCantidadEntradas();
-            
-
-            if (gestor.verificarLimiteVisitantes(Convert.ToInt32(txtNroEntradas.Text)))
-            {
-                mostrarDetallaEntrada();
-            }
-            else 
-            {
-                MessageBox.Show("Debe ingresar otra cantidad");
-            
-            }
-            
-            
-            
-            //aca va calcular detalle
-        }
-
-        private void grillaTarifasExistentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int indice = e.RowIndex;
-            DataGridViewRow filaseleccionada = grillaTarifasExistentes.Rows[indice];
-            string tipoEntrada = filaseleccionada.Cells["tipoEntrada"].Value.ToString();
-            string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
-            int idTarifa = Convert.ToInt32(filaseleccionada.Cells["idTarifa"].Value);
- 
-            TomarSeleccionDeTarifa(idTarifa);
-
-            txtIDTarifa.Text = idTarifa.ToString();
-            txtTipoEntrada.Text = tipoEntrada.ToString();
-            txtTipoVisita.Text = tipoVisita.ToString();
-            
-
-        }
-
-
-        private void grillaTarifasExistentes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int indice = e.RowIndex;
-            DataGridViewRow filaseleccionada = grillaTarifasExistentes.Rows[indice];
-            string tipoEntrada = filaseleccionada.Cells["tipoEntrada"].Value.ToString();
-            string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
-
-            GestorVentaEntrada gestor = new GestorVentaEntrada();
-            txtTipoEntrada.Text = tipoEntrada.ToString();
-            txtTipoVisita.Text = tipoVisita.ToString();
-            
-
         }
         
         private void TomarCantidadEntradas() 
         {
             int cantidad = Convert.ToInt32(txtNroEntradas.Text);
             gestor.CantEntradasGenerar = cantidad;
-
         }
+
         private void mostrarDetallaEntrada() 
         {
             txtNroEntradasDetalle.Text = gestor.CantEntradasGenerar.ToString();
             txtMontoEntrada.Text = gestor.TarifaSeleccionada.Monto.ToString();
             txtMontoAdicional.Text = gestor.TarifaSeleccionada.MontoAdicional.ToString();
             txtTotal.Text = gestor.CalcularMontoTotal().ToString();
-            botonCalcularTotal.Enabled = true; //probar validaciones
+            botonCalcularTotal.Enabled = true;
 
         }
-
 
         private void tomarConfirmacionVenta() //modificar ea 
         {
@@ -186,15 +109,161 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             {
                 gestor.RegistrarNuevaEntrada();
                 LimpiarCampos();
+                ActualizarDisponibilidad();
+                // actualizar volver a cargar la capacidad de entradas maximas
             }
-        
-   
+        }
 
-        } 
+        private void botonCalcularTotal_Click(object sender, EventArgs e)
+        {
+            if (txtNroEntradas.Text != "") // valida que no sea vacío
+            {
+                bool esNumero = Regex.IsMatch(txtNroEntradas.Text, @"^\d+$"); // valida que sea un numero
+                if (esNumero) // valida que sea un numero
+                {
+                    TomarCantidadEntradas();
 
-        
+                    if (gestor.verificarLimiteVisitantes(Convert.ToInt32(txtNroEntradas.Text))) // valida capacidad de sede
+                    {
+                        mostrarDetallaEntrada();
+                    }
+                    else // si excede capacidad:
+                    {
+                        MessageBox.Show("La cantidad de entradas ingresada excede la capacidad de la sede." +
+                            "\nIngrese una cantidad correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtNroEntradas.Text = "";
+                        txtNroEntradas.Focus();
+                    }
+                }
+                else // si no son numeros:
+                {
+                    MessageBox.Show("Solo se aceptan caracteres numéricos." +
+                            "\nIngrese una cantidad correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNroEntradas.Text = "";
+                    txtNroEntradas.Focus();
+                }
 
 
+            }
+            else // si el textbox esta vacio:
+            {
+                MessageBox.Show("El campo 'N° de entradas' no puede estar vacío." +
+                            "\nIngrese la cantidad de entradas para poder calcular el monto total.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNroEntradas.Focus();
+            }
+        }
+
+        private void botonConfirmarVenta_Click(object sender, EventArgs e)
+        {
+            if (txtTotal.Text != "")
+            // valida que se haya presionado el boton "Calcular total"
+            {
+                if (txtNroEntradas.Text != "")
+                // valida que se haya ingresado la cantidad de entradas a emitir
+                {
+                    tomarConfirmacionVenta();
+                }
+                else
+                {
+                    MessageBox.Show("Complete todos los datos para poder registrar la venta",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Primero debe calcular el monto total para poder registrar la venta.\n" +
+                    "Presione el botón 'Calcular total'.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal ventana = new MenuPrincipal();
+            ventana.Show();
+            this.Close();
+        }
+
+        private void botonCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+       
+        private void grillaTarifasExistentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                int indice = e.RowIndex;
+                DataGridViewRow filaseleccionada = grillaTarifasExistentes.Rows[indice];
+                string tipoEntrada = filaseleccionada.Cells["tipoEntrada"].Value.ToString();
+                string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
+                int idTarifa = Convert.ToInt32(filaseleccionada.Cells["idTarifa"].Value);
+
+                TomarSeleccionDeTarifa(idTarifa);
+
+                txtIDTarifa.Text = idTarifa.ToString();
+                txtTipoEntrada.Text = tipoEntrada.ToString();
+                txtTipoVisita.Text = tipoVisita.ToString();
+                LimpiarCamposDetalle();
+            }
+            else
+            {
+                txtIDTarifa.Text = "";
+                txtTipoEntrada.Text = "";
+                txtTipoVisita.Text = "";
+            }
+        }
+
+        private void grillaTarifasExistentes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                int indice = e.RowIndex;
+                DataGridViewRow filaseleccionada = grillaTarifasExistentes.Rows[indice];
+                string tipoEntrada = filaseleccionada.Cells["tipoEntrada"].Value.ToString();
+                string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
+                int idTarifa = Convert.ToInt32(filaseleccionada.Cells["idTarifa"].Value);
+
+                TomarSeleccionDeTarifa(idTarifa);
+
+                txtIDTarifa.Text = idTarifa.ToString();
+                txtTipoEntrada.Text = tipoEntrada.ToString();
+                txtTipoVisita.Text = tipoVisita.ToString();
+                LimpiarCamposDetalle();
+            }
+            else
+            {
+                txtIDTarifa.Text = "";
+                txtTipoEntrada.Text = "";
+                txtTipoVisita.Text = "";
+            }
+        }
+
+        // estos dos metodos son para los efectos visuales de la grilla
+        private void grillaTarifasExistentes_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 40 && e.RowIndex > 0)
+            {
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[0].Style.BackColor = Color.FromArgb(34, 36, 49);
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.FromArgb(34, 36, 49);
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[2].Style.BackColor = Color.FromArgb(34, 36, 49);
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[3].Style.BackColor = Color.FromArgb(34, 36, 49);
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.FromArgb(34, 36, 49);
+            }
+        }
+        private void grillaTarifasExistentes_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 40 && e.RowIndex > 0)
+            {
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[0].Style.BackColor = Color.Black;
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.Black;
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[2].Style.BackColor = Color.Black;
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[3].Style.BackColor = Color.Black;
+                grillaTarifasExistentes.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.Black;
+            }
+        }
+        // =====================================================================
     }
 
 

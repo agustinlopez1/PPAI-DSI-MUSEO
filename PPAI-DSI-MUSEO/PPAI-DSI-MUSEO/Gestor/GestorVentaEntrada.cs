@@ -31,40 +31,39 @@ namespace PPAI_DSI_MUSEO.Gestor
         }
 
         public List<Tarifa> TarifasExistentes { get => tarifasExistentes; set => tarifasExistentes = value; }
-
         public List<ReservaVisita> ReservasActuales { get => reservasActuales; set => reservasActuales = value; }
         public List<Entrada> EntradasVendidas { get => entradasVendidas; set => entradasVendidas = value; }
-        
-        public DateTime FechaHoraEntradaAGenerar { get => fechaHoraEntradaAGenerar; set => fechaHoraEntradaAGenerar = value; }
-        public int NumeroEntrada { get => numeroEntrada; set => numeroEntrada = value; }
         public Sede SedeActual { get => sedeActual; set => sedeActual = value; }
         public Sesion SesionActual { get => sesionActual; set => sesionActual = value; }
         public int DuracionEstimada { get => duracionEstimada; set => duracionEstimada = value; }
         public Tarifa TarifaSeleccionada { get => tarifaSeleccionada; set => tarifaSeleccionada = value; }
         public int CantidadVisitantesTotal { get => cantidadVisitantesTotal; set => cantidadVisitantesTotal = value; }
-        public int MontoTotal { get => montoTotal; set => montoTotal = value; }
         public int CantEntradasGenerar { get => cantEntradasGenerar; set => cantEntradasGenerar = value; }
+        
+        // VER estos tres nunca se usan:
+        public int MontoTotal { get => montoTotal; set => montoTotal = value; }
+        public DateTime FechaHoraEntradaAGenerar { get => fechaHoraEntradaAGenerar; set => fechaHoraEntradaAGenerar = value; }
+        public int NumeroEntrada { get => numeroEntrada; set => numeroEntrada = value; }
 
 
-        // Empiezan nuestros métodos "principales"
-        public void OpcionRegistrarVenta()
+        // ========================================================================
+        public void OpcionRegistrarVenta() // método disparador del CU?
         {
             ObtenerSedeActual();
-            MessageBox.Show("la sede es " + sesionActual.Usuario.Empleado.Sede.Nombre);
             BuscarTarifasExistentes();
-
         }
 
-        public void ObtenerSedeActual() // obj: setear el parametro sedeActual del gestor
+        public void ObtenerSedeActual()
+        // setea el atributo sedeActual del gestor segun el empleado logueado en el sistema
         {
             List<Sesion> listaSesiones = new List<Sesion>();
             listaSesiones = Varios_DAO.ObtenerListaSesiones(Varios_DAO.ObtenerTabla("Sesion"));
-            this.sesionActual = ObtenerSesionActual(listaSesiones);  // acá ya tenemos la sesion actual seteada en el gestor
+            this.sesionActual = ObtenerSesionActual(listaSesiones);
             this.sedeActual = sesionActual.Usuario.Empleado.Sede;
         }
 
-        // Empiezan nuestros métodos "secundarios"
         public static Sesion ObtenerSesionActual(List<Sesion> listaSesiones)
+        // obtiene la sesion actual para encontrar la sede 
         {
             Sesion ses = new Sesion();
 
@@ -79,53 +78,54 @@ namespace PPAI_DSI_MUSEO.Gestor
                 }
             }
             return null;
-        } //obtiene la sesion actual para encontrar la sede 
+        } 
 
-        public void BuscarTarifasExistentes()  //busca las tarifas que tenga la sede actual 
+        public void BuscarTarifasExistentes()
+        // setea el atributo tarifasExistentes del gestor segun las tarifas de la sede actual
         {
             this.tarifasExistentes = this.SedeActual.BuscarTarifaExistentes(sedeActual.IdSede);
 
         }
 
         public void tomarSeleccionDeTarifa(int idtarifa)
-        { 
+        // setea el atributo tarifasSeleccionada del gestor segun la seleccion del usuario
+        {
 
             this.tarifaSeleccionada = Varios_DAO.ObtenerTarifaID(Varios_DAO.ObtenerTabla("Tarifa"), idtarifa);
 
 
-        } //setea atributo de tarifasSelecioanda
+        } 
 
         public void CalcularDuracionEstimada()
         {
             this.duracionEstimada = this.sedeActual.ConocerExposicionesVigentes();
-    
         }
 
-
-        public void BuscarReservas()           //FALTA TESTEAR   // setea la lista de reservas del dia de hoya
+        public void BuscarReservas()
+        // setea el atributo reservasActuales del gestor segun las reservas para el dia actual
         {
             ReservaVisita reserva = new ReservaVisita();
             this.reservasActuales = reserva.EsFechaHoraHoy(reserva.EsSedeActual(this.sedeActual.IdSede));
         }
 
+        public void BuscarEntradasVendidas()
+        // setea el atributo entradasVendidas del gestor segun las vendidas en el dia actual
 
-        public void BuscarEntradasVendidas()    //FALTA TESTEAR // setea el atributo entrada vendidas por la cantiada de entradas de ese dia
         {
             Entrada entrada = new Entrada();
             this.entradasVendidas = entrada.EsFechaHoraHoy(entrada.EsSedeActual(this.SedeActual.IdSede));
         }
 
-
         public int BuscarCapacidadMaxima()
         {
-            int capacidadMax = 0;
+            int capacidadMax;
             capacidadMax = this.SedeActual.CantMaximaVisitantes;
             return capacidadMax;
         }
 
-        public  void CalcularVisitantesTotal()  // FALTA CHEKEAR- devuelve cuanta gente hay/va haber en la sede en ese momento.
+        public  void CalcularVisitantesTotal()
+        // setea el valor CantidadVisitantesTotal del gestor
         {
-            
             BuscarEntradasVendidas();
             int cantEntradasVendidas = this.EntradasVendidas.Count();
             int cantVisitantes = 0;
@@ -133,12 +133,12 @@ namespace PPAI_DSI_MUSEO.Gestor
             {
                 cantVisitantes += reserva.CantAlumnosConfirmada;
             }
-            int res = cantEntradasVendidas + cantVisitantes;
-            this.CantidadVisitantesTotal = res;
+            int resultado = cantEntradasVendidas + cantVisitantes;
+            this.CantidadVisitantesTotal = resultado;
         }
 
-
-        public  bool verificarLimiteVisitantes(int cantidadEntradas)  // verifica si la cantidad de entradas a comprar se puede
+        public  bool verificarLimiteVisitantes(int cantidadEntradas)  
+            // valida que la cant. entradas no supere la capacidad
         {
             int capacidadSede = BuscarCapacidadMaxima();
             int limite = capacidadSede - this.CantidadVisitantesTotal;
@@ -163,25 +163,18 @@ namespace PPAI_DSI_MUSEO.Gestor
         
         }
 
-
         public void RegistrarNuevaEntrada() 
         {
             getFechaHoraActual();
             buscarUltimoNumeroEntrada();
-
-
-           
-        
-        
+            generarNumeroEntrada();
+            actualizarCantidadVisitantes();
         }
 
         public void getFechaHoraActual() 
         {
-            
             this.fechaHoraEntradaAGenerar = DateTime.Now; //chequear?
-            MessageBox.Show(this.fechaHoraEntradaAGenerar.ToString());
-
-
+            MessageBox.Show("Se registró la venta con fecha " + this.fechaHoraEntradaAGenerar.ToString());
         }
 
         public int  buscarUltimoNumeroEntrada() 
@@ -194,20 +187,22 @@ namespace PPAI_DSI_MUSEO.Gestor
 
         public void generarNumeroEntrada() 
         {
-            this.numeroEntrada = buscarUltimoNumeroEntrada() + 1;
-            Varios_DAO.AltaEntradaNueva(this.numeroEntrada,this.sedeActual.IdSede, this.tarifaSeleccionada.IdTarifa,
+            for (int i = 0; i < this.cantEntradasGenerar; i++)
+            {
+                this.numeroEntrada = buscarUltimoNumeroEntrada() + 1;
+                Varios_DAO.AltaEntradaNueva(this.numeroEntrada, this.sedeActual.IdSede, this.tarifaSeleccionada.IdTarifa,
                 this.tarifaSeleccionada.Monto,
                 this.fechaHoraEntradaAGenerar);
-
-        
+            }
         }
-        public void actualizarCantidadVisitantes() //mensaje de actualizado las pantallas
+
+        public void actualizarCantidadVisitantes() 
+            // mensaje de actualizado de las pantallas segun la capacidad de la sede
         {
-
-            MessageBox.Show("Pantalla Principal con visitantes actualizados");
-            MessageBox.Show("Pantalla Sala con visitantes actualizados ");
+            this.cantidadVisitantesTotal += cantEntradasGenerar;
+            MessageBox.Show("Se extiende al CU 'actualizar pantallas'. \n" +
+                "Pantallas de cantidad de visitantes actualizadas.\n" +
+                "En este momento hay " + cantidadVisitantesTotal +" personas en el museo");
         }
-
-        
     }
 }

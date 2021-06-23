@@ -55,7 +55,8 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             foreach (Exposicion expo1 in exposicionesVigentes)
             {
                 List<DetalleExposicion> listadetalles = new List<DetalleExposicion>();
-               listadetalles = Varios_DAO.ObtenerDetallesXExposiciones(Varios_DAO.ObtenerTabla("DetalleExposicion"), Convert.ToInt32(expo1.IdExpo));
+               listadetalles = Varios_DAO.ObtenerDetallesXExposiciones(Varios_DAO.ObtenerTabla("DetalleExposicion"), 
+                   Convert.ToInt32(expo1.IdExpo));
 
 
                 foreach (DetalleExposicion detall in listadetalles)

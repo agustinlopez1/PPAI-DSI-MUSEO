@@ -30,9 +30,17 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaVentaEntrada));
             this.label1 = new System.Windows.Forms.Label();
             this.grillaTarifasExistentes = new System.Windows.Forms.DataGridView();
+            this.idTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNuevaEntrada = new System.Windows.Forms.GroupBox();
             this.botonCalcularTotal = new System.Windows.Forms.Button();
             this.txtTipoVisita = new System.Windows.Forms.TextBox();
@@ -44,6 +52,9 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.txtIDTarifa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBoxDetalle = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -64,11 +75,8 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxTarifasExistentes = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.labelFechaActual = new System.Windows.Forms.Label();
-            this.idTarifa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblSedeActual = new System.Windows.Forms.Label();
+            this.lbl99 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).BeginInit();
             this.groupBoxNuevaEntrada.SuspendLayout();
             this.groupBoxDetalle.SuspendLayout();
@@ -90,31 +98,104 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             this.grillaTarifasExistentes.AllowUserToAddRows = false;
             this.grillaTarifasExistentes.AllowUserToDeleteRows = false;
+            this.grillaTarifasExistentes.AllowUserToResizeColumns = false;
+            this.grillaTarifasExistentes.AllowUserToResizeRows = false;
             this.grillaTarifasExistentes.BackgroundColor = System.Drawing.Color.Black;
-            this.grillaTarifasExistentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaTarifasExistentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grillaTarifasExistentes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.grillaTarifasExistentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaTarifasExistentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grillaTarifasExistentes.ColumnHeadersHeight = 24;
+            this.grillaTarifasExistentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grillaTarifasExistentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTarifa,
             this.monto,
             this.tipoEntrada,
             this.tipoVisita,
             this.montoAdicional});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grillaTarifasExistentes.DefaultCellStyle = dataGridViewCellStyle1;
-            this.grillaTarifasExistentes.GridColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grillaTarifasExistentes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.grillaTarifasExistentes.EnableHeadersVisualStyles = false;
+            this.grillaTarifasExistentes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.grillaTarifasExistentes.Location = new System.Drawing.Point(1, 29);
+            this.grillaTarifasExistentes.MultiSelect = false;
             this.grillaTarifasExistentes.Name = "grillaTarifasExistentes";
             this.grillaTarifasExistentes.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaTarifasExistentes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grillaTarifasExistentes.RowHeadersVisible = false;
-            this.grillaTarifasExistentes.Size = new System.Drawing.Size(362, 427);
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.grillaTarifasExistentes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.grillaTarifasExistentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grillaTarifasExistentes.Size = new System.Drawing.Size(461, 421);
             this.grillaTarifasExistentes.TabIndex = 1;
             this.grillaTarifasExistentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaTarifasExistentes_CellClick);
             this.grillaTarifasExistentes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaTarifasExistentes_CellContentClick);
+            this.grillaTarifasExistentes.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaTarifasExistentes_CellMouseLeave);
+            this.grillaTarifasExistentes.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grillaTarifasExistentes_CellMouseMove);
+            // 
+            // idTarifa
+            // 
+            this.idTarifa.DataPropertyName = "idTarifa";
+            this.idTarifa.HeaderText = "ID";
+            this.idTarifa.Name = "idTarifa";
+            this.idTarifa.ReadOnly = true;
+            this.idTarifa.Width = 35;
+            // 
+            // monto
+            // 
+            this.monto.DataPropertyName = "monto";
+            this.monto.HeaderText = "Monto";
+            this.monto.Name = "monto";
+            this.monto.ReadOnly = true;
+            this.monto.Width = 60;
+            // 
+            // tipoEntrada
+            // 
+            this.tipoEntrada.DataPropertyName = "idTipoEn";
+            this.tipoEntrada.HeaderText = "Tipo de entrada";
+            this.tipoEntrada.Name = "tipoEntrada";
+            this.tipoEntrada.ReadOnly = true;
+            this.tipoEntrada.Width = 124;
+            // 
+            // tipoVisita
+            // 
+            this.tipoVisita.DataPropertyName = "tipoVisita";
+            this.tipoVisita.HeaderText = "Tipo de visita";
+            this.tipoVisita.Name = "tipoVisita";
+            this.tipoVisita.ReadOnly = true;
+            this.tipoVisita.Width = 124;
+            // 
+            // montoAdicional
+            // 
+            this.montoAdicional.DataPropertyName = "montoAdicional";
+            this.montoAdicional.HeaderText = "Adicional guía";
+            this.montoAdicional.Name = "montoAdicional";
+            this.montoAdicional.ReadOnly = true;
+            this.montoAdicional.Width = 115;
             // 
             // groupBoxNuevaEntrada
             // 
@@ -144,7 +225,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxNuevaEntrada.Size = new System.Drawing.Size(362, 456);
             this.groupBoxNuevaEntrada.TabIndex = 1;
             this.groupBoxNuevaEntrada.TabStop = false;
-            this.groupBoxNuevaEntrada.Text = "Nueva entrada";
+            this.groupBoxNuevaEntrada.Text = "Nueva venta";
             // 
             // botonCalcularTotal
             // 
@@ -152,28 +233,37 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.botonCalcularTotal.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonCalcularTotal.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.botonCalcularTotal.FlatAppearance.BorderSize = 0;
-            this.botonCalcularTotal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.botonCalcularTotal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
+            this.botonCalcularTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonCalcularTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCalcularTotal.ForeColor = System.Drawing.Color.Black;
-            this.botonCalcularTotal.Location = new System.Drawing.Point(246, 205);
+            this.botonCalcularTotal.Location = new System.Drawing.Point(246, 185);
             this.botonCalcularTotal.Name = "botonCalcularTotal";
-            this.botonCalcularTotal.Size = new System.Drawing.Size(110, 34);
+            this.botonCalcularTotal.Size = new System.Drawing.Size(110, 46);
             this.botonCalcularTotal.TabIndex = 91;
-            this.botonCalcularTotal.Text = "Calcular Total";
+            this.botonCalcularTotal.Text = "Calcular total";
             this.botonCalcularTotal.UseVisualStyleBackColor = false;
             this.botonCalcularTotal.Click += new System.EventHandler(this.botonCalcularTotal_Click);
             // 
             // txtTipoVisita
             // 
+            this.txtTipoVisita.BackColor = System.Drawing.Color.Black;
+            this.txtTipoVisita.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTipoVisita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtTipoVisita.Location = new System.Drawing.Point(156, 91);
             this.txtTipoVisita.Name = "txtTipoVisita";
+            this.txtTipoVisita.ReadOnly = true;
             this.txtTipoVisita.Size = new System.Drawing.Size(200, 20);
             this.txtTipoVisita.TabIndex = 90;
             // 
             // txtTipoEntrada
             // 
+            this.txtTipoEntrada.BackColor = System.Drawing.Color.Black;
+            this.txtTipoEntrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTipoEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtTipoEntrada.Location = new System.Drawing.Point(156, 65);
             this.txtTipoEntrada.Name = "txtTipoEntrada";
+            this.txtTipoEntrada.ReadOnly = true;
             this.txtTipoEntrada.Size = new System.Drawing.Size(200, 20);
             this.txtTipoEntrada.TabIndex = 89;
             // 
@@ -183,10 +273,11 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonVolver.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.botonVolver.FlatAppearance.BorderSize = 0;
-            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.botonVolver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.botonVolver.Location = new System.Drawing.Point(8, 398);
+            this.botonVolver.Location = new System.Drawing.Point(5, 398);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(82, 34);
             this.botonVolver.TabIndex = 88;
@@ -196,10 +287,13 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtMaximoEntradas
             // 
-            this.txtMaximoEntradas.Enabled = false;
-            this.txtMaximoEntradas.Location = new System.Drawing.Point(299, 170);
+            this.txtMaximoEntradas.BackColor = System.Drawing.Color.Black;
+            this.txtMaximoEntradas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaximoEntradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtMaximoEntradas.Location = new System.Drawing.Point(176, 185);
             this.txtMaximoEntradas.Name = "txtMaximoEntradas";
-            this.txtMaximoEntradas.Size = new System.Drawing.Size(57, 20);
+            this.txtMaximoEntradas.ReadOnly = true;
+            this.txtMaximoEntradas.Size = new System.Drawing.Size(54, 20);
             this.txtMaximoEntradas.TabIndex = 86;
             // 
             // label14
@@ -207,28 +301,31 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label14.Location = new System.Drawing.Point(222, 170);
+            this.label14.Location = new System.Drawing.Point(9, 185);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 20);
+            this.label14.Size = new System.Drawing.Size(161, 20);
             this.label14.TabIndex = 87;
-            this.label14.Text = "Máximo: ";
+            this.label14.Text = "Entradas disponibles:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label2.Location = new System.Drawing.Point(216, 36);
+            this.label2.Location = new System.Drawing.Point(216, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 15);
+            this.label2.Size = new System.Drawing.Size(134, 15);
             this.label2.TabIndex = 16;
-            this.label2.Text = "(seleccionar en la grilla)";
+            this.label2.Text = "(seleccione en la grilla)";
             // 
             // txtIDTarifa
             // 
-            this.txtIDTarifa.Enabled = false;
-            this.txtIDTarifa.Location = new System.Drawing.Point(156, 36);
+            this.txtIDTarifa.BackColor = System.Drawing.Color.Black;
+            this.txtIDTarifa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIDTarifa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtIDTarifa.Location = new System.Drawing.Point(156, 39);
             this.txtIDTarifa.Name = "txtIDTarifa";
+            this.txtIDTarifa.ReadOnly = true;
             this.txtIDTarifa.Size = new System.Drawing.Size(54, 20);
             this.txtIDTarifa.TabIndex = 12;
             // 
@@ -237,7 +334,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label9.Location = new System.Drawing.Point(80, 36);
+            this.label9.Location = new System.Drawing.Point(80, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 20);
             this.label9.TabIndex = 13;
@@ -245,6 +342,9 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // groupBoxDetalle
             // 
+            this.groupBoxDetalle.Controls.Add(this.label17);
+            this.groupBoxDetalle.Controls.Add(this.label16);
+            this.groupBoxDetalle.Controls.Add(this.label10);
             this.groupBoxDetalle.Controls.Add(this.label13);
             this.groupBoxDetalle.Controls.Add(this.txtTotal);
             this.groupBoxDetalle.Controls.Add(this.label12);
@@ -254,30 +354,66 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxDetalle.Controls.Add(this.label8);
             this.groupBoxDetalle.Controls.Add(this.txtNroEntradasDetalle);
             this.groupBoxDetalle.ForeColor = System.Drawing.Color.White;
-            this.groupBoxDetalle.Location = new System.Drawing.Point(36, 245);
+            this.groupBoxDetalle.Location = new System.Drawing.Point(50, 245);
             this.groupBoxDetalle.Name = "groupBoxDetalle";
-            this.groupBoxDetalle.Size = new System.Drawing.Size(292, 142);
+            this.groupBoxDetalle.Size = new System.Drawing.Size(271, 142);
             this.groupBoxDetalle.TabIndex = 11;
             this.groupBoxDetalle.TabStop = false;
             this.groupBoxDetalle.Text = "Detalle";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.label17.Location = new System.Drawing.Point(162, 105);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(18, 20);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "$";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.label16.Location = new System.Drawing.Point(162, 53);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(18, 20);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "$";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.label10.Location = new System.Drawing.Point(162, 79);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 20);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "$";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label13.Location = new System.Drawing.Point(93, 110);
+            this.label13.Location = new System.Drawing.Point(99, 105);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 20);
+            this.label13.Size = new System.Drawing.Size(63, 20);
             this.label13.TabIndex = 18;
-            this.label13.Text = "TOTAL:  $";
+            this.label13.Text = "TOTAL:";
             // 
             // txtTotal
             // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(174, 110);
+            this.txtTotal.BackColor = System.Drawing.Color.Black;
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtTotal.Location = new System.Drawing.Point(180, 105);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(73, 20);
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(52, 20);
             this.txtTotal.TabIndex = 9;
             // 
             // label12
@@ -285,18 +421,21 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label12.Location = new System.Drawing.Point(10, 82);
+            this.label12.Location = new System.Drawing.Point(39, 79);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(161, 20);
+            this.label12.Size = new System.Drawing.Size(124, 20);
             this.label12.TabIndex = 16;
-            this.label12.Text = "Monto adicional:       $";
+            this.label12.Text = "Monto adicional:\r\n";
             // 
             // txtMontoAdicional
             // 
-            this.txtMontoAdicional.Enabled = false;
-            this.txtMontoAdicional.Location = new System.Drawing.Point(174, 84);
+            this.txtMontoAdicional.BackColor = System.Drawing.Color.Black;
+            this.txtMontoAdicional.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMontoAdicional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtMontoAdicional.Location = new System.Drawing.Point(180, 79);
             this.txtMontoAdicional.Name = "txtMontoAdicional";
-            this.txtMontoAdicional.Size = new System.Drawing.Size(73, 20);
+            this.txtMontoAdicional.ReadOnly = true;
+            this.txtMontoAdicional.Size = new System.Drawing.Size(52, 20);
             this.txtMontoAdicional.TabIndex = 8;
             // 
             // label11
@@ -304,18 +443,21 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label11.Location = new System.Drawing.Point(10, 58);
+            this.label11.Location = new System.Drawing.Point(18, 53);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(161, 20);
+            this.label11.Size = new System.Drawing.Size(144, 20);
             this.label11.TabIndex = 14;
-            this.label11.Text = "Monto por entrada:  $";
+            this.label11.Text = "Monto por entrada:\r\n";
             // 
             // txtMontoEntrada
             // 
-            this.txtMontoEntrada.Enabled = false;
-            this.txtMontoEntrada.Location = new System.Drawing.Point(174, 58);
+            this.txtMontoEntrada.BackColor = System.Drawing.Color.Black;
+            this.txtMontoEntrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMontoEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtMontoEntrada.Location = new System.Drawing.Point(180, 53);
             this.txtMontoEntrada.Name = "txtMontoEntrada";
-            this.txtMontoEntrada.Size = new System.Drawing.Size(73, 20);
+            this.txtMontoEntrada.ReadOnly = true;
+            this.txtMontoEntrada.Size = new System.Drawing.Size(52, 20);
             this.txtMontoEntrada.TabIndex = 7;
             // 
             // label8
@@ -323,18 +465,21 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label8.Location = new System.Drawing.Point(10, 32);
+            this.label8.Location = new System.Drawing.Point(44, 27);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 20);
+            this.label8.Size = new System.Drawing.Size(118, 20);
             this.label8.TabIndex = 12;
-            this.label8.Text = "N° de entradas:   ";
+            this.label8.Text = "N° de entradas:";
             // 
             // txtNroEntradasDetalle
             // 
-            this.txtNroEntradasDetalle.Enabled = false;
-            this.txtNroEntradasDetalle.Location = new System.Drawing.Point(174, 32);
+            this.txtNroEntradasDetalle.BackColor = System.Drawing.Color.Black;
+            this.txtNroEntradasDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNroEntradasDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtNroEntradasDetalle.Location = new System.Drawing.Point(180, 27);
             this.txtNroEntradasDetalle.Name = "txtNroEntradasDetalle";
-            this.txtNroEntradasDetalle.Size = new System.Drawing.Size(73, 20);
+            this.txtNroEntradasDetalle.ReadOnly = true;
+            this.txtNroEntradasDetalle.Size = new System.Drawing.Size(52, 20);
             this.txtNroEntradasDetalle.TabIndex = 6;
             // 
             // botonCancelar
@@ -343,7 +488,8 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.botonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.botonCancelar.FlatAppearance.BorderSize = 0;
-            this.botonCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.botonCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.botonCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.botonCancelar.Location = new System.Drawing.Point(158, 398);
@@ -360,7 +506,8 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.botonConfirmarVenta.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonConfirmarVenta.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.botonConfirmarVenta.FlatAppearance.BorderSize = 0;
-            this.botonConfirmarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.botonConfirmarVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(187)))), ((int)(((byte)(227)))));
+            this.botonConfirmarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonConfirmarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonConfirmarVenta.ForeColor = System.Drawing.Color.Black;
             this.botonConfirmarVenta.Location = new System.Drawing.Point(246, 398);
@@ -373,16 +520,21 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtNroEntradas
             // 
-            this.txtNroEntradas.Location = new System.Drawing.Point(156, 170);
+            this.txtNroEntradas.BackColor = System.Drawing.Color.Black;
+            this.txtNroEntradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtNroEntradas.Location = new System.Drawing.Point(176, 211);
             this.txtNroEntradas.Name = "txtNroEntradas";
-            this.txtNroEntradas.Size = new System.Drawing.Size(60, 20);
+            this.txtNroEntradas.Size = new System.Drawing.Size(54, 20);
             this.txtNroEntradas.TabIndex = 5;
             // 
             // txtDuracionEstimada
             // 
-            this.txtDuracionEstimada.Enabled = false;
-            this.txtDuracionEstimada.Location = new System.Drawing.Point(158, 130);
+            this.txtDuracionEstimada.BackColor = System.Drawing.Color.Black;
+            this.txtDuracionEstimada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDuracionEstimada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.txtDuracionEstimada.Location = new System.Drawing.Point(156, 117);
             this.txtDuracionEstimada.Name = "txtDuracionEstimada";
+            this.txtDuracionEstimada.ReadOnly = true;
             this.txtDuracionEstimada.Size = new System.Drawing.Size(60, 20);
             this.txtDuracionEstimada.TabIndex = 85;
             // 
@@ -402,7 +554,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label4.Location = new System.Drawing.Point(26, 168);
+            this.label4.Location = new System.Drawing.Point(52, 211);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 20);
             this.label4.TabIndex = 5;
@@ -424,7 +576,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label6.Location = new System.Drawing.Point(4, 128);
+            this.label6.Location = new System.Drawing.Point(4, 117);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(146, 20);
             this.label6.TabIndex = 7;
@@ -435,7 +587,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label7.Location = new System.Drawing.Point(228, 128);
+            this.label7.Location = new System.Drawing.Point(222, 117);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 20);
             this.label7.TabIndex = 8;
@@ -447,7 +599,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxTarifasExistentes.ForeColor = System.Drawing.Color.White;
             this.groupBoxTarifasExistentes.Location = new System.Drawing.Point(380, 53);
             this.groupBoxTarifasExistentes.Name = "groupBoxTarifasExistentes";
-            this.groupBoxTarifasExistentes.Size = new System.Drawing.Size(364, 456);
+            this.groupBoxTarifasExistentes.Size = new System.Drawing.Size(463, 456);
             this.groupBoxTarifasExistentes.TabIndex = 2;
             this.groupBoxTarifasExistentes.TabStop = false;
             this.groupBoxTarifasExistentes.Text = "Tarifas existentes";
@@ -457,7 +609,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label15.Location = new System.Drawing.Point(591, 16);
+            this.label15.Location = new System.Drawing.Point(700, 29);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 20);
             this.label15.TabIndex = 88;
@@ -468,58 +620,42 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelFechaActual.AutoSize = true;
             this.labelFechaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFechaActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.labelFechaActual.Location = new System.Drawing.Point(655, 16);
+            this.labelFechaActual.Location = new System.Drawing.Point(764, 29);
             this.labelFechaActual.Name = "labelFechaActual";
             this.labelFechaActual.Size = new System.Drawing.Size(14, 20);
             this.labelFechaActual.TabIndex = 89;
             this.labelFechaActual.Text = "-";
             // 
-            // idTarifa
+            // lblSedeActual
             // 
-            this.idTarifa.DataPropertyName = "idTarifa";
-            this.idTarifa.HeaderText = "ID";
-            this.idTarifa.Name = "idTarifa";
-            this.idTarifa.ReadOnly = true;
-            this.idTarifa.Width = 25;
+            this.lblSedeActual.AutoSize = true;
+            this.lblSedeActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSedeActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.lblSedeActual.Location = new System.Drawing.Point(764, 9);
+            this.lblSedeActual.Name = "lblSedeActual";
+            this.lblSedeActual.Size = new System.Drawing.Size(14, 20);
+            this.lblSedeActual.TabIndex = 91;
+            this.lblSedeActual.Text = "-";
             // 
-            // monto
+            // lbl99
             // 
-            this.monto.DataPropertyName = "monto";
-            this.monto.HeaderText = "Monto";
-            this.monto.Name = "monto";
-            this.monto.ReadOnly = true;
-            this.monto.Width = 55;
-            // 
-            // tipoEntrada
-            // 
-            this.tipoEntrada.DataPropertyName = "idTipoEn";
-            this.tipoEntrada.HeaderText = "Tipo de entrada";
-            this.tipoEntrada.Name = "tipoEntrada";
-            this.tipoEntrada.ReadOnly = true;
-            this.tipoEntrada.Width = 124;
-            // 
-            // tipoVisita
-            // 
-            this.tipoVisita.DataPropertyName = "tipoVisita";
-            this.tipoVisita.HeaderText = "Tipo de visita";
-            this.tipoVisita.Name = "tipoVisita";
-            this.tipoVisita.ReadOnly = true;
-            this.tipoVisita.Width = 124;
-            // 
-            // montoAdicional
-            // 
-            this.montoAdicional.DataPropertyName = "montoAdicional";
-            this.montoAdicional.HeaderText = "Monto adicional";
-            this.montoAdicional.Name = "montoAdicional";
-            this.montoAdicional.ReadOnly = true;
-            this.montoAdicional.Width = 55;
+            this.lbl99.AutoSize = true;
+            this.lbl99.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl99.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.lbl99.Location = new System.Drawing.Point(660, 9);
+            this.lbl99.Name = "lbl99";
+            this.lbl99.Size = new System.Drawing.Size(98, 20);
+            this.lbl99.TabIndex = 90;
+            this.lbl99.Text = "Sede actual:";
             // 
             // PantallaVentaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(754, 521);
+            this.ClientSize = new System.Drawing.Size(854, 521);
+            this.Controls.Add(this.lblSedeActual);
+            this.Controls.Add(this.lbl99);
             this.Controls.Add(this.labelFechaActual);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.groupBoxTarifasExistentes);
@@ -528,8 +664,8 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(770, 560);
-            this.MinimumSize = new System.Drawing.Size(770, 560);
+            this.MaximumSize = new System.Drawing.Size(870, 560);
+            this.MinimumSize = new System.Drawing.Size(870, 560);
             this.Name = "PantallaVentaEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar nueva venta";
@@ -580,10 +716,15 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private System.Windows.Forms.TextBox txtTipoVisita;
         private System.Windows.Forms.TextBox txtTipoEntrada;
         private System.Windows.Forms.Button botonCalcularTotal;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTarifa;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoEntrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoVisita;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoAdicional;
+        private System.Windows.Forms.Label lblSedeActual;
+        private System.Windows.Forms.Label lbl99;
     }
 }

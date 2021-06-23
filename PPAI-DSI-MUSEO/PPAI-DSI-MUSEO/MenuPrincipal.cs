@@ -31,5 +31,10 @@ namespace PPAI_DSI_MUSEO
         {
             this.Close();
         }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

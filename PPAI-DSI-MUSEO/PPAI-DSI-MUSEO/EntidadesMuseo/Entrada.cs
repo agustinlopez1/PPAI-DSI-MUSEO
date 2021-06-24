@@ -40,7 +40,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
             return listaEntradasActuales;
 
-        }
+        } //veriica si la entrada es de la fecha actual
 
         public List<Entrada> esSedeActual(int idsede)
         {
@@ -48,7 +48,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             listaEntradas = Varios_DAO.ObtenerEntradasXSede(Varios_DAO.ObtenerTabla("Entrada"), idsede);
             return listaEntradas;
 
-        }
+        } //verifica que la sede es la actual 
 
     }
 }

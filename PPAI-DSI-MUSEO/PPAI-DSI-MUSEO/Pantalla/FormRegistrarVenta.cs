@@ -28,12 +28,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             labelFechaActual.Text = DateTime.Now.ToShortDateString();
             lblSedeActual.Text = gestor.SesionActual.Usuario.Empleado.Sede.Nombre;
             mostrarTarifasExistentes(gestor.TarifasExistentes);
-            
-
-            //gestor.CalcularDuracionEstimada();
-
-            // txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
-
+        
             gestor.buscarReservas();
             gestor.buscarEntradasVendidas();
             gestor.calcularVisitantesTotal();
@@ -220,7 +215,8 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                     labelError.Visible = false;
                     txtDuracionEstimada.ForeColor = Color.FromArgb(4, 139, 204);
                     gestor.calcularDuracionEstimada();
-                    txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
+                    string tiempo = ConvertirMinutosAHoras(gestor.DuracionEstimada);
+                    txtDuracionEstimada.Text = tiempo;
                 }
 
                 //if (tipoVisita.ToString() == "Por Exposicion")
@@ -266,7 +262,8 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                     labelError.Visible = false;
                     txtDuracionEstimada.ForeColor = Color.FromArgb(4, 139, 204);
                     gestor.calcularDuracionEstimada();
-                    txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
+                    string tiempo = ConvertirMinutosAHoras(gestor.DuracionEstimada);
+                    txtDuracionEstimada.Text = tiempo;
                 }
 
                 
@@ -326,6 +323,18 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             //comboExposiciones.ValueMember = "idExpo";
             //comboExposiciones.SelectedIndex = -1;
 
+
+        }
+
+        private string ConvertirMinutosAHoras(int minutosAconvertir)
+        {   
+            int horas = minutosAconvertir / 60;
+            
+            int minutos = 70 % 60;
+
+            string resultado = horas.ToString() + "." + minutos.ToString();
+
+            return resultado;
 
         }
         // =====================================================================

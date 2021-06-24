@@ -42,6 +42,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.tipoVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNuevaEntrada = new System.Windows.Forms.GroupBox();
+            this.labelError = new System.Windows.Forms.Label();
             this.botonCalcularTotal = new System.Windows.Forms.Button();
             this.txtTipoVisita = new System.Windows.Forms.TextBox();
             this.txtTipoEntrada = new System.Windows.Forms.TextBox();
@@ -77,7 +78,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelFechaActual = new System.Windows.Forms.Label();
             this.lblSedeActual = new System.Windows.Forms.Label();
             this.lbl99 = new System.Windows.Forms.Label();
-            this.labelError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).BeginInit();
             this.groupBoxNuevaEntrada.SuspendLayout();
             this.groupBoxDetalle.SuspendLayout();
@@ -228,6 +228,18 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxNuevaEntrada.TabIndex = 1;
             this.groupBoxNuevaEntrada.TabStop = false;
             this.groupBoxNuevaEntrada.Text = "Nueva venta";
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(24, 154);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(189, 17);
+            this.labelError.TabIndex = 92;
+            this.labelError.Text = "Alternativa No Implementada";
+            this.labelError.Visible = false;
             // 
             // botonCalcularTotal
             // 
@@ -591,9 +603,9 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.label7.Location = new System.Drawing.Point(222, 117);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 20);
+            this.label7.Size = new System.Drawing.Size(49, 20);
             this.label7.TabIndex = 8;
-            this.label7.Text = "minutos";
+            this.label7.Text = "horas";
             // 
             // groupBoxTarifasExistentes
             // 
@@ -649,18 +661,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.lbl99.Size = new System.Drawing.Size(98, 20);
             this.lbl99.TabIndex = 90;
             this.lbl99.Text = "Sede actual:";
-            // 
-            // labelError
-            // 
-            this.labelError.AutoSize = true;
-            this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(24, 154);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(189, 17);
-            this.labelError.TabIndex = 92;
-            this.labelError.Text = "Alternativa No Implementada";
-            this.labelError.Visible = false;
             // 
             // PantallaVentaEntrada
             // 

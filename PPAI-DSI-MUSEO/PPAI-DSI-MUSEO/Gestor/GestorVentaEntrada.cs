@@ -224,8 +224,7 @@ namespace PPAI_DSI_MUSEO.Gestor
             // mensaje de actualizado de las pantallas segun la capacidad de la sede
         {
             this.cantidadVisitantesTotal += cantEntradasGenerar;
-            MessageBox.Show("Se extiende al CU 'actualizar pantallas'. \n" +
-                "Pantallas de cantidad de visitantes actualizadas.\n" +
+            MessageBox.Show("Pantallas de cantidad de visitantes actualizadas.\n" +
                 "En este momento hay " + cantidadVisitantesTotal +" personas en el museo");
         }
     }

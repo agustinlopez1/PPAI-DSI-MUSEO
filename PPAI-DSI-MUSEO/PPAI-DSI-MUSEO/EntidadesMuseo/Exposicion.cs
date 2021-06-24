@@ -13,7 +13,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private string nombre;
         private int idExpo;
         private int idSede;
-        private List<DetalleExposicion> detalles; //nueva agregacion
+        private List<DetalleExposicion> detalles; 
 
         public Exposicion()
         {
@@ -47,6 +47,6 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
 
            
-        }
+        } //verificar si la exposicion es vigente
     }
 }

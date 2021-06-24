@@ -21,7 +21,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public string Nombre { get => nombre; set => nombre = value; }
         public Empleado Empleado { get => empleado; set => empleado = value; }
 
-        public static Empleado getEmpleado(int legEmpleado) // checkeado
+        public static Empleado getEmpleado(int legEmpleado) //devuelve el empleado del usuario
         {
             Empleado empleado = new Empleado();
             empleado = AccesoADatos.Varios_DAO.ObtenerEmpleado(legEmpleado);

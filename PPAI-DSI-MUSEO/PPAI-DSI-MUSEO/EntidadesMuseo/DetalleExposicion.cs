@@ -10,7 +10,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
     {
         private int idDetalleExposicion;
         private Obra obra;
-        private int idExposicion; //taa bien? 
+        private int idExposicion;
 
         public DetalleExposicion()
         {

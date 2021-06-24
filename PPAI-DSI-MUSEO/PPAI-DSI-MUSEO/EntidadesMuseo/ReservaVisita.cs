@@ -34,7 +34,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
             return listaReservaSede;
         
-        }
+        } 
         public List<ReservaVisita> esFechaHoraHoy(List<ReservaVisita> reservas) 
         {
 

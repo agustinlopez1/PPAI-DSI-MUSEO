@@ -101,7 +101,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.grillaTarifasExistentes.AllowUserToDeleteRows = false;
             this.grillaTarifasExistentes.AllowUserToResizeColumns = false;
             this.grillaTarifasExistentes.AllowUserToResizeRows = false;
-            this.grillaTarifasExistentes.BackgroundColor = System.Drawing.Color.Black;
+            this.grillaTarifasExistentes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.grillaTarifasExistentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grillaTarifasExistentes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.grillaTarifasExistentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -200,7 +200,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // groupBoxNuevaEntrada
             // 
-            this.groupBoxNuevaEntrada.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxNuevaEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.groupBoxNuevaEntrada.Controls.Add(this.labelError);
             this.groupBoxNuevaEntrada.Controls.Add(this.botonCalcularTotal);
             this.groupBoxNuevaEntrada.Controls.Add(this.txtTipoVisita);
@@ -261,7 +261,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtTipoVisita
             // 
-            this.txtTipoVisita.BackColor = System.Drawing.Color.Black;
+            this.txtTipoVisita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtTipoVisita.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTipoVisita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtTipoVisita.Location = new System.Drawing.Point(156, 91);
@@ -272,7 +272,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtTipoEntrada
             // 
-            this.txtTipoEntrada.BackColor = System.Drawing.Color.Black;
+            this.txtTipoEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtTipoEntrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTipoEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtTipoEntrada.Location = new System.Drawing.Point(156, 65);
@@ -283,7 +283,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // botonVolver
             // 
-            this.botonVolver.BackColor = System.Drawing.Color.Black;
+            this.botonVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonVolver.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.botonVolver.FlatAppearance.BorderSize = 0;
@@ -301,7 +301,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtMaximoEntradas
             // 
-            this.txtMaximoEntradas.BackColor = System.Drawing.Color.Black;
+            this.txtMaximoEntradas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtMaximoEntradas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaximoEntradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtMaximoEntradas.Location = new System.Drawing.Point(176, 185);
@@ -334,7 +334,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtIDTarifa
             // 
-            this.txtIDTarifa.BackColor = System.Drawing.Color.Black;
+            this.txtIDTarifa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtIDTarifa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIDTarifa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtIDTarifa.Location = new System.Drawing.Point(156, 39);
@@ -421,7 +421,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtTotal
             // 
-            this.txtTotal.BackColor = System.Drawing.Color.Black;
+            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtTotal.Location = new System.Drawing.Point(180, 105);
@@ -443,7 +443,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtMontoAdicional
             // 
-            this.txtMontoAdicional.BackColor = System.Drawing.Color.Black;
+            this.txtMontoAdicional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtMontoAdicional.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMontoAdicional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtMontoAdicional.Location = new System.Drawing.Point(180, 79);
@@ -465,7 +465,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtMontoEntrada
             // 
-            this.txtMontoEntrada.BackColor = System.Drawing.Color.Black;
+            this.txtMontoEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtMontoEntrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMontoEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtMontoEntrada.Location = new System.Drawing.Point(180, 53);
@@ -487,7 +487,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtNroEntradasDetalle
             // 
-            this.txtNroEntradasDetalle.BackColor = System.Drawing.Color.Black;
+            this.txtNroEntradasDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtNroEntradasDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNroEntradasDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtNroEntradasDetalle.Location = new System.Drawing.Point(180, 27);
@@ -498,7 +498,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // botonCancelar
             // 
-            this.botonCancelar.BackColor = System.Drawing.Color.Black;
+            this.botonCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.botonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.botonCancelar.FlatAppearance.BorderSize = 0;
@@ -534,7 +534,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtNroEntradas
             // 
-            this.txtNroEntradas.BackColor = System.Drawing.Color.Black;
+            this.txtNroEntradas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtNroEntradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtNroEntradas.Location = new System.Drawing.Point(176, 211);
             this.txtNroEntradas.Name = "txtNroEntradas";
@@ -543,7 +543,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // txtDuracionEstimada
             // 
-            this.txtDuracionEstimada.BackColor = System.Drawing.Color.Black;
+            this.txtDuracionEstimada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.txtDuracionEstimada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDuracionEstimada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
             this.txtDuracionEstimada.Location = new System.Drawing.Point(156, 117);
@@ -609,6 +609,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             // groupBoxTarifasExistentes
             // 
+            this.groupBoxTarifasExistentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.groupBoxTarifasExistentes.Controls.Add(this.grillaTarifasExistentes);
             this.groupBoxTarifasExistentes.ForeColor = System.Drawing.Color.White;
             this.groupBoxTarifasExistentes.Location = new System.Drawing.Point(380, 53);
@@ -666,7 +667,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(854, 521);
             this.Controls.Add(this.lblSedeActual);
             this.Controls.Add(this.lbl99);

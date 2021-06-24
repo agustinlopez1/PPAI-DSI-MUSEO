@@ -23,19 +23,19 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
         public Usuario Usuario { get => usuario; set => usuario = value; }
 
-        public static Usuario getEmpleadoEnSesion(int idUsuario) // checkeado x2
+        public static Usuario getEmpleadoEnSesion(int idUsuario) //obtiene el usuario que esta en sesio
         {
-            Usuario usu = new Usuario();
+            Usuario usuario = new Usuario();
             DataTable tabla = new DataTable();
             tabla = AccesoADatos.Varios_DAO.ObtenerTabla("Usuario");
             for (int i = 0; i < tabla.Rows.Count; i++)
             {
                 if (Convert.ToInt32(tabla.Rows[i][0]) == idUsuario)
                 {
-                    usu.IdUsuario = Convert.ToInt32(tabla.Rows[i][0]);
-                    usu.Nombre = tabla.Rows[i][1].ToString();
-                    usu.Empleado = Usuario.ObtenerEmpleado((Convert.ToInt32(tabla.Rows[i][2])));
-                    return usu;
+                    usuario.IdUsuario = Convert.ToInt32(tabla.Rows[i][0]);
+                    usuario.Nombre = tabla.Rows[i][1].ToString();
+                    usuario.Empleado = Usuario.getEmpleado((Convert.ToInt32(tabla.Rows[i][2])));
+                    return usuario;
                 }
             }
             return null;

@@ -13,7 +13,7 @@ namespace PPAI_DSI_MUSEO.Gestor
     public class GestorVentaEntrada
     {
         private List<Tarifa> tarifasExistentes;
-        private int cantEntradasGenerar; //agregar a la vista
+        private int cantEntradasGenerar;
         private List<ReservaVisita> reservasActuales;
         private List<Entrada> entradasVendidas;
         private Tarifa tarifaSeleccionada;
@@ -23,7 +23,8 @@ namespace PPAI_DSI_MUSEO.Gestor
         private Sesion sesionActual;
         private int duracionEstimada;
         private int cantidadVisitantesTotal;
-        private int montoTotal;  // ?????
+        private int montoTotal;
+        private Exposicion exposicionSelecionada; //alternativa 
 
         public GestorVentaEntrada()
         {
@@ -44,16 +45,17 @@ namespace PPAI_DSI_MUSEO.Gestor
         public int MontoTotal { get => montoTotal; set => montoTotal = value; }
         public DateTime FechaHoraEntradaAGenerar { get => fechaHoraEntradaAGenerar; set => fechaHoraEntradaAGenerar = value; }
         public int NumeroEntrada { get => numeroEntrada; set => numeroEntrada = value; }
+        public Exposicion ExposicionSelecionada { get => exposicionSelecionada; set => exposicionSelecionada = value; }
 
 
         // ========================================================================
-        public void OpcionRegistrarVenta() // método disparador del CU?
+        public void opcionRegistrarVenta() // método disparador del CU?
         {
-            ObtenerSedeActual();
-            BuscarTarifasExistentes();
+            obtenerSedeActual();
+            buscarTarifasExistentes();
         }
 
-        public void ObtenerSedeActual()
+        public void obtenerSedeActual()
         // setea el atributo sedeActual del gestor segun el empleado logueado en el sistema
         {
             List<Sesion> listaSesiones = new List<Sesion>();
@@ -80,10 +82,10 @@ namespace PPAI_DSI_MUSEO.Gestor
             return null;
         } 
 
-        public void BuscarTarifasExistentes()
+        public void buscarTarifasExistentes()
         // setea el atributo tarifasExistentes del gestor segun las tarifas de la sede actual
         {
-            this.tarifasExistentes = this.SedeActual.BuscarTarifaExistentes(sedeActual.IdSede);
+            this.tarifasExistentes = this.SedeActual.buscarTarifaExistentes(sedeActual.IdSede);
 
         }
 
@@ -96,37 +98,59 @@ namespace PPAI_DSI_MUSEO.Gestor
 
         } 
 
-        public void CalcularDuracionEstimada()
+        public void calcularDuracionEstimada()
         {
-            this.duracionEstimada = this.sedeActual.ConocerExposicionesVigentes();
+            this.duracionEstimada = this.sedeActual.conocerExposicionesVigentes();
+
+
+            //if (this.tarifaSeleccionada.TipoVisita.IdTipoVisita == 2)                 //alternativa
+            //{
+            //    //int acumulador = 0;
+            //    //List<DetalleExposicion> detalles = this.exposicionSelecionada.Detalles;
+            //    //foreach (DetalleExposicion detalle in detalles)
+            //    //{
+            //    //    int duracionResmida = detalle.Obra.DuracionResumida;
+            //    //    acumulador += duracionResmida;
+
+            //    //}
+            //    //this.duracionEstimada = acumulador;
+                
+            //}
+            //else 
+            //{
+                
+
+            //}
+
+            
         }
 
-        public void BuscarReservas()
+        public void buscarReservas()
         // setea el atributo reservasActuales del gestor segun las reservas para el dia actual
         {
             ReservaVisita reserva = new ReservaVisita();
-            this.reservasActuales = reserva.EsFechaHoraHoy(reserva.EsSedeActual(this.sedeActual.IdSede));
+            this.reservasActuales = reserva.esFechaHoraHoy(reserva.esSedeActual(this.sedeActual.IdSede));
         }
 
-        public void BuscarEntradasVendidas()
+        public void buscarEntradasVendidas()
         // setea el atributo entradasVendidas del gestor segun las vendidas en el dia actual
 
         {
             Entrada entrada = new Entrada();
-            this.entradasVendidas = entrada.EsFechaHoraHoy(entrada.EsSedeActual(this.SedeActual.IdSede));
+            this.entradasVendidas = entrada.esFechaHoraHoy(entrada.esSedeActual(this.SedeActual.IdSede));
         }
 
-        public int BuscarCapacidadMaxima()
+        public int buscarCapacidadMaxima()
         {
             int capacidadMax;
             capacidadMax = this.SedeActual.CantMaximaVisitantes;
             return capacidadMax;
         }
 
-        public  void CalcularVisitantesTotal()
+        public  void calcularVisitantesTotal()
         // setea el valor CantidadVisitantesTotal del gestor
         {
-            BuscarEntradasVendidas();
+            buscarEntradasVendidas();
             int cantEntradasVendidas = this.EntradasVendidas.Count();
             int cantVisitantes = 0;
             foreach (ReservaVisita reserva in this.ReservasActuales)
@@ -140,7 +164,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         public  bool verificarLimiteVisitantes(int cantidadEntradas)  
             // valida que la cant. entradas no supere la capacidad
         {
-            int capacidadSede = BuscarCapacidadMaxima();
+            int capacidadSede = buscarCapacidadMaxima();
             int limite = capacidadSede - this.CantidadVisitantesTotal;
             if (cantidadEntradas <= limite)
             {
@@ -152,7 +176,7 @@ namespace PPAI_DSI_MUSEO.Gestor
             }
         }
 
-        public int CalcularMontoTotal() 
+        public int calcularMontoTotal() 
         {
             int monto = Convert.ToInt32(this.tarifaSeleccionada.Monto);
             int montoAdicional = Convert.ToInt32(this.tarifaSeleccionada.MontoAdicional);
@@ -163,7 +187,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         
         }
 
-        public void RegistrarNuevaEntrada() 
+        public void registrarNuevaEntrada() 
         {
             getFechaHoraActual();
             buscarUltimoNumeroEntrada();

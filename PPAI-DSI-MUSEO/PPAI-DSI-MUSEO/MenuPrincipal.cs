@@ -30,6 +30,7 @@ namespace PPAI_DSI_MUSEO
         private void botonSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+            Application.Exit();
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)

@@ -25,7 +25,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public float Monto { get => monto; set => monto = value; }
         public Sede Sede { get => sede; set => sede = value; }
 
-        public List<Entrada> EsFechaHoraHoy(List<Entrada> entradas)
+        public List<Entrada> esFechaHoraHoy(List<Entrada> entradas)
         {
 
             List<Entrada> listaEntradasActuales = new List<Entrada>();
@@ -42,7 +42,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         }
 
-        public List<Entrada> EsSedeActual(int idsede)
+        public List<Entrada> esSedeActual(int idsede)
         {
             List<Entrada> listaEntradas = new List<Entrada>();
             listaEntradas = Varios_DAO.ObtenerEntradasXSede(Varios_DAO.ObtenerTabla("Entrada"), idsede);

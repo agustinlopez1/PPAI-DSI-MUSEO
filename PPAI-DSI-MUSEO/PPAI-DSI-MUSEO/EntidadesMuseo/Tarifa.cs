@@ -13,8 +13,6 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private int idTarifa;
         private float monto;
         private float montoAdicional;
-        private int idTipoEntrada;
-        private int idTipoVisita;
         private int idSede;
 
         private TipoEntrada tipoEntrada;
@@ -25,22 +23,12 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
         public float Monto { get => monto; set => monto = value; }
         public float MontoAdicional { get => montoAdicional; set => montoAdicional = value; }
-        public int IdTipoEntrada { get => idTipoEntrada; set => idTipoEntrada = value; }
-        public int IdTipoVisita { get => idTipoVisita; set => idTipoVisita = value; }
         public int IdTarifa { get => idTarifa; set => idTarifa = value; }
         public int IdSede { get => idSede; set => idSede = value; }
         public TipoEntrada TipoEntrada { get => tipoEntrada; set => tipoEntrada = value; }
         public TipoVisita TipoVisita { get => tipoVisita; set => tipoVisita = value; }
 
-        public void ConocerTipoEntrada()
-        {
-                //vemos que onda porque es un get 
-        }
-
-        public void ConocerTipoVisita()
-        {
-            //idem arriba
-        }
+        
 
 
 

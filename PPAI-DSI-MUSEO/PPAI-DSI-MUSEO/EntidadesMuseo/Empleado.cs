@@ -32,38 +32,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public Sede Sede { get => sede; set => sede = value; }
 
 
-        public static Sede ObtenerSede(int idSede) // checkeado
-        {
-            Sede sede = new Sede();
-            DataTable tabla = new DataTable();
-            tabla = AccesoADatos.Varios_DAO.ObtenerTabla("Sede");
-            bool bandera = false;
-            for (int i = 0; i < tabla.Rows.Count; i++)
-            {
-
-                if (Convert.ToInt32(tabla.Rows[i][0]) == idSede)
-                {
-                    sede.IdSede = Convert.ToInt32(tabla.Rows[i][0]);
-                    sede.CantMaximaVisitantes = Convert.ToInt32(tabla.Rows[i][1]);
-                    sede.CantMaximaPorGuia = Convert.ToInt32(tabla.Rows[i][2]);
-                    sede.Nombre = tabla.Rows[i][3].ToString();
-                    
-
-                    bandera = true;
-                    return sede;
-                }
-
-            }
-            if (bandera) {
-                MessageBox.Show("se encontro la sede" + sede.Nombre);
-            }
-            
-
-            return null;
-
-        }
-
-
+        
 
 
     }

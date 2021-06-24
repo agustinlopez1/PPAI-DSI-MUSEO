@@ -27,7 +27,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public int CantAlumnosConfirmada { get => cantAlumnosConfirmada; set => cantAlumnosConfirmada = value; }
         public int NroReserva { get => nroReserva; set => nroReserva = value; }
 
-        public List<ReservaVisita> EsSedeActual(int idsede) 
+        public List<ReservaVisita> esSedeActual(int idsede) 
         {
             List<ReservaVisita> listaReservaSede = new List<ReservaVisita>();
             listaReservaSede = Varios_DAO.ObtenerReservas(Varios_DAO.ObtenerTabla("ReserveVisita"), idsede);
@@ -35,13 +35,13 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             return listaReservaSede;
         
         }
-        public List<ReservaVisita> EsFechaHoraHoy(List<ReservaVisita> reservas) 
+        public List<ReservaVisita> esFechaHoraHoy(List<ReservaVisita> reservas) 
         {
 
             List<ReservaVisita> listaReservaHoy = new List<ReservaVisita>();
             foreach (ReservaVisita reserva in reservas)
             {
-                if (reserva.fechaReserva == DateTime.Today) 
+                if (reserva.fechaReserva.Date == DateTime.Today.Date) 
                 {
                     listaReservaHoy.Add(reserva);
                 

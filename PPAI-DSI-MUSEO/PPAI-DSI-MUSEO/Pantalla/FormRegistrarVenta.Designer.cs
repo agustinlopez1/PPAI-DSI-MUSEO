@@ -77,6 +77,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelFechaActual = new System.Windows.Forms.Label();
             this.lblSedeActual = new System.Windows.Forms.Label();
             this.lbl99 = new System.Windows.Forms.Label();
+            this.labelError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).BeginInit();
             this.groupBoxNuevaEntrada.SuspendLayout();
             this.groupBoxDetalle.SuspendLayout();
@@ -200,6 +201,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // groupBoxNuevaEntrada
             // 
             this.groupBoxNuevaEntrada.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxNuevaEntrada.Controls.Add(this.labelError);
             this.groupBoxNuevaEntrada.Controls.Add(this.botonCalcularTotal);
             this.groupBoxNuevaEntrada.Controls.Add(this.txtTipoVisita);
             this.groupBoxNuevaEntrada.Controls.Add(this.txtTipoEntrada);
@@ -648,6 +650,18 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.lbl99.TabIndex = 90;
             this.lbl99.Text = "Sede actual:";
             // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(24, 154);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(189, 17);
+            this.labelError.TabIndex = 92;
+            this.labelError.Text = "Alternativa No Implementada";
+            this.labelError.Visible = false;
+            // 
             // PantallaVentaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -726,5 +740,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private System.Windows.Forms.DataGridViewTextBoxColumn montoAdicional;
         private System.Windows.Forms.Label lblSedeActual;
         private System.Windows.Forms.Label lbl99;
+        private System.Windows.Forms.Label labelError;
     }
 }

@@ -28,7 +28,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public int CantMaximaPorGuia { get => cantMaximaPorGuia; set => cantMaximaPorGuia = value; }
         public List<Exposicion> Exposiciones { get => exposiciones; set => exposiciones = value; }
 
-        public List<Tarifa> BuscarTarifaExistentes(int idsede)  //veer
+        public List<Tarifa> buscarTarifaExistentes(int idsede)  //veer
         {
 
             this.tarifas = Varios_DAO.ObtenerListaTarifasSedeActual //lista de tarifas de la sede actual
@@ -40,7 +40,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
 
 
-        public int ConocerExposicionesVigentes() //despues venir
+        public int conocerExposicionesVigentes() //despues venir
         {
             
             this.exposiciones = Varios_DAO.ObtenerExposicionesXSede(Varios_DAO.ObtenerTabla("Exposicion"), this.idSede);
@@ -48,7 +48,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             List<Exposicion> exposicionesVigentes = new List<Exposicion>();
             Exposicion expo = new Exposicion();
 
-            exposicionesVigentes = expo.EsVigente(this.exposiciones);
+            exposicionesVigentes = expo.esVigente(this.exposiciones);
 
             int acumulador = 0;
 

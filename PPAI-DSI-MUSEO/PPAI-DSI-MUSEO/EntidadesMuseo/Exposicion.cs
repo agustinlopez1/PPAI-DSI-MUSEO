@@ -26,7 +26,7 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public int IdSede { get => idSede; set => idSede = value; }
         public List<DetalleExposicion> Detalles { get => detalles; set => detalles = value; }
 
-        public List<Exposicion> EsVigente(List<Exposicion> exposicionesSede) 
+        public List<Exposicion> esVigente(List<Exposicion> exposicionesSede) 
         {
 
             List<Exposicion> listaVigentes = new List<Exposicion>();
@@ -37,13 +37,10 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
                 if (expo.fechaFin > DateTime.Today) 
                 {
-
                     listaVigentes.Add(expo);
 
                 }
-                
-
-
+            
             }
 
             return listaVigentes;

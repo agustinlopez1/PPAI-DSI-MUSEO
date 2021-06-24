@@ -22,31 +22,32 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             InitializeComponent();
         }
 
-        private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)
+        private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)  //HabilitarPantalla
         {
-            gestor.OpcionRegistrarVenta();
+            gestor.opcionRegistrarVenta();
             labelFechaActual.Text = DateTime.Now.ToShortDateString();
             lblSedeActual.Text = gestor.SesionActual.Usuario.Empleado.Sede.Nombre;
-            MostrarTarifasExistentes(gestor.TarifasExistentes);
-
-            gestor.CalcularDuracionEstimada();
+            mostrarTarifasExistentes(gestor.TarifasExistentes);
             
-            txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
 
-            gestor.BuscarReservas();
-            gestor.BuscarEntradasVendidas();
-            gestor.CalcularVisitantesTotal();
+            //gestor.CalcularDuracionEstimada();
+
+            // txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
+
+            gestor.buscarReservas();
+            gestor.buscarEntradasVendidas();
+            gestor.calcularVisitantesTotal();
             ActualizarDisponibilidad(); 
         }
 
         private void ActualizarDisponibilidad()
         {
-            int capMaximaSede = gestor.BuscarCapacidadMaxima();
+            int capMaximaSede = gestor.buscarCapacidadMaxima();
             int maxEntradasDisponibles = (capMaximaSede - gestor.CantidadVisitantesTotal);
             txtMaximoEntradas.Text = maxEntradasDisponibles.ToString();
         }
         
-        private void MostrarTarifasExistentes(List<Tarifa> tarifas)
+        private void mostrarTarifasExistentes(List<Tarifa> tarifas)
         {
             foreach (Tarifa tarifa in tarifas)
             {
@@ -56,7 +57,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 
         }
        
-        private void  TomarSeleccionDeTarifa(int idtarifa)
+        private void  tomarSeleccionDeTarifa(int idtarifa)
         {
 
             gestor.tomarSeleccionDeTarifa(idtarifa);
@@ -84,10 +85,11 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             txtTotal.Text = "";
         }
         
-        private void TomarCantidadEntradas() 
+        private void tomarCantidadEntradas() 
         {
             int cantidad = Convert.ToInt32(txtNroEntradas.Text);
             gestor.CantEntradasGenerar = cantidad;
+           
         }
 
         private void mostrarDetallaEntrada() 
@@ -95,19 +97,19 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             txtNroEntradasDetalle.Text = gestor.CantEntradasGenerar.ToString();
             txtMontoEntrada.Text = gestor.TarifaSeleccionada.Monto.ToString();
             txtMontoAdicional.Text = gestor.TarifaSeleccionada.MontoAdicional.ToString();
-            txtTotal.Text = gestor.CalcularMontoTotal().ToString();
+            txtTotal.Text = gestor.calcularMontoTotal().ToString();
             botonCalcularTotal.Enabled = true;
 
         }
 
-        private void tomarConfirmacionVenta() //modificar ea 
+        private void tomarConfirmacionVenta()  
         {
             
             DialogResult resultado = MessageBox.Show("¿Está seguro que desea confirmar la venta" +
                 " por $" + txtTotal.Text + "?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                gestor.RegistrarNuevaEntrada();
+                gestor.registrarNuevaEntrada();
                 LimpiarCampos();
                 ActualizarDisponibilidad();
                 // actualizar volver a cargar la capacidad de entradas maximas
@@ -121,7 +123,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                 bool esNumero = Regex.IsMatch(txtNroEntradas.Text, @"^\d+$"); // valida que sea un numero
                 if (esNumero) // valida que sea un numero
                 {
-                    TomarCantidadEntradas();
+                    tomarCantidadEntradas();
 
                     if (gestor.verificarLimiteVisitantes(Convert.ToInt32(txtNroEntradas.Text))) // valida capacidad de sede
                     {
@@ -189,7 +191,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         {
             LimpiarCampos();
         }
-       
+
         private void grillaTarifasExistentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -200,12 +202,34 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                 string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
                 int idTarifa = Convert.ToInt32(filaseleccionada.Cells["idTarifa"].Value);
 
-                TomarSeleccionDeTarifa(idTarifa);
+
+
+                tomarSeleccionDeTarifa(idTarifa);
 
                 txtIDTarifa.Text = idTarifa.ToString();
                 txtTipoEntrada.Text = tipoEntrada.ToString();
                 txtTipoVisita.Text = tipoVisita.ToString();
+                if (tipoVisita.ToString() == "Por Exposicion")
+                {
+                    labelError.Visible = true;
+                    txtDuracionEstimada.Text = "NoAplica";
+                    txtDuracionEstimada.ForeColor = Color.Red;
+                }
+                else
+                {
+                    labelError.Visible = false;
+                    txtDuracionEstimada.ForeColor = Color.FromArgb(4, 139, 204);
+                    gestor.calcularDuracionEstimada();
+                    txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
+                }
+
+                //if (tipoVisita.ToString() == "Por Exposicion")
+                //{ labelError.Visible = true; txtDuracionEstimada.Text = "NoAplica"; txtDuracionEstimada.ForeColor = Color.Red; }
+                //else { labelError.Visible = false; txtDuracionEstimada.ForeColor = Color.FromArgb(4, 139, 204); 
+                //    txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString(); ; }
                 LimpiarCamposDetalle();
+                
+
             }
             else
             {
@@ -225,11 +249,35 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                 string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
                 int idTarifa = Convert.ToInt32(filaseleccionada.Cells["idTarifa"].Value);
 
-                TomarSeleccionDeTarifa(idTarifa);
-
-                txtIDTarifa.Text = idTarifa.ToString();
+                tomarSeleccionDeTarifa(idTarifa);
+               
+                txtIDTarifa.Text = idTarifa.ToString(); // se puede ingresar por parametro? y deberia 
                 txtTipoEntrada.Text = tipoEntrada.ToString();
                 txtTipoVisita.Text = tipoVisita.ToString();
+                
+                if (tipoVisita.ToString() == "Por Exposicion")
+                {
+                    labelError.Visible = true;
+                    txtDuracionEstimada.Text = "NoAplica";
+                    txtDuracionEstimada.ForeColor = Color.Red;
+                }
+                else
+                {
+                    labelError.Visible = false;
+                    txtDuracionEstimada.ForeColor = Color.FromArgb(4, 139, 204);
+                    gestor.calcularDuracionEstimada();
+                    txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString();
+                }
+
+                
+
+                //if (txtTipoVisita.Text == "Por Exposicion") { CargarComboExposiciones(); }
+
+                //int idExpo = comboExposiciones.SelectedIndex;
+                //gestor.ExposicionSelecionada.IdExpo = idExpo;
+                ////alternativa pausada
+
+               
                 LimpiarCamposDetalle();
             }
             else
@@ -262,6 +310,23 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                 grillaTarifasExistentes.Rows[e.RowIndex].Cells[3].Style.BackColor = Color.Black;
                 grillaTarifasExistentes.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.Black;
             }
+        }
+        
+        private void CargarComboExposiciones() // completar alternativa
+        {
+            List<Exposicion> exposiciones = gestor.SedeActual.Exposiciones;
+            //foreach (Exposicion exposicion in exposiciones)
+            //{
+            //    exposicion.Nombre
+
+            //}
+
+            //comboExposiciones.DataSource = exposiciones;
+            //comboExposiciones.DisplayMember = "nombre";
+            //comboExposiciones.ValueMember = "idExpo";
+            //comboExposiciones.SelectedIndex = -1;
+
+
         }
         // =====================================================================
     }

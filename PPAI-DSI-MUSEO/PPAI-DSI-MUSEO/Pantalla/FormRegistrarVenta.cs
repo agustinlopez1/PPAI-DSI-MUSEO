@@ -15,6 +15,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
 {
     public partial class PantallaVentaEntrada : Form
     {
+        bool banderaCombo = false;
         GestorVentaEntrada gestor = new GestorVentaEntrada();
         
         public PantallaVentaEntrada()
@@ -28,11 +29,12 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             labelFechaActual.Text = DateTime.Now.ToShortDateString();
             lblSedeActual.Text = gestor.SesionActual.Usuario.Empleado.Sede.Nombre;
             mostrarTarifasExistentes(gestor.TarifasExistentes);
-        
+
             gestor.buscarReservas();
             gestor.buscarEntradasVendidas();
             gestor.calcularVisitantesTotal();
-            ActualizarDisponibilidad(); 
+            ActualizarDisponibilidad();
+
         }
 
         private void ActualizarDisponibilidad()
@@ -69,6 +71,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             txtTipoVisita.Text = "";
             txtDuracionEstimada.Text = "";
             txtNroEntradas.Text = "";
+            comboExposiciones.SelectedIndex = -1;
             LimpiarCamposDetalle();
         }
 
@@ -187,7 +190,9 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             LimpiarCampos();
         }
 
-        private void grillaTarifasExistentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void CargarDatosDesdeGrilla(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
@@ -196,19 +201,24 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                 string tipoEntrada = filaseleccionada.Cells["tipoEntrada"].Value.ToString();
                 string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
                 int idTarifa = Convert.ToInt32(filaseleccionada.Cells["idTarifa"].Value);
-
-
 
                 tomarSeleccionDeTarifa(idTarifa);
 
                 txtIDTarifa.Text = idTarifa.ToString();
                 txtTipoEntrada.Text = tipoEntrada.ToString();
                 txtTipoVisita.Text = tipoVisita.ToString();
+                
                 if (tipoVisita.ToString() == "Por Exposicion")
                 {
-                    labelError.Visible = true;
-                    txtDuracionEstimada.Text = "NoAplica";
-                    txtDuracionEstimada.ForeColor = Color.Red;
+
+                    //labelError.Visible = true;
+                    //txtDuracionEstimada.Text = "NoAplica";
+                    //txtDuracionEstimada.ForeColor = Color.Red;
+                    
+                    txtDuracionEstimada.Text = "";
+                    comboExposiciones.SelectedIndex = -1;
+                    CargarComboExposiciones();
+                    comboExposiciones.Enabled = true; 
                 }
                 else
                 {
@@ -217,64 +227,16 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                     gestor.calcularDuracionEstimada();
                     string tiempo = ConvertirMinutosAHoras(gestor.DuracionEstimada);
                     txtDuracionEstimada.Text = tiempo;
+
+                    banderaCombo = false;
+                    comboExposiciones.SelectedIndex = -1;
+                    comboExposiciones.Enabled = false;
                 }
 
                 //if (tipoVisita.ToString() == "Por Exposicion")
                 //{ labelError.Visible = true; txtDuracionEstimada.Text = "NoAplica"; txtDuracionEstimada.ForeColor = Color.Red; }
                 //else { labelError.Visible = false; txtDuracionEstimada.ForeColor = Color.FromArgb(4, 139, 204); 
                 //    txtDuracionEstimada.Text = gestor.DuracionEstimada.ToString(); ; }
-                LimpiarCamposDetalle();
-                
-
-            }
-            else
-            {
-                txtIDTarifa.Text = "";
-                txtTipoEntrada.Text = "";
-                txtTipoVisita.Text = "";
-            }
-        }
-
-        private void grillaTarifasExistentes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                int indice = e.RowIndex;
-                DataGridViewRow filaseleccionada = grillaTarifasExistentes.Rows[indice];
-                string tipoEntrada = filaseleccionada.Cells["tipoEntrada"].Value.ToString();
-                string tipoVisita = filaseleccionada.Cells["tipoVisita"].Value.ToString();
-                int idTarifa = Convert.ToInt32(filaseleccionada.Cells["idTarifa"].Value);
-
-                tomarSeleccionDeTarifa(idTarifa);
-               
-                txtIDTarifa.Text = idTarifa.ToString(); // se puede ingresar por parametro? y deberia 
-                txtTipoEntrada.Text = tipoEntrada.ToString();
-                txtTipoVisita.Text = tipoVisita.ToString();
-                
-                if (tipoVisita.ToString() == "Por Exposicion")
-                {
-                    labelError.Visible = true;
-                    txtDuracionEstimada.Text = "NoAplica";
-                    txtDuracionEstimada.ForeColor = Color.Red;
-                }
-                else
-                {
-                    labelError.Visible = false;
-                    txtDuracionEstimada.ForeColor = Color.FromArgb(4, 139, 204);
-                    gestor.calcularDuracionEstimada();
-                    string tiempo = ConvertirMinutosAHoras(gestor.DuracionEstimada);
-                    txtDuracionEstimada.Text = tiempo;
-                }
-
-                
-
-                //if (txtTipoVisita.Text == "Por Exposicion") { CargarComboExposiciones(); }
-
-                //int idExpo = comboExposiciones.SelectedIndex;
-                //gestor.ExposicionSelecionada.IdExpo = idExpo;
-                ////alternativa pausada
-
-               
                 LimpiarCamposDetalle();
             }
             else
@@ -308,35 +270,76 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
                 grillaTarifasExistentes.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.Black;
             }
         }
-        
+        // ============================================================
+
         private void CargarComboExposiciones() // completar alternativa
         {
             List<Exposicion> exposiciones = gestor.SedeActual.Exposiciones;
-            //foreach (Exposicion exposicion in exposiciones)
-            //{
-            //    exposicion.Nombre
+            
+            comboExposiciones.DataSource = exposiciones;
+            comboExposiciones.DisplayMember = "nombre";
+            comboExposiciones.ValueMember = "idExpo";
+            comboExposiciones.SelectedIndex = -1;
 
-            //}
-
-            //comboExposiciones.DataSource = exposiciones;
-            //comboExposiciones.DisplayMember = "nombre";
-            //comboExposiciones.ValueMember = "idExpo";
-            //comboExposiciones.SelectedIndex = -1;
-
-
+            banderaCombo = true;
         }
+
+        // estos dos metodos son para traer los datos con el click de la grilla
+        private void grillaTarifasExistentes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CargarDatosDesdeGrilla(sender, e);
+        }
+        private void grillaTarifasExistentes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CargarDatosDesdeGrilla(sender, e);
+        }
+        // =======================================================================
 
         private string ConvertirMinutosAHoras(int minutosAconvertir)
-        {   
-            int horas = minutosAconvertir / 60;
-            
-            int minutos = 70 % 60;
-
-            string resultado = horas.ToString() + "." + minutos.ToString();
-
+        {
+            string resultado = "";
+            if (minutosAconvertir < 60)
+            {
+                resultado = minutosAconvertir.ToString();
+                label7.Text = "minutos";
+            }
+            else
+            {
+                int horas = minutosAconvertir / 60;
+                int minutos = minutosAconvertir % 60;
+                resultado = horas.ToString() + "." + minutos.ToString();
+                label7.Text = "horas";
+            }
             return resultado;
-
         }
+
+        
+
+        //private void cmbPlaya_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if ((Convert.ToString(cmbPlaya.SelectedValue) != "") && (banderaCmb))
+        //    {
+        //        CargarGrillaEstacionamientos(Convert.ToInt32(cmbPlaya.SelectedValue));
+                
+        //    }
+        //}
+
+        private void comboExposiciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (banderaCombo && comboExposiciones.SelectedIndex != -1) // si cargó el combo
+            {
+                int idExposicionSeleccionada = Convert.ToInt32(comboExposiciones.SelectedValue);
+                // int idExposicionSeleccionada = comboExposiciones.SelectedValue;
+                // MessageBox.Show("la ID es " + idExposicionSeleccionada);
+                gestor.setearExposicionSeleccionada(idExposicionSeleccionada);
+                gestor.calcularDuracionEstimada();
+                string tiempo = ConvertirMinutosAHoras(gestor.DuracionEstimada);
+                txtDuracionEstimada.Text = tiempo;
+            }
+        }
+
+
+
         // =====================================================================
     }
 

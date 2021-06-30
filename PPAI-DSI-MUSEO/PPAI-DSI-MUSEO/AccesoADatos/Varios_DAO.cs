@@ -397,5 +397,31 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                     cn.Close();
                 }
         }
+
+        public static Exposicion ObtenerExposicionPorID(DataTable tabla, int idExposicion)
+        {
+
+            Exposicion exposicion = new Exposicion();
+
+            foreach (DataRow exposiciontabla in tabla.Rows)
+            {
+                if (idExposicion == Convert.ToInt32(exposiciontabla["idExpo"]))
+                {
+                    exposicion.FechaInicio = Convert.ToDateTime(exposiciontabla["fechaInicio"]);
+                    exposicion.FechaFin = Convert.ToDateTime(exposiciontabla["fechaFin"]);
+                    exposicion.Nombre = (exposiciontabla["nombre"]).ToString();
+                    exposicion.IdExpo = Convert.ToInt32(exposiciontabla["idExpo"]);
+                    exposicion.IdSede = Convert.ToInt32(exposiciontabla["idSede"]);
+
+                    return exposicion;
+                }
+            }
+            return null;
+
+        }
+
+
+
+
     }
 }

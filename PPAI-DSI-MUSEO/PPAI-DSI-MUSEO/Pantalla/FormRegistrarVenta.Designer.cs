@@ -78,6 +78,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelFechaActual = new System.Windows.Forms.Label();
             this.lblSedeActual = new System.Windows.Forms.Label();
             this.lbl99 = new System.Windows.Forms.Label();
+            this.comboExposiciones = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).BeginInit();
             this.groupBoxNuevaEntrada.SuspendLayout();
             this.groupBoxDetalle.SuspendLayout();
@@ -201,7 +202,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // groupBoxNuevaEntrada
             // 
             this.groupBoxNuevaEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
-            this.groupBoxNuevaEntrada.Controls.Add(this.labelError);
+            this.groupBoxNuevaEntrada.Controls.Add(this.comboExposiciones);
             this.groupBoxNuevaEntrada.Controls.Add(this.botonCalcularTotal);
             this.groupBoxNuevaEntrada.Controls.Add(this.txtTipoVisita);
             this.groupBoxNuevaEntrada.Controls.Add(this.txtTipoEntrada);
@@ -234,7 +235,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(24, 154);
+            this.labelError.Location = new System.Drawing.Point(377, 19);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(189, 17);
             this.labelError.TabIndex = 92;
@@ -663,12 +664,24 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.lbl99.TabIndex = 90;
             this.lbl99.Text = "Sede actual:";
             // 
+            // comboExposiciones
+            // 
+            this.comboExposiciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboExposiciones.Enabled = false;
+            this.comboExposiciones.FormattingEnabled = true;
+            this.comboExposiciones.Location = new System.Drawing.Point(156, 143);
+            this.comboExposiciones.Name = "comboExposiciones";
+            this.comboExposiciones.Size = new System.Drawing.Size(121, 21);
+            this.comboExposiciones.TabIndex = 92;
+            this.comboExposiciones.SelectedIndexChanged += new System.EventHandler(this.comboExposiciones_SelectedIndexChanged);
+            // 
             // PantallaVentaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(854, 521);
+            this.Controls.Add(this.labelError);
             this.Controls.Add(this.lblSedeActual);
             this.Controls.Add(this.lbl99);
             this.Controls.Add(this.labelFechaActual);
@@ -683,7 +696,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.MinimumSize = new System.Drawing.Size(870, 560);
             this.Name = "PantallaVentaEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Registrar nueva venta";
+            this.Text = "MUSEO - VENTAS";
             this.Load += new System.EventHandler(this.RegistrarVentaDeEntrada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).EndInit();
             this.groupBoxNuevaEntrada.ResumeLayout(false);
@@ -742,5 +755,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private System.Windows.Forms.Label lblSedeActual;
         private System.Windows.Forms.Label lbl99;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.ComboBox comboExposiciones;
     }
 }

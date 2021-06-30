@@ -33,7 +33,6 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
 
             this.tarifas = Varios_DAO.ObtenerListaTarifasSedeActual 
                 (Varios_DAO.ObtenerTabla("Tarifa"), idsede);
-
             
             return this.tarifas;
         }

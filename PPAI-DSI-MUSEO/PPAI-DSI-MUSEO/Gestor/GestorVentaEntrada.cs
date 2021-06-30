@@ -98,31 +98,23 @@ namespace PPAI_DSI_MUSEO.Gestor
 
         } 
 
-        public void calcularDuracionEstimada()
+        public void calcularDuracionEstimada() // setear atributo DuracionEstimada del gestor
         {
-            this.duracionEstimada = this.sedeActual.conocerExposicionesVigentes();
-
-
-            //if (this.tarifaSeleccionada.TipoVisita.IdTipoVisita == 2)                 //alternativa
-            //{
-            //    //int acumulador = 0;
-            //    //List<DetalleExposicion> detalles = this.exposicionSelecionada.Detalles;
-            //    //foreach (DetalleExposicion detalle in detalles)
-            //    //{
-            //    //    int duracionResmida = detalle.Obra.DuracionResumida;
-            //    //    acumulador += duracionResmida;
-
-            //    //}
-            //    //this.duracionEstimada = acumulador;
-                
-            //}
-            //else 
-            //{
-                
-
-            //}
-
-            
+            if (this.tarifaSeleccionada.TipoVisita.IdTipoVisita != 2)
+            {
+                this.duracionEstimada = this.sedeActual.conocerExposicionesVigentes();
+            }
+            else
+            {
+                int acumulador = 0;
+                List<DetalleExposicion> detalles = this.exposicionSelecionada.Detalles;
+                foreach (DetalleExposicion detalle in detalles)
+                {
+                    int duracionResmida = detalle.Obra.DuracionResumida;
+                    acumulador += duracionResmida;
+                }
+                this.duracionEstimada = acumulador;
+            }
         }
 
         public void buscarReservas()
@@ -226,6 +218,20 @@ namespace PPAI_DSI_MUSEO.Gestor
             this.cantidadVisitantesTotal += cantEntradasGenerar;
             MessageBox.Show("Pantallas de cantidad de visitantes actualizadas.\n" +
                 "En este momento hay " + cantidadVisitantesTotal +" personas en el museo");
+        }
+
+        public void setearExposicionSeleccionada(int idExpo)
+        {
+            DataTable tabla = new DataTable();
+            tabla = Varios_DAO.ObtenerTabla("Exposicion");
+            this.exposicionSelecionada = Varios_DAO.ObtenerExposicionPorID(tabla, idExpo);
+
+            DataTable tabla2 = new DataTable();
+            tabla2 = Varios_DAO.ObtenerTabla("DetalleExposicion");
+            this.exposicionSelecionada.Detalles = 
+                Varios_DAO.ObtenerDetallesXExposiciones(tabla2, exposicionSelecionada.IdExpo);
+
+            // ver obras
         }
     }
 }

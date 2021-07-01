@@ -23,7 +23,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             InitializeComponent();
         }
 
-        private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)  //HabilitarPantalla
+        private void RegistrarVentaDeEntrada_Load(object sender, EventArgs e)  // Habilitar pantalla
         {
             gestor.opcionRegistrarVenta();
             labelFechaActual.Text = DateTime.Now.ToShortDateString();
@@ -34,7 +34,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             gestor.buscarEntradasVendidas();
             gestor.calcularVisitantesTotal();
             ActualizarDisponibilidad();
-
         }
         private void ActualizarDisponibilidad()
         {

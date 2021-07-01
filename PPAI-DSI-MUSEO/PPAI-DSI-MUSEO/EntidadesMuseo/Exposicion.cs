@@ -26,27 +26,20 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public int IdSede { get => idSede; set => idSede = value; }
         public List<DetalleExposicion> Detalles { get => detalles; set => detalles = value; }
 
-        public List<Exposicion> esVigente(List<Exposicion> exposicionesSede) 
+        public List<Exposicion> esVigente(List<Exposicion> exposicionesSede)
+        // verificar si la exposicion es vigente
         {
-
             List<Exposicion> listaVigentes = new List<Exposicion>();
-
 
             foreach (Exposicion expo in exposicionesSede)
             {
-
                 if (expo.fechaFin > DateTime.Today) 
                 {
                     listaVigentes.Add(expo);
-
                 }
-            
             }
 
             return listaVigentes;
-
-
-           
-        } //verificar si la exposicion es vigente
+        } 
     }
 }

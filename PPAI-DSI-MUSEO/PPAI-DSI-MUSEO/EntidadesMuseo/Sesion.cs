@@ -23,7 +23,8 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public DateTime FechaHoraFin { get => fechaHoraFin; set => fechaHoraFin = value; }
         public Usuario Usuario { get => usuario; set => usuario = value; }
 
-        public static Usuario getEmpleadoEnSesion(int idUsuario) //obtiene el usuario que esta en sesio
+        public static Usuario getEmpleadoEnSesion(int idUsuario)
+            //obtiene el usuario que esta en sesion
         {
             Usuario usuario = new Usuario();
             DataTable tabla = new DataTable();
@@ -40,17 +41,5 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             }
             return null;
         }
-
-      
-
-        
-
-        
-
-
-
-
-
-
     }
 }

@@ -27,9 +27,6 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
             empleado = AccesoADatos.Varios_DAO.ObtenerEmpleado(legEmpleado);
 
             return empleado;
-
         }
-
-
     }
 }

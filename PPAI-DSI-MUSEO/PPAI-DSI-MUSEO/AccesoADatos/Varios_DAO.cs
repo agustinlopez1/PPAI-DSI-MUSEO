@@ -46,7 +46,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                 cn.Close();
             }
         } 
-
         public static List<Sesion> ObtenerListaSesiones(DataTable tabla)
         {
             List<Sesion> listaSesiones = new List<Sesion>();
@@ -75,7 +74,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
             return listaSesiones;
         }
-
         public static Sede ObtenerSede(int idSede)
         {
             Sede sede = new Sede();
@@ -113,7 +111,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             }
             return null;
         }
-
         public static TipoEntrada ObtenerTipoEntrada(DataTable tabla, int idTipoEntrada)
         {
 
@@ -135,7 +132,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return null;
 
         }
-
         public static TipoVisita ObtenerTipoVisita(DataTable tabla, int idTipoVisita)
         {
 
@@ -158,7 +154,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return null;
 
         }
-
         public static List<Tarifa> ObtenerListaTarifasSedeActual(DataTable tabla, int idsede)
         {
             List<Tarifa> listaTarifa = new List<Tarifa>();
@@ -180,7 +175,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             }
             return listaTarifa;
         }
-
         public static List<Exposicion> ObtenerExposicionesXSede(DataTable tabla, int idsede)
         {
 
@@ -205,8 +199,8 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return listaExposiciones;
 
         }
-
-        public static List<DetalleExposicion> ObtenerDetallesXExposiciones(DataTable tabla, int idExposicion)
+        public static List<DetalleExposicion> ObtenerDetallesXExposiciones
+            (DataTable tabla, int idExposicion)
         {
 
             List<DetalleExposicion> listaDetallesExposiciones = new List<DetalleExposicion>();
@@ -227,7 +221,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return listaDetallesExposiciones;
 
         }
-
         public static Obra ObtenerObra(DataTable tabla, int idObra)
         {
             foreach (DataRow obra in tabla.Rows)
@@ -246,7 +239,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
             return null;
         }
-
         public static List<ReservaVisita> ObtenerReservas(DataTable tabla, int idSede)
         {
             List<ReservaVisita> listaReserva = new List<ReservaVisita>();
@@ -269,7 +261,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             }
             return listaReserva;
         }
-
         public static List<Entrada> ObtenerEntradasXSede(DataTable tabla, int idsede)
         {
 
@@ -291,7 +282,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return listaEntradas;
 
         }
-
         public static Tarifa ObtenerTarifaID(DataTable tabla, int idTarifa)
         {
 
@@ -316,7 +306,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
 
 
         }
-
         public static int ObtenerUltimoNroEntrada() 
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["MuseoBD"];
@@ -355,7 +344,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                 cn.Close();
             }
         }
-
         public static bool AltaEntradaNueva(int nroEntrada, int idSede, 
             int idTarifa, float monto, DateTime fechaVenta)
         {
@@ -397,7 +385,6 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
                     cn.Close();
                 }
         }
-
         public static Exposicion ObtenerExposicionPorID(DataTable tabla, int idExposicion)
         {
 
@@ -419,9 +406,5 @@ namespace PPAI_DSI_MUSEO.AccesoADatos
             return null;
 
         }
-
-
-
-
     }
 }

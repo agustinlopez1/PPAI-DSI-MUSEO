@@ -14,7 +14,6 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private int idTarifa;
         private float monto;
         private Sede sede;
-
         public Entrada()
         {
         }
@@ -26,29 +25,24 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public Sede Sede { get => sede; set => sede = value; }
 
         public List<Entrada> esFechaHoraHoy(List<Entrada> entradas)
+        // verifica si la entrada es de la fecha actual
         {
-
             List<Entrada> listaEntradasActuales = new List<Entrada>();
             foreach (Entrada entrada in entradas)
             {
-                if (entrada.FechaVenta.Date == DateTime.Today.Date) // 
+                if (entrada.FechaVenta.Date == DateTime.Today.Date) 
                 {
                     listaEntradasActuales.Add(entrada);
-
                 }
             }
-
             return listaEntradasActuales;
-
-        } //veriica si la entrada es de la fecha actual
-
+        } 
         public List<Entrada> esSedeActual(int idsede)
+        // verifica que la sede es la actual 
         {
             List<Entrada> listaEntradas = new List<Entrada>();
             listaEntradas = Varios_DAO.ObtenerEntradasXSede(Varios_DAO.ObtenerTabla("Entrada"), idsede);
             return listaEntradas;
-
-        } //verifica que la sede es la actual 
-
+        } 
     }
 }

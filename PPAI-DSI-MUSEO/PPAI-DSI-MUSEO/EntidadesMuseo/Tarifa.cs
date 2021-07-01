@@ -27,10 +27,5 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         public int IdSede { get => idSede; set => idSede = value; }
         public TipoEntrada TipoEntrada { get => tipoEntrada; set => tipoEntrada = value; }
         public TipoVisita TipoVisita { get => tipoVisita; set => tipoVisita = value; }
-
-        
-
-
-
     }
 }

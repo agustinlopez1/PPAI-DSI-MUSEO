@@ -15,7 +15,6 @@ namespace PPAI_DSI_MUSEO.EntidadesMuseo
         private int cantAlumnos;
         private int cantAlumnosConfirmada;
         private int nroReserva;
-
         public ReservaVisita()
         {
         }

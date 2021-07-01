@@ -24,7 +24,7 @@ namespace PPAI_DSI_MUSEO.Gestor
         private int duracionEstimada;
         private int cantidadVisitantesTotal;
         private int montoTotal;
-        private Exposicion exposicionSelecionada; //alternativa 
+        private Exposicion exposicionSelecionada; 
 
         public GestorVentaEntrada()
         {
@@ -33,6 +33,10 @@ namespace PPAI_DSI_MUSEO.Gestor
 
         public List<Tarifa> TarifasExistentes { get => tarifasExistentes; set => tarifasExistentes = value; }
         public List<ReservaVisita> ReservasActuales { get => reservasActuales; set => reservasActuales = value; }
+        public int MontoTotal { get => montoTotal; set => montoTotal = value; }
+        public DateTime FechaHoraEntradaAGenerar { get => fechaHoraEntradaAGenerar; set => fechaHoraEntradaAGenerar = value; }
+        public int NumeroEntrada { get => numeroEntrada; set => numeroEntrada = value; }
+        public Exposicion ExposicionSelecionada { get => exposicionSelecionada; set => exposicionSelecionada = value; }
         public List<Entrada> EntradasVendidas { get => entradasVendidas; set => entradasVendidas = value; }
         public Sede SedeActual { get => sedeActual; set => sedeActual = value; }
         public Sesion SesionActual { get => sesionActual; set => sesionActual = value; }
@@ -40,21 +44,13 @@ namespace PPAI_DSI_MUSEO.Gestor
         public Tarifa TarifaSeleccionada { get => tarifaSeleccionada; set => tarifaSeleccionada = value; }
         public int CantidadVisitantesTotal { get => cantidadVisitantesTotal; set => cantidadVisitantesTotal = value; }
         public int CantEntradasGenerar { get => cantEntradasGenerar; set => cantEntradasGenerar = value; }
-        
-        // VER estos tres nunca se usan:
-        public int MontoTotal { get => montoTotal; set => montoTotal = value; }
-        public DateTime FechaHoraEntradaAGenerar { get => fechaHoraEntradaAGenerar; set => fechaHoraEntradaAGenerar = value; }
-        public int NumeroEntrada { get => numeroEntrada; set => numeroEntrada = value; }
-        public Exposicion ExposicionSelecionada { get => exposicionSelecionada; set => exposicionSelecionada = value; }
-
 
         // ========================================================================
-        public void opcionRegistrarVenta() // método disparador del CU?
+        public void opcionRegistrarVenta() // método disparador del CU
         {
             obtenerSedeActual();
             buscarTarifasExistentes();
         }
-
         public void obtenerSedeActual()
         // setea el atributo sedeActual del gestor segun el empleado logueado en el sistema
         {
@@ -63,7 +59,6 @@ namespace PPAI_DSI_MUSEO.Gestor
             this.sesionActual = ObtenerSesionActual(listaSesiones);
             this.sedeActual = sesionActual.Usuario.Empleado.Sede;
         }
-
         public static Sesion ObtenerSesionActual(List<Sesion> listaSesiones)
         // obtiene la sesion actual para encontrar la sede 
         {
@@ -81,14 +76,12 @@ namespace PPAI_DSI_MUSEO.Gestor
             }
             return null;
         } 
-
         public void buscarTarifasExistentes()
         // setea el atributo tarifasExistentes del gestor segun las tarifas de la sede actual
         {
             this.tarifasExistentes = this.SedeActual.buscarTarifaExistentes(sedeActual.IdSede);
 
         }
-
         public void tomarSeleccionDeTarifa(int idtarifa)
         // setea el atributo tarifasSeleccionada del gestor segun la seleccion del usuario
         {
@@ -97,7 +90,6 @@ namespace PPAI_DSI_MUSEO.Gestor
 
 
         } 
-
         public void calcularDuracionEstimada() // setear atributo DuracionEstimada del gestor
         {
             if (this.tarifaSeleccionada.TipoVisita.IdTipoVisita != 2)
@@ -116,29 +108,24 @@ namespace PPAI_DSI_MUSEO.Gestor
                 this.duracionEstimada = acumulador;
             }
         }
-
         public void buscarReservas()
         // setea el atributo reservasActuales del gestor segun las reservas para el dia actual
         {
             ReservaVisita reserva = new ReservaVisita();
             this.reservasActuales = reserva.esFechaHoraHoy(reserva.esSedeActual(this.sedeActual.IdSede));
         }
-
         public void buscarEntradasVendidas()
         // setea el atributo entradasVendidas del gestor segun las vendidas en el dia actual
-
         {
             Entrada entrada = new Entrada();
             this.entradasVendidas = entrada.esFechaHoraHoy(entrada.esSedeActual(this.SedeActual.IdSede));
         }
-
         public int buscarCapacidadMaxima()
         {
             int capacidadMax;
             capacidadMax = this.SedeActual.CantMaximaVisitantes;
             return capacidadMax;
         }
-
         public  void calcularVisitantesTotal()
         // setea el valor CantidadVisitantesTotal del gestor
         {
@@ -152,7 +139,6 @@ namespace PPAI_DSI_MUSEO.Gestor
             int resultado = cantEntradasVendidas + cantVisitantes;
             this.CantidadVisitantesTotal = resultado;
         }
-
         public  bool verificarLimiteVisitantes(int cantidadEntradas)  
             // valida que la cant. entradas no supere la capacidad
         {
@@ -167,7 +153,6 @@ namespace PPAI_DSI_MUSEO.Gestor
                 return false;
             }
         }
-
         public int calcularMontoTotal() 
         {
             int monto = Convert.ToInt32(this.tarifaSeleccionada.Monto);
@@ -178,7 +163,6 @@ namespace PPAI_DSI_MUSEO.Gestor
             return this.montoTotal;
         
         }
-
         public void registrarNuevaEntrada() 
         {
             getFechaHoraActual();
@@ -186,13 +170,11 @@ namespace PPAI_DSI_MUSEO.Gestor
             generarNumeroEntrada();
             actualizarCantidadVisitantes();
         }
-
         public void getFechaHoraActual() 
         {
             this.fechaHoraEntradaAGenerar = DateTime.Now; //chequear?
             MessageBox.Show("Se registró la venta con fecha " + this.fechaHoraEntradaAGenerar.ToString());
         }
-
         public int  buscarUltimoNumeroEntrada() 
         {
 
@@ -200,7 +182,6 @@ namespace PPAI_DSI_MUSEO.Gestor
         
             return ultimoNro;
         }
-
         public void generarNumeroEntrada() 
         {
             for (int i = 0; i < this.cantEntradasGenerar; i++)
@@ -211,7 +192,6 @@ namespace PPAI_DSI_MUSEO.Gestor
                 this.fechaHoraEntradaAGenerar);
             }
         }
-
         public void actualizarCantidadVisitantes() 
             // mensaje de actualizado de las pantallas segun la capacidad de la sede
         {
@@ -219,8 +199,8 @@ namespace PPAI_DSI_MUSEO.Gestor
             MessageBox.Show("Pantallas de cantidad de visitantes actualizadas.\n" +
                 "En este momento hay " + cantidadVisitantesTotal +" personas en el museo");
         }
-
         public void setearExposicionSeleccionada(int idExpo)
+            // setea el atributo exposicionSeleccionada del gestor
         {
             DataTable tabla = new DataTable();
             tabla = Varios_DAO.ObtenerTabla("Exposicion");
@@ -230,8 +210,6 @@ namespace PPAI_DSI_MUSEO.Gestor
             tabla2 = Varios_DAO.ObtenerTabla("DetalleExposicion");
             this.exposicionSelecionada.Detalles = 
                 Varios_DAO.ObtenerDetallesXExposiciones(tabla2, exposicionSelecionada.IdExpo);
-
-            // ver obras
-        }
+        } 
     }
 }

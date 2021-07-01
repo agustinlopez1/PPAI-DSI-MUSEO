@@ -42,7 +42,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.tipoVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNuevaEntrada = new System.Windows.Forms.GroupBox();
-            this.labelError = new System.Windows.Forms.Label();
+            this.comboExposiciones = new System.Windows.Forms.ComboBox();
             this.botonCalcularTotal = new System.Windows.Forms.Button();
             this.txtTipoVisita = new System.Windows.Forms.TextBox();
             this.txtTipoEntrada = new System.Windows.Forms.TextBox();
@@ -78,7 +78,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.labelFechaActual = new System.Windows.Forms.Label();
             this.lblSedeActual = new System.Windows.Forms.Label();
             this.lbl99 = new System.Windows.Forms.Label();
-            this.comboExposiciones = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grillaTarifasExistentes)).BeginInit();
             this.groupBoxNuevaEntrada.SuspendLayout();
             this.groupBoxDetalle.SuspendLayout();
@@ -202,6 +202,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             // groupBoxNuevaEntrada
             // 
             this.groupBoxNuevaEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
+            this.groupBoxNuevaEntrada.Controls.Add(this.label18);
             this.groupBoxNuevaEntrada.Controls.Add(this.comboExposiciones);
             this.groupBoxNuevaEntrada.Controls.Add(this.botonCalcularTotal);
             this.groupBoxNuevaEntrada.Controls.Add(this.txtTipoVisita);
@@ -230,17 +231,18 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.groupBoxNuevaEntrada.TabStop = false;
             this.groupBoxNuevaEntrada.Text = "Nueva venta";
             // 
-            // labelError
+            // comboExposiciones
             // 
-            this.labelError.AutoSize = true;
-            this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(377, 19);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(189, 17);
-            this.labelError.TabIndex = 92;
-            this.labelError.Text = "Alternativa No Implementada";
-            this.labelError.Visible = false;
+            this.comboExposiciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.comboExposiciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboExposiciones.Enabled = false;
+            this.comboExposiciones.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.comboExposiciones.FormattingEnabled = true;
+            this.comboExposiciones.Location = new System.Drawing.Point(156, 143);
+            this.comboExposiciones.Name = "comboExposiciones";
+            this.comboExposiciones.Size = new System.Drawing.Size(121, 21);
+            this.comboExposiciones.TabIndex = 92;
+            this.comboExposiciones.SelectedIndexChanged += new System.EventHandler(this.comboExposiciones_SelectedIndexChanged);
             // 
             // botonCalcularTotal
             // 
@@ -550,7 +552,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.txtDuracionEstimada.Location = new System.Drawing.Point(156, 117);
             this.txtDuracionEstimada.Name = "txtDuracionEstimada";
             this.txtDuracionEstimada.ReadOnly = true;
-            this.txtDuracionEstimada.Size = new System.Drawing.Size(60, 20);
+            this.txtDuracionEstimada.Size = new System.Drawing.Size(38, 20);
             this.txtDuracionEstimada.TabIndex = 85;
             // 
             // label3
@@ -602,7 +604,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
-            this.label7.Location = new System.Drawing.Point(222, 117);
+            this.label7.Location = new System.Drawing.Point(200, 117);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 20);
             this.label7.TabIndex = 8;
@@ -664,16 +666,16 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.lbl99.TabIndex = 90;
             this.lbl99.Text = "Sede actual:";
             // 
-            // comboExposiciones
+            // label18
             // 
-            this.comboExposiciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboExposiciones.Enabled = false;
-            this.comboExposiciones.FormattingEnabled = true;
-            this.comboExposiciones.Location = new System.Drawing.Point(156, 143);
-            this.comboExposiciones.Name = "comboExposiciones";
-            this.comboExposiciones.Size = new System.Drawing.Size(121, 21);
-            this.comboExposiciones.TabIndex = 92;
-            this.comboExposiciones.SelectedIndexChanged += new System.EventHandler(this.comboExposiciones_SelectedIndexChanged);
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(139)))), ((int)(((byte)(204)))));
+            this.label18.Location = new System.Drawing.Point(61, 143);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(89, 20);
+            this.label18.TabIndex = 93;
+            this.label18.Text = "Exposición:";
             // 
             // PantallaVentaEntrada
             // 
@@ -681,7 +683,6 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(854, 521);
-            this.Controls.Add(this.labelError);
             this.Controls.Add(this.lblSedeActual);
             this.Controls.Add(this.lbl99);
             this.Controls.Add(this.labelFechaActual);
@@ -754,7 +755,7 @@ namespace PPAI_DSI_MUSEO.PantallaVentaEntrada
         private System.Windows.Forms.DataGridViewTextBoxColumn montoAdicional;
         private System.Windows.Forms.Label lblSedeActual;
         private System.Windows.Forms.Label lbl99;
-        private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.ComboBox comboExposiciones;
+        private System.Windows.Forms.Label label18;
     }
 }
